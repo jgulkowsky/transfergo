@@ -14,6 +14,17 @@ struct SelectCountryView: View {
     var body: some View {
         ScrollView {
             VStack {
+                Capsule()
+                    .fill(Color.gray)
+                    .frame(width: 30, height: 3)
+                    .padding(10)
+                
+                Text(viewModel.title)
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
+                
+                SearchBar(text: $viewModel.searchText)
+                
                 ForEach(viewModel.countries, id: \.self) { country in
                     Button(country.name) {
                         dismiss()

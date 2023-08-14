@@ -6,20 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SelectCountryViewModel: ObservableObject, Identifiable {
+    @Published var title: String
+    @Published var searchText: String = "" {
+        didSet {
+            updateCountries()
+        }
+    }
     @Published var countries: [Country] = []
     
     var coordinator: Coordinator
-    var type: SelectType
+    private var type: SelectType
     
     private var allCountries: [Country] = []
     
     init(info: SelectCountryInfo, coordinator: Coordinator) {
-        self.type = info.type
         self.coordinator = coordinator
+        type = info.type
+        title = (type == .from) ? "Sending from" : "Sending to"
         getAllCountries()
         updateCountries()
+
+        // todo: bind to typedText so everytime we change it we call updateCountries
     }
     
     func getAllCountries() {
@@ -33,8 +43,10 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
     }
     
     func updateCountries() {
-        // todo: take typed word into account to filter out all countries
-        self.countries = self.allCountries
+        self.countries = self.allCountries.filter {
+            $0.name.starts(with: searchText)
+            // todo: you should also consider option of typing currency or code
+        }
     }
     
     func onCountryTapped(_ country: Country) {
