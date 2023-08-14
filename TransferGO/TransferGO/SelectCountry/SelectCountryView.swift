@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectCountryView: View {
     @ObservedObject var viewModel: SelectCountryViewModel
-    @Environment(\.dismiss) var dismiss // todo: can we do this outside of this struct? (like in Coordinator)
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
