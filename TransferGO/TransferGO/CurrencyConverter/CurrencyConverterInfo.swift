@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrencyConverterInfo {
-    var fromCountry: String?
-    var toCountry: String?
+    var fromCountry: Country?
+    var toCountry: Country?
     var fromAmount: Int?
 }

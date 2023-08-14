@@ -12,27 +12,19 @@ struct SelectCountryView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack {
-            Text((viewModel.type == .from) ? "Sending from" : "Sending to")
-            List {
-                Button("Germany") {
-                    dismiss()
-                    viewModel.onCountryTapped("Germany")
-                }
-                Button("Great Britain") {
-                    dismiss()
-                    viewModel.onCountryTapped("Great Britain")
-                }
-                Button("Ukraine") {
-                    dismiss()
-                    viewModel.onCountryTapped("Ukraine")
+        ScrollView {
+            VStack {
+                ForEach(viewModel.countries, id: \.self) { country in
+                    Button(country.name) {
+                        dismiss()
+                        viewModel.onCountryTapped(country)
+                    }
+                    .font(.title)
+                    .padding()
+                    .background(.black)
                 }
             }
-            .font(.title)
-            .padding()
-            .background(.black)
         }
-        
     }
 }
 
