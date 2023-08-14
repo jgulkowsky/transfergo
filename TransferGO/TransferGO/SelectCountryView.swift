@@ -7,32 +7,6 @@
 
 import SwiftUI
 
-struct SelectCountryInfo {
-    var type: SelectType
-}
-
-enum SelectType {
-    case from, to
-}
-
-class SelectCountryViewModel: ObservableObject, Identifiable {
-    var coordinator: Coordinator
-    var type: SelectType
-    
-    init(info: SelectCountryInfo, coordinator: Coordinator) {
-        self.type = info.type
-        self.coordinator = coordinator
-    }
-    
-    func onCountryTapped(_ country: String) {
-        coordinator.goToCurrencyConverter(
-            (type == .from)
-                ? CurrencyConverterInfo(fromCountry: country)
-                : CurrencyConverterInfo(toCountry: country)
-        )
-    }
-}
-
 struct SelectCountryView: View {
     @ObservedObject var viewModel: SelectCountryViewModel
     @Environment(\.dismiss) var dismiss // todo: can we do this outside of this struct? (like in Coordinator)
