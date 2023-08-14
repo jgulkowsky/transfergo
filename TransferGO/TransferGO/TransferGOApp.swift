@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TransferGOApp: App {
+    @StateObject var coordinatorObject = CoordinatorObject()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CoordinatorView(object: coordinatorObject)
         }
     }
 }

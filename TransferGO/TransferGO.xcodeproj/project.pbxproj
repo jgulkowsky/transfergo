@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */; };
-		E36B98522A8A28EB00EEDBC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98512A8A28EB00EEDBC8 /* ContentView.swift */; };
+		E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */; };
 		E36B98542A8A28EC00EEDBC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */; };
 		E36B98572A8A28EC00EEDBC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36B98562A8A28EC00EEDBC8 /* Preview Assets.xcassets */; };
 		E36B98612A8A28ED00EEDBC8 /* TransferGOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98602A8A28ED00EEDBC8 /* TransferGOTests.swift */; };
 		E36B986B2A8A28ED00EEDBC8 /* TransferGOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B986A2A8A28ED00EEDBC8 /* TransferGOUITests.swift */; };
 		E36B986D2A8A28ED00EEDBC8 /* TransferGOUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B986C2A8A28ED00EEDBC8 /* TransferGOUITestsLaunchTests.swift */; };
+		E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */; };
+		E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B987B2A8A2F4B00EEDBC8 /* CoordinatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		E36B984C2A8A28EB00EEDBC8 /* TransferGO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransferGO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGOApp.swift; sourceTree = "<group>"; };
-		E36B98512A8A28EB00EEDBC8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
 		E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E36B98562A8A28EC00EEDBC8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E36B985C2A8A28ED00EEDBC8 /* TransferGOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferGOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,8 @@
 		E36B98662A8A28ED00EEDBC8 /* TransferGOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferGOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36B986A2A8A28ED00EEDBC8 /* TransferGOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGOUITests.swift; sourceTree = "<group>"; };
 		E36B986C2A8A28ED00EEDBC8 /* TransferGOUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGOUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryView.swift; sourceTree = "<group>"; };
+		E36B987B2A8A2F4B00EEDBC8 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
-				E36B98512A8A28EB00EEDBC8 /* ContentView.swift */,
+				E36B987B2A8A2F4B00EEDBC8 /* CoordinatorView.swift */,
+				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
+				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
 				E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */,
 				E36B98552A8A28EC00EEDBC8 /* Preview Content */,
 			);
@@ -257,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36B98522A8A28EB00EEDBC8 /* ContentView.swift in Sources */,
+				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
+				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
+				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
