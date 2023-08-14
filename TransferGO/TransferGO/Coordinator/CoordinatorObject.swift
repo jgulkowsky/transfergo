@@ -14,7 +14,9 @@ class CoordinatorObject: ObservableObject, Coordinator {
     init() {
         self.currencyConverterViewModel = CurrencyConverterViewModel(
             info: CurrencyConverterInfo(
-                fromCountry: "Poland", toCountry: "Ukraine", fromAmount: 300
+                fromCountry: PredefinedCountry.poland,
+                toCountry: PredefinedCountry.ukraine,
+                fromAmount: 300
             ),
             coordinator: self)
     }

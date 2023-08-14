@@ -18,7 +18,7 @@ struct CurrencyConverterView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Sending from")
-                        Text(viewModel.fromCountry)
+                        Text(viewModel.fromCountry.name)
                     }
                     Spacer()
                     Text("\(viewModel.fromAmount)")
@@ -36,7 +36,7 @@ struct CurrencyConverterView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Receiver gets")
-                        Text(viewModel.toCountry)
+                        Text(viewModel.toCountry.name)
                     }
                     Spacer()
                     Text("---")
@@ -56,7 +56,9 @@ struct ContentView_Previews: PreviewProvider {
         CurrencyConverterView(
             viewModel: CurrencyConverterViewModel(
                 info: CurrencyConverterInfo(
-                    fromCountry: "Poland", toCountry: "Ukraine", fromAmount: 300
+                    fromCountry: PredefinedCountry.poland,
+                    toCountry: PredefinedCountry.ukraine,
+                    fromAmount: 300
                 ),
                 coordinator: CoordinatorObject()
             )

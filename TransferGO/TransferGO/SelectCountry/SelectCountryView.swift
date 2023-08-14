@@ -13,26 +13,38 @@ struct SelectCountryView: View {
 
     var body: some View {
         VStack {
-            Text((viewModel.type == .from) ? "Sending from" : "Sending to")
+            Capsule()
+                .fill(Color.gray)
+                .frame(width: 30, height: 3)
+                .padding(10)
+            
+            Text(viewModel.title)
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+            
+            Spacer().frame(height: 22)
+            
+            SearchBar(text: $viewModel.searchText)
+            
             List {
-                Button("Germany") {
-                    dismiss()
-                    viewModel.onCountryTapped("Germany")
+                Section(header: Text("All Countries")) {
+                    ForEach(viewModel.countries, id: \.self) { country in
+                        CountryView(
+                            country: country,
+                            onTap: {
+                                dismiss()
+                                viewModel.onCountryTapped(country)
+                            }
+                        )
+                    }
                 }
-                Button("Great Britain") {
-                    dismiss()
-                    viewModel.onCountryTapped("Great Britain")
-                }
-                Button("Ukraine") {
-                    dismiss()
-                    viewModel.onCountryTapped("Ukraine")
-                }
+                .listSectionSeparator(.hidden)
+                .foregroundColor(.black)
+                .fontWeight(.bold)
             }
-            .font(.title)
-            .padding()
-            .background(.black)
+            .listStyle(.plain)
+            .padding(.top, -10)
         }
-        
     }
 }
 

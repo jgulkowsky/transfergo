@@ -23,6 +23,10 @@
 		E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */; };
 		E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98872A8A41C300EEDBC8 /* SelectType.swift */; };
 		E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */; };
+		E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B988E2A8A466100EEDBC8 /* Country.swift */; };
+		E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */; };
+		E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98922A8A502A00EEDBC8 /* SearchBar.swift */; };
+		E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98942A8A564C00EEDBC8 /* CountryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryInfo.swift; sourceTree = "<group>"; };
 		E36B98872A8A41C300EEDBC8 /* SelectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectType.swift; sourceTree = "<group>"; };
 		E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewModel.swift; sourceTree = "<group>"; };
+		E36B988E2A8A466100EEDBC8 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedCountry.swift; sourceTree = "<group>"; };
+		E36B98922A8A502A00EEDBC8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E36B98942A8A564C00EEDBC8 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
+				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
+				E36B988E2A8A466100EEDBC8 /* Country.swift */,
+				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
 				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
@@ -174,6 +185,7 @@
 				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
 				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
 				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
+				E36B98942A8A564C00EEDBC8 /* CountryView.swift */,
 			);
 			path = SelectCountry;
 			sourceTree = "<group>";
@@ -308,11 +320,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
+				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
+				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
+				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,

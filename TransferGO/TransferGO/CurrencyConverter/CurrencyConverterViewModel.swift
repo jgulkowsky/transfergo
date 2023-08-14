@@ -9,8 +9,8 @@ import Foundation
 
 class CurrencyConverterViewModel: ObservableObject {
     var coordinator: Coordinator
-    @Published var fromCountry: String!
-    @Published var toCountry: String!
+    @Published var fromCountry: Country!
+    @Published var toCountry: Country!
     @Published var fromAmount: Int!
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {
