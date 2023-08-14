@@ -19,8 +19,10 @@ struct SelectCountryView: View {
                 .padding(10)
             
             Text(viewModel.title)
-                .font(.system(size: 24))
+                .font(.system(size: 22))
                 .fontWeight(.bold)
+            
+            Spacer().frame(height: 22)
             
             SearchBar(text: $viewModel.searchText)
             
@@ -41,6 +43,7 @@ struct SelectCountryView: View {
                 .fontWeight(.bold)
             }
             .listStyle(.plain)
+            .padding(.top, -10)
         }
     }
 }

@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
+				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
 				E36B988E2A8A466100EEDBC8 /* Country.swift */,
 				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
@@ -128,7 +129,6 @@
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
 				E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */,
 				E36B98552A8A28EC00EEDBC8 /* Preview Content */,
-				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
 			);
 			path = TransferGO;
 			sourceTree = "<group>";

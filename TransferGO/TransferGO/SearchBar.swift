@@ -7,26 +7,30 @@
 
 import SwiftUI
 
+// todo: we still miss this little Search text on top - on the border
+
 struct SearchBar: View {
    @Binding var text: String
 
    var body: some View {
        TextField("", text: $text)
-           .padding(7)
+           .autocorrectionDisabled()
+           .padding(12)
            .padding(.leading, 5)
            .padding(.trailing, 30)
-           .background(Color(.systemGray6))
-           .cornerRadius(8)
-           .padding(.horizontal, 10)
            .overlay {
+               RoundedRectangle(cornerRadius: 8)
+                   .stroke(.gray, lineWidth: 1)
                HStack {
                    Spacer()
                    Image(systemName: "magnifyingglass")
                        .foregroundColor(.gray)
                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
-                       .padding(.trailing, 20)
+                       .padding(.trailing, 10)
                }
+               
            }
+           .padding(.horizontal, 15)
    }
 }
 
