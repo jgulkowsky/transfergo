@@ -113,16 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
-				E36B987F2A8A413600EEDBC8 /* Coordinator.swift */,
-				E36B987D2A8A411100EEDBC8 /* CoordinatorObject.swift */,
-				E36B987B2A8A2F4B00EEDBC8 /* CoordinatorView.swift */,
-				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
-				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
-				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
-				E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */,
-				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
-				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
-				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
+				E36B988B2A8A426100EEDBC8 /* Coordinator */,
+				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
+				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
 				E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */,
 				E36B98552A8A28EC00EEDBC8 /* Preview Content */,
 			);
@@ -152,6 +145,37 @@
 				E36B986C2A8A28ED00EEDBC8 /* TransferGOUITestsLaunchTests.swift */,
 			);
 			path = TransferGOUITests;
+			sourceTree = "<group>";
+		};
+		E36B988B2A8A426100EEDBC8 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E36B987F2A8A413600EEDBC8 /* Coordinator.swift */,
+				E36B987D2A8A411100EEDBC8 /* CoordinatorObject.swift */,
+				E36B987B2A8A2F4B00EEDBC8 /* CoordinatorView.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
+				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
+				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
+			);
+			path = CurrencyConverter;
+			sourceTree = "<group>";
+		};
+		E36B988D2A8A427D00EEDBC8 /* SelectCountry */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */,
+				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
+				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
+				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
+			);
+			path = SelectCountry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
