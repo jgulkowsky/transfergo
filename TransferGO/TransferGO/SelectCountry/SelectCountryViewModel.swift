@@ -28,8 +28,6 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
         title = (type == .from) ? "Sending from" : "Sending to"
         getAllCountries()
         updateCountries()
-
-        // todo: bind to typedText so everytime we change it we call updateCountries
     }
     
     func getAllCountries() {

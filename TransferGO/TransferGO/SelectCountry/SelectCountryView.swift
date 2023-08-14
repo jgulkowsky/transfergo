@@ -25,15 +25,20 @@ struct SelectCountryView: View {
             SearchBar(text: $viewModel.searchText)
             
             List {
-                ForEach(viewModel.countries, id: \.self) { country in
-                    CountryView(
-                        country: country,
-                        onTap: {
-                            dismiss()
-                            viewModel.onCountryTapped(country)
-                        }
-                    )
+                Section(header: Text("All Countries")) {
+                    ForEach(viewModel.countries, id: \.self) { country in
+                        CountryView(
+                            country: country,
+                            onTap: {
+                                dismiss()
+                                viewModel.onCountryTapped(country)
+                            }
+                        )
+                    }
                 }
+                .listSectionSeparator(.hidden)
+                .foregroundColor(.black)
+                .fontWeight(.bold)
             }
             .listStyle(.plain)
         }
