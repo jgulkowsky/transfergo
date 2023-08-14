@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "GB-UKM - United Kingdom•S.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "GB-UKM - United Kingdom•M.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "GB-UKM - United Kingdom•L.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

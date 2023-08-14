@@ -35,10 +35,10 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
     func getAllCountries() {
         // todo: add service that will return them with aync method
         self.allCountries = [
-            Country(name: "Poland", currency: "Polish Zloty", code: "PLN"),
-            Country(name: "Germany", currency: "Euro", code: "EUR"),
-            Country(name: "Great Britain", currency: "British Pound", code: "GBP"),
-            Country(name: "Ukraine", currency: "Hrivna", code: "UAH")
+            PredefinedCountry.poland,
+            PredefinedCountry.germany,
+            PredefinedCountry.greatBritain,
+            PredefinedCountry.ukraine
         ]
     }
     

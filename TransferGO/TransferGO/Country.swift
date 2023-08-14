@@ -11,4 +11,5 @@ struct Country: Hashable {
     var name: String
     var currency: String
     var code: String
+    var flagImage: String
 }

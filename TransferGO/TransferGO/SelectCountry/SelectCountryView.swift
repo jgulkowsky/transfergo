@@ -12,29 +12,30 @@ struct SelectCountryView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Capsule()
-                    .fill(Color.gray)
-                    .frame(width: 30, height: 3)
-                    .padding(10)
-                
-                Text(viewModel.title)
-                    .font(.system(size: 24))
-                    .fontWeight(.bold)
-                
-                SearchBar(text: $viewModel.searchText)
-                
+        VStack {
+            Capsule()
+                .fill(Color.gray)
+                .frame(width: 30, height: 3)
+                .padding(10)
+            
+            Text(viewModel.title)
+                .font(.system(size: 24))
+                .fontWeight(.bold)
+            
+            SearchBar(text: $viewModel.searchText)
+            
+            List {
                 ForEach(viewModel.countries, id: \.self) { country in
-                    Button(country.name) {
-                        dismiss()
-                        viewModel.onCountryTapped(country)
-                    }
-                    .font(.title)
-                    .padding()
-                    .background(.black)
+                    CountryView(
+                        country: country,
+                        onTap: {
+                            dismiss()
+                            viewModel.onCountryTapped(country)
+                        }
+                    )
                 }
             }
+            .listStyle(.plain)
         }
     }
 }
