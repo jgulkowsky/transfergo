@@ -10,5 +10,5 @@ import Foundation
 struct CurrencyConverterInfo {
     var fromCountry: Country?
     var toCountry: Country?
-    var fromAmount: Int?
+    var fromAmount: Double?
 }

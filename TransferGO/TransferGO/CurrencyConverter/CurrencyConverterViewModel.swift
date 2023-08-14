@@ -11,7 +11,8 @@ class CurrencyConverterViewModel: ObservableObject {
     var coordinator: Coordinator
     @Published var fromCountry: Country!
     @Published var toCountry: Country!
-    @Published var fromAmount: Int!
+    @Published var fromAmount: Double!
+    @Published var toAmount: Double? = nil // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {
         if let fromCountry = info.fromCountry {

@@ -16,7 +16,7 @@ class CoordinatorObject: ObservableObject, Coordinator {
             info: CurrencyConverterInfo(
                 fromCountry: PredefinedCountry.poland,
                 toCountry: PredefinedCountry.ukraine,
-                fromAmount: 300
+                fromAmount: 300.0
             ),
             coordinator: self)
     }

@@ -27,6 +27,8 @@
 		E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */; };
 		E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98922A8A502A00EEDBC8 /* SearchBar.swift */; };
 		E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98942A8A564C00EEDBC8 /* CountryView.swift */; };
+		E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */; };
+		E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedCountry.swift; sourceTree = "<group>"; };
 		E36B98922A8A502A00EEDBC8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E36B98942A8A564C00EEDBC8 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+cornerRadius.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
 				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
+				E36B98982A8A831600EEDBC8 /* Extensions */,
 				E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */,
 				E36B98552A8A28EC00EEDBC8 /* Preview Content */,
 			);
@@ -174,6 +179,7 @@
 				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
 				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
+				E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -188,6 +194,14 @@
 				E36B98942A8A564C00EEDBC8 /* CountryView.swift */,
 			);
 			path = SelectCountry;
+			sourceTree = "<group>";
+		};
+		E36B98982A8A831600EEDBC8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +337,7 @@
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
+				E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
@@ -334,6 +349,7 @@
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
+				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,43 +11,60 @@ struct CurrencyConverterView: View {
     @ObservedObject var viewModel: CurrencyConverterViewModel
 
     var body: some View {
-        VStack {
-            Button(action: {
-                viewModel.sendFromTapped()
-            }, label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Sending from")
-                        Text(viewModel.fromCountry.name)
-                    }
-                    Spacer()
-                    Text("\(viewModel.fromAmount)")
+        NavigationView {
+            VStack {
+                ZStack {
+                    CurrencyView(
+                        title: "Sending from",
+                        country: viewModel.fromCountry,
+                        amount: viewModel.fromAmount,
+                        isSelected: true,
+                        onTap: {
+                            viewModel.sendFromTapped()
+                        }
+                    )
+                    .zIndex(1)
                     
+                    CurrencyView(
+                        title: "Receiver gets",
+                        country: viewModel.toCountry,
+                        amount: viewModel.toAmount,
+                        isSelected: false,
+                        onTap: {
+                            viewModel.sendToTapped()
+                        }
+                    )
+                    .zIndex(0)
+                    .offset(y: 90)
                 }
-            })
-            .padding()
-            .background(Color.pink)
-            
-            Spacer().frame(height: 20)
-            
-            Button(action: {
-                viewModel.sendToTapped()
-            }, label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Receiver gets")
-                        Text(viewModel.toCountry.name)
+                Spacer()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+//                        viewModel.menuTapped()
+                    } label: {
+                        HStack {
+                            Image(systemName: "line.3.horizontal")
+                            Text("Menu")
+                        }
                     }
-                    Spacer()
-                    Text("---")
+                    .tint(.black)
+                    .fontWeight(.bold)
+                    .disabled(true)
                 }
-            })
-            .padding()
-            .background(Color.gray)
-            
-            Spacer()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+//                        viewModel.bellTapped()
+                    } label: {
+                        Image(systemName: "bell") // or bell.badge when we have notification
+                    }
+                    .tint(.black)
+                    .fontWeight(.bold)
+                    .disabled(true)
+                }
+            }
         }
-        .padding()
     }
 }
 
@@ -58,7 +75,7 @@ struct ContentView_Previews: PreviewProvider {
                 info: CurrencyConverterInfo(
                     fromCountry: PredefinedCountry.poland,
                     toCountry: PredefinedCountry.ukraine,
-                    fromAmount: 300
+                    fromAmount: 300.0
                 ),
                 coordinator: CoordinatorObject()
             )
