@@ -16,6 +16,8 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var selectedItem: SelectType = .from
     var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
     var toZIndex: Double { (selectedItem == .to) ? 1 : 0 }
+    var switchButtonAndCurrentRateViewZIndex: Double = 2
+    var switchButtonAndCurrentRateViewYOffset: Double { (selectedItem == .from) ? 53 : 38 }
     
     @Published var fromAmountFocused: Bool = false
     @Published var currentRate: String = "---"
