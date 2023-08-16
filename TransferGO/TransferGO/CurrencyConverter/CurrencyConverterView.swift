@@ -18,6 +18,7 @@ struct CurrencyConverterView: View {
                         title: "Sending from",
                         country: viewModel.fromCountry,
                         amount: $viewModel.fromAmount,
+                        shouldFocusTextField: $viewModel.fromAmountFocused,
                         isSelected: viewModel.selectedItem == .from,
                         onTap: {
                             viewModel.sendFromTapped()

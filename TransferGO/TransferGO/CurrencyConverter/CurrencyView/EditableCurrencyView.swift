@@ -9,16 +9,17 @@ import SwiftUI
 
 // todo: this view is related to CurrencyView - when we change this one we probably should change another one too - we should deal with this somehow differently so we make changes to common things only in one place
 
-// todo: make it possible to lose focus from the CurrencyConverterViewModel
-
 struct EditableCurrencyView: View {
     var title: String
     var country: Country
     @Binding var amount: String
+    @Binding var shouldFocusTextField: Bool
     var isSelected: Bool
     
     var onTap: () -> Void
     var onAmountTap: () -> Void
+    
+    @FocusState private var textFieldFocused: Bool
     
     var body: some View {
         ZStack {
@@ -32,6 +33,13 @@ struct EditableCurrencyView: View {
                 )
                 Spacer().frame(width: 30)
                 TextField("", text: $amount)
+                    .focused($textFieldFocused)
+                    .onChange(of: textFieldFocused) {
+                        shouldFocusTextField = $0
+                    }
+                    .onChange(of: shouldFocusTextField) {
+                        self.textFieldFocused = $0
+                    }
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
                         if let textField = obj.object as? UITextField {
                             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
@@ -62,7 +70,8 @@ struct EditableCurrencyView_Previews: PreviewProvider {
         EditableCurrencyView(
             title: "Sending from:",
             country: PredefinedCountry.poland,
-            amount: .constant("100.00"), // or empty
+            amount: .constant("100.00"), // or empty,
+            shouldFocusTextField: .constant(true), // or false
             isSelected: true, // or false
             onTap: { print("onTap") },
             onAmountTap: { print("onAmountTap") }

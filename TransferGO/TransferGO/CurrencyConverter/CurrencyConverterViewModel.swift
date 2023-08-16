@@ -17,6 +17,8 @@ class CurrencyConverterViewModel: ObservableObject {
     var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
     var toZIndex: Double { (selectedItem == .to) ? 1 : 0 }
     
+    @Published var fromAmountFocused: Bool = false
+    
     private var coordinator: Coordinator
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {
@@ -37,11 +39,13 @@ class CurrencyConverterViewModel: ObservableObject {
     
     func sendFromTapped() {
         selectedItem = .from
+        fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .from))
     }
     
     func sendToTapped() {
         selectedItem = .to
+        fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .to))
     }
     
