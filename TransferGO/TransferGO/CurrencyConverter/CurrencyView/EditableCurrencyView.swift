@@ -48,9 +48,10 @@ struct EditableCurrencyView: View {
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidEndEditingNotification)) { _ in
                         if amount == "" {
                             amount = storedLastAmount
-                        } else {
-                            let number = Double(amount)! // todo: hmmm or optional?
+                        } else if let number = Double(amount) {
                             amount = String(format: "%.2f", number)
+                        } else {
+                            amount = storedLastAmount
                         }
                     }
                     .keyboardType(.decimalPad)
