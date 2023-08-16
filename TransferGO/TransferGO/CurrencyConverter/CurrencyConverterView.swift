@@ -69,6 +69,12 @@ struct CurrencyConverterView: View {
                     .zIndex(2)
                     .offset(y: 53)
                 }
+                
+                ErrorText(
+                    error: $viewModel.connectionError
+                )
+                .offset(y: 100)
+                
                 Spacer()
             }
             .toolbar {
