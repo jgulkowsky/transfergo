@@ -20,6 +20,7 @@ struct EditableCurrencyView: View {
     var onAmountTap: () -> Void
     
     @FocusState private var textFieldFocused: Bool
+    @State private var storedLastAmount: String = ""
     
     var body: some View {
         ZStack {
@@ -40,11 +41,19 @@ struct EditableCurrencyView: View {
                     .onChange(of: shouldFocusTextField) {
                         self.textFieldFocused = $0
                     }
-                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
-                        if let textField = obj.object as? UITextField {
-                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { _ in
+                        storedLastAmount = amount
+                        amount = ""
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidEndEditingNotification)) { _ in
+                        if amount == "" {
+                            amount = storedLastAmount
+                        } else {
+                            let number = Double(amount)! // todo: hmmm or optional?
+                            amount = String(format: "%.2f", number)
                         }
                     }
+                    .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)

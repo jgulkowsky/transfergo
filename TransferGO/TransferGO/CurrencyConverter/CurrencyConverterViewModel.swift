@@ -31,7 +31,7 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = String(format: "%.2f", fromAmount)
+            self.fromAmount = String(format: "%.2f", fromAmount) // maybe we should pass this to be in EditableCurrencyView only?
         }
         
         self.coordinator = coordinator
