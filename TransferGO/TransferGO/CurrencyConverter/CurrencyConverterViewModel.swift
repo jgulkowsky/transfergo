@@ -43,13 +43,13 @@ class CurrencyConverterViewModel: ObservableObject {
     }
     
     func sendFromTapped() {
-        selectedItem = .from
+//        selectedItem = .from
         fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .from))
     }
     
     func sendToTapped() {
-        selectedItem = .to
+//        selectedItem = .to
         fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .to))
     }
@@ -60,6 +60,8 @@ class CurrencyConverterViewModel: ObservableObject {
     }
     
     func amountTapped() {
-        selectedItem = .from
+//        selectedItem = .from
     }
 }
+
+// todo: for now I'm commenting out the changes to selectedItem - probably we should not change the selected item at all - and if so then we should remove selectedItem field at all - it should only be static in the view
