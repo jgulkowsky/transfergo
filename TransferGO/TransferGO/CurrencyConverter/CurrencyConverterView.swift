@@ -40,6 +40,16 @@ struct CurrencyConverterView: View {
                     )
                     .zIndex(viewModel.toZIndex)
                     .offset(y: 90)
+                    
+                    HStack {
+                        Spacer().frame(width: 60)
+                        SwitchButton {
+                            viewModel.switchTapped()
+                        }
+                        Spacer()
+                    }
+                    .zIndex(2)
+                    .offset(y: 53)
                 }
                 Spacer()
             }

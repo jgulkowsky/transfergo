@@ -32,6 +32,7 @@
 		E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */; };
 		E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */; };
 		E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */; };
+		E36B98A62A8D168F00EEDBC8 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCurrencyView.swift; sourceTree = "<group>"; };
 		E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndFlagView.swift; sourceTree = "<group>"; };
 		E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewBackground.swift; sourceTree = "<group>"; };
+		E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
 				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
+				E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
+				E36B98A62A8D168F00EEDBC8 /* SwitchButton.swift in Sources */,
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
 				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,

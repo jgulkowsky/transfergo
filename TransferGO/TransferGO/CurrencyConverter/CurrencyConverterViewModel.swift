@@ -50,8 +50,8 @@ class CurrencyConverterViewModel: ObservableObject {
     }
     
     func switchTapped() {
-        // todo: replace
-        print("switch tapped")
+        (fromCountry, toCountry) = (toCountry, fromCountry)
+        fromAmountFocused = false
     }
     
     func amountTapped() {
