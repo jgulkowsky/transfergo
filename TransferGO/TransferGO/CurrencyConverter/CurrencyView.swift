@@ -10,11 +10,12 @@ import SwiftUI
 struct CurrencyView: View {
     var title: String
     var country: Country
-    var amount: Double?
+    @Binding var amount: String
     var isSelected: Bool
     var isAmountEditable: Bool
     
     var onTap: () -> Void
+    var onAmountTap: (() -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -45,14 +46,30 @@ struct CurrencyView: View {
                             
                     }
                 }
-                Spacer()
-                Text((amount != nil) ? String(format: "%.2f", amount!) : "---")
-                    .font(.system(size: 35))
-                    .fontWeight(.bold)
-                    .foregroundColor(isAmountEditable ? .blue : .black)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.01)
-                    .padding(.leading, 30)
+                // todo: a lot of similarities maybe we should move these into common place?
+                if isAmountEditable {
+                    Spacer().frame(width: 30)
+                    TextField("", text: $amount)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(size: 35))
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.01)
+                        .onTapGesture {
+                            onAmountTap?()
+                        }
+                } else {
+                    Spacer()
+                    Text((amount.isEmpty) ? "---" : amount)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(size: 35))
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.01)
+                        .padding(.leading, 30)
+                }
             }
             .padding()
         }
@@ -69,10 +86,11 @@ struct CurrencyView_Previews: PreviewProvider {
         CurrencyView(
             title: "Sending from:",
             country: PredefinedCountry.poland,
-            amount: 100.0, // or nil,
+            amount: .constant("100.00"), // or empty
             isSelected: true, // or false
             isAmountEditable: true, // or false
-            onTap: { print("onTap") }
+            onTap: { print("onTap") },
+            onAmountTap: { print("onAmountTap") } // or nil
         )
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country!
     @Published var toCountry: Country!
-    @Published var fromAmount: Double!
-    @Published var toAmount: Double? = nil // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
+    @Published var fromAmount: String = ""
+    @Published var toAmount: String = "" // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
     @Published var selectedItem: SelectType = .from
     var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
@@ -29,7 +29,7 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = fromAmount
+            self.fromAmount = String(format: "%.2f", fromAmount)
         }
         
         self.coordinator = coordinator
@@ -47,9 +47,10 @@ class CurrencyConverterViewModel: ObservableObject {
     
     func switchTapped() {
         // todo: replace
+        print("switch tapped")
     }
     
     func amountTapped() {
-        // todo: open keyboard
+        selectedItem = .from
     }
 }
