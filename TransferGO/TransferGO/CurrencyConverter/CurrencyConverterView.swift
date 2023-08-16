@@ -50,6 +50,10 @@ struct CurrencyConverterView: View {
                     }
                     .zIndex(2)
                     .offset(y: 53)
+                    
+                    CurrentRateView(currentRate: $viewModel.currentRate)
+                        .zIndex(2)
+                        .offset(y: 53)
                 }
                 Spacer()
             }

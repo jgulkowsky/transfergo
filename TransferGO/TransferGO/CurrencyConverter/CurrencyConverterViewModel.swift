@@ -18,6 +18,7 @@ class CurrencyConverterViewModel: ObservableObject {
     var toZIndex: Double { (selectedItem == .to) ? 1 : 0 }
     
     @Published var fromAmountFocused: Bool = false
+    @Published var currentRate: String = "---"
     
     private var coordinator: Coordinator
     
@@ -33,6 +34,8 @@ class CurrencyConverterViewModel: ObservableObject {
         if let fromAmount = info.fromAmount {
             self.fromAmount = String(format: "%.2f", fromAmount) // maybe we should pass this to be in EditableCurrencyView only?
         }
+        
+        currentRate = "1 PLN ~ 7.23384 UAH" // todo: later on we need to get it from server
         
         self.coordinator = coordinator
     }

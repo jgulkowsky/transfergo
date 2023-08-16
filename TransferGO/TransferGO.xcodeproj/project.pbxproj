@@ -33,6 +33,7 @@
 		E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */; };
 		E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */; };
 		E36B98A62A8D168F00EEDBC8 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */; };
+		E36B98A82A8D1A9100EEDBC8 /* CurrentRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndFlagView.swift; sourceTree = "<group>"; };
 		E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewBackground.swift; sourceTree = "<group>"; };
 		E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
 				E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */,
+				E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			files = (
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
 				E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */,
+				E36B98A82A8D1A9100EEDBC8 /* CurrentRateView.swift in Sources */,
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
