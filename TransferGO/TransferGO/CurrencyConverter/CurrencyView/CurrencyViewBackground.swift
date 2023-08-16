@@ -9,10 +9,12 @@ import SwiftUI
 
 struct CurrencyViewBackground: View {
     var isSelected: Bool
+    private var color: Color { isSelected ? .white : Color(.systemGray5) }
     
     var body: some View {
         Rectangle()
-            .fill(isSelected ? .white : Color(.systemGray5))
+            .strokeBorder(color, lineWidth: 0)
+            .background(color)
             .cornerRadius(15)
             .shadow(radius: isSelected ? 10 : 0)
     }

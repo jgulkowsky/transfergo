@@ -29,7 +29,10 @@ struct CurrencyConverterView: View {
                             viewModel.amountTapped()
                         }
                     )
-                    .zIndex(1)
+                    .zIndex(2)
+                    
+                    CurrencyViewsSeparator()
+                        .zIndex(1) // it makes bottom CUrrencyView top rounded corners invisible
                     
                     CurrencyView(
                         title: "Receiver gets",
@@ -41,7 +44,7 @@ struct CurrencyConverterView: View {
                         }
                     )
                     .zIndex(0)
-                    .offset(y: 90)
+                    .offset(y: 95)
                     
                     HStack {
                         Spacer().frame(width: 60)
@@ -50,7 +53,7 @@ struct CurrencyConverterView: View {
                         }
                         Spacer()
                     }
-                    .zIndex(2)
+                    .zIndex(3)
                     .offset(y: 53)
                     
                     CurrentRateView(currentRate: $viewModel.currentRate)
