@@ -11,8 +11,6 @@ import SwiftUI
 
 // todo: make it possible to lose focus from the CurrencyConverterViewModel
 
-// todo: select whole amount when focus is gained
-
 struct EditableCurrencyView: View {
     var title: String
     var country: Country
@@ -34,6 +32,11 @@ struct EditableCurrencyView: View {
                 )
                 Spacer().frame(width: 30)
                 TextField("", text: $amount)
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
+                    }
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)
