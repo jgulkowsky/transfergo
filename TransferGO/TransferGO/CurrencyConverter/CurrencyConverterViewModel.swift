@@ -28,6 +28,10 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var connectionError: String? = nil
     @Published var limitExceededError: String? = nil
     
+    var shouldEnableFields: Bool {
+        return connectionError == nil
+    }
+    
     private var coordinator: Coordinator
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CurrencyViewsSeparator: View {
+    var isEnabled: Bool
+    
     var body: some View {
         Rectangle()
-            .fill(Color(.systemGray5))
+            .fill(Color(.systemGray5).opacity(isEnabled ? 1 : 0.5))
             .frame(height: 30)
             .padding()
             .offset(y: 50)
@@ -19,6 +21,8 @@ struct CurrencyViewsSeparator: View {
 
 struct CurrencyViewsSeparator_Previews: PreviewProvider {
     static var previews: some View {
-        CurrencyViewsSeparator()
+        CurrencyViewsSeparator(
+            isEnabled: true
+        )
     }
 }

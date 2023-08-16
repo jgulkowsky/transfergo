@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentRateView: View {
     @Binding var currentRate: String
+    var isEnabled: Bool
     
     var body: some View {
         Text(currentRate)
@@ -18,13 +19,22 @@ struct CurrentRateView: View {
             .background(.black)
             .foregroundColor(.white)
             .clipShape(Capsule())
+            .overlay {
+                if !isEnabled {
+                    Capsule()
+                        .fill(.white)
+                        .opacity(0.5)
+                }
+            }
+        
     }
 }
 
 struct CurrentRateView_Previews: PreviewProvider {
     static var previews: some View {
         CurrentRateView(
-            currentRate: .constant("1 PLN ~ 7.23384 UAH")
+            currentRate: .constant("1 PLN ~ 7.23384 UAH"),
+            isEnabled: false // or true
         )
     }
 }
