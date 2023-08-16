@@ -9,6 +9,8 @@ import SwiftUI
 
 // todo: this view is related to CurrencyView - when we change this one we probably should change another one too - we should deal with this somehow differently so we make changes to common things only in one place
 
+// todo: would be nice to be able to close the keypad with some button or just background click - there's no such button on the decimal keypad as we have on normal one
+
 struct EditableCurrencyView: View {
     var title: String
     var country: Country
