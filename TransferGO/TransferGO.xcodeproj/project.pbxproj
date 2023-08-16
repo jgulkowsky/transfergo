@@ -125,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
+				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
 				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
 				E36B988E2A8A466100EEDBC8 /* Country.swift */,
 				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
@@ -189,7 +190,6 @@
 			children = (
 				E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */,
 				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
-				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
 				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
 				E36B98942A8A564C00EEDBC8 /* CountryView.swift */,
 			);

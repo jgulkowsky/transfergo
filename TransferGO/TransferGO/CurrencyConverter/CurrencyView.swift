@@ -12,6 +12,7 @@ struct CurrencyView: View {
     var country: Country
     var amount: Double?
     var isSelected: Bool
+    var isAmountEditable: Bool
     
     var onTap: () -> Void
     
@@ -48,7 +49,7 @@ struct CurrencyView: View {
                 Text((amount != nil) ? String(format: "%.2f", amount!) : "---")
                     .font(.system(size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(isSelected ? .blue : .black)
+                    .foregroundColor(isAmountEditable ? .blue : .black)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)
                     .padding(.leading, 30)
@@ -70,6 +71,7 @@ struct CurrencyView_Previews: PreviewProvider {
             country: PredefinedCountry.poland,
             amount: 100.0, // or nil,
             isSelected: true, // or false
+            isAmountEditable: true, // or false
             onTap: { print("onTap") }
         )
     }

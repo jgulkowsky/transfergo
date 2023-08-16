@@ -8,11 +8,16 @@
 import Foundation
 
 class CurrencyConverterViewModel: ObservableObject {
-    var coordinator: Coordinator
     @Published var fromCountry: Country!
     @Published var toCountry: Country!
     @Published var fromAmount: Double!
     @Published var toAmount: Double? = nil // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
+    
+    @Published var selectedItem: SelectType = .from
+    var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
+    var toZIndex: Double { (selectedItem == .to) ? 1 : 0 }
+    
+    private var coordinator: Coordinator
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {
         if let fromCountry = info.fromCountry {
@@ -31,12 +36,12 @@ class CurrencyConverterViewModel: ObservableObject {
     }
     
     func sendFromTapped() {
-        // todo: move to front if needed
+        selectedItem = .from
         coordinator.goToSelectCountry(SelectCountryInfo(type: .from))
     }
     
     func sendToTapped() {
-        // todo: move to front if needed
+        selectedItem = .to
         coordinator.goToSelectCountry(SelectCountryInfo(type: .to))
     }
     

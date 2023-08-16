@@ -18,23 +18,25 @@ struct CurrencyConverterView: View {
                         title: "Sending from",
                         country: viewModel.fromCountry,
                         amount: viewModel.fromAmount,
-                        isSelected: true,
+                        isSelected: viewModel.selectedItem == .from,
+                        isAmountEditable: true,
                         onTap: {
                             viewModel.sendFromTapped()
                         }
                     )
-                    .zIndex(1)
+                    .zIndex(viewModel.fromZIndex)
                     
                     CurrencyView(
                         title: "Receiver gets",
                         country: viewModel.toCountry,
                         amount: viewModel.toAmount,
-                        isSelected: false,
+                        isSelected: viewModel.selectedItem == .to,
+                        isAmountEditable: false,
                         onTap: {
                             viewModel.sendToTapped()
                         }
                     )
-                    .zIndex(0)
+                    .zIndex(viewModel.toZIndex)
                     .offset(y: 90)
                 }
                 Spacer()
