@@ -13,12 +13,6 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var fromAmount: String = ""
     @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
-    @Published var selectedItem: SelectType = .from
-    var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
-    var toZIndex: Double { (selectedItem == .to) ? 1 : 0 }
-    var switchButtonAndCurrentRateViewZIndex: Double = 2
-    var switchButtonAndCurrentRateViewYOffset: Double { (selectedItem == .from) ? 53 : 38 }
-    
     @Published var fromAmountFocused: Bool = false
     @Published var currentRate: String = "---"
     
@@ -63,5 +57,3 @@ class CurrencyConverterViewModel: ObservableObject {
 //        selectedItem = .from
     }
 }
-
-// todo: for now I'm commenting out the changes to selectedItem - probably we should not change the selected item at all - and if so then we should remove selectedItem field at all - it should only be static in the view

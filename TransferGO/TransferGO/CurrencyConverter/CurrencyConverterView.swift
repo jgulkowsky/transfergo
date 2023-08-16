@@ -21,7 +21,7 @@ struct CurrencyConverterView: View {
                         country: viewModel.fromCountry,
                         amount: $viewModel.fromAmount,
                         shouldFocusTextField: $viewModel.fromAmountFocused,
-                        isSelected: viewModel.selectedItem == .from,
+                        isSelected: true,
                         onTap: {
                             viewModel.sendFromTapped()
                         },
@@ -29,18 +29,18 @@ struct CurrencyConverterView: View {
                             viewModel.amountTapped()
                         }
                     )
-                    .zIndex(viewModel.fromZIndex)
+                    .zIndex(1)
                     
                     CurrencyView(
                         title: "Receiver gets",
                         country: viewModel.toCountry,
                         amount: viewModel.toAmount,
-                        isSelected: viewModel.selectedItem == .to,
+                        isSelected: false,
                         onTap: {
                             viewModel.sendToTapped()
                         }
                     )
-                    .zIndex(viewModel.toZIndex)
+                    .zIndex(0)
                     .offset(y: 90)
                     
                     HStack {
@@ -50,12 +50,12 @@ struct CurrencyConverterView: View {
                         }
                         Spacer()
                     }
-                    .zIndex(viewModel.switchButtonAndCurrentRateViewZIndex)
-                    .offset(y: viewModel.switchButtonAndCurrentRateViewYOffset)
+                    .zIndex(2)
+                    .offset(y: 53)
                     
                     CurrentRateView(currentRate: $viewModel.currentRate)
-                        .zIndex(viewModel.switchButtonAndCurrentRateViewZIndex)
-                        .offset(y: viewModel.switchButtonAndCurrentRateViewYOffset)
+                        .zIndex(2)
+                        .offset(y: 53)
                 }
                 Spacer()
             }
