@@ -17,6 +17,7 @@ struct EditableCurrencyView: View {
     @Binding var amount: String
     @Binding var shouldFocusTextField: Bool
     var isSelected: Bool
+    var isEnabled: Bool
     
     var onTap: () -> Void
     var onAmountTap: () -> Void
@@ -74,6 +75,12 @@ struct EditableCurrencyView: View {
         .onTapGesture {
             onTap()
         }
+        .overlay {
+            CurrencyViewOverlay(
+                isEnabled: isEnabled,
+                isSelected: isSelected
+            )
+        }
     }
 }
 
@@ -85,6 +92,7 @@ struct EditableCurrencyView_Previews: PreviewProvider {
             amount: .constant("100.00"), // or empty,
             shouldFocusTextField: .constant(true), // or false
             isSelected: true, // or false
+            isEnabled: true, // or false
             onTap: { print("onTap") },
             onAmountTap: { print("onAmountTap") }
         )

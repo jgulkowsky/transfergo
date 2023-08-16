@@ -14,6 +14,7 @@ struct CurrencyView: View {
     var country: Country
     var amount: Double?
     var isSelected: Bool
+    var isEnabled: Bool
     
     var onTap: () -> Void
     
@@ -44,6 +45,12 @@ struct CurrencyView: View {
         .onTapGesture {
             onTap()
         }
+        .overlay {
+            CurrencyViewOverlay(
+                isEnabled: isEnabled,
+                isSelected: isSelected
+            )
+        }
     }
 }
 
@@ -52,8 +59,9 @@ struct CurrencyView_Previews: PreviewProvider {
         CurrencyView(
             title: "Sending from:",
             country: PredefinedCountry.poland,
-            amount: 100.0, // or nil
-            isSelected: true, // or false
+            amount: nil, // or 100.0
+            isSelected: false, // or true
+            isEnabled: true, // or false
             onTap: { print("onTap") }
         )
     }

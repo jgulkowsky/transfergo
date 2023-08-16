@@ -10,11 +10,23 @@ import Foundation
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country!
     @Published var toCountry: Country!
-    @Published var fromAmount: String = ""
+    @Published var fromAmount: String = "" {
+        didSet {
+            if let amount = Double(fromAmount),
+               amount > 20000 { // todo: this limit should be related to Country
+                limitExceededError = "Maximum sending amount 20 000 PLN" // todo: this message is also related to the Country
+            } else {
+                limitExceededError = nil
+            }
+        }
+    }
     @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
     @Published var fromAmountFocused: Bool = false
     @Published var currentRate: String = "---"
+    
+    @Published var connectionError: String? = nil
+    @Published var limitExceededError: String? = nil
     
     private var coordinator: Coordinator
     
@@ -32,6 +44,9 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         currentRate = "1 PLN ~ 7.23384 UAH" // todo: later on we need to get it from server
+        
+        // todo: check connection - show error if problems
+        connectionError = "No internet connection"
         
         self.coordinator = coordinator
     }
