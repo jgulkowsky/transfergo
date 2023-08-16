@@ -33,7 +33,7 @@ struct EditableCurrencyView: View {
                     country: country
                 )
                 Spacer().frame(width: 30)
-                TextField("", text: $amount)
+                TextField(storedLastAmount, text: $amount)
                     .focused($textFieldFocused)
                     .onChange(of: textFieldFocused) {
                         shouldFocusTextField = $0
