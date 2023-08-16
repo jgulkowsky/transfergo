@@ -29,6 +29,9 @@
 		E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98942A8A564C00EEDBC8 /* CountryView.swift */; };
 		E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */; };
 		E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */; };
+		E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */; };
+		E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */; };
+		E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		E36B98942A8A564C00EEDBC8 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+cornerRadius.swift"; sourceTree = "<group>"; };
+		E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCurrencyView.swift; sourceTree = "<group>"; };
+		E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndFlagView.swift; sourceTree = "<group>"; };
+		E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,10 +183,10 @@
 		E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
+				E36B98A22A8D04D500EEDBC8 /* CurrencyView */,
 				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
 				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 				E36B98512A8A28EB00EEDBC8 /* CurrencyConverterView.swift */,
-				E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -202,6 +208,17 @@
 				E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E36B98A22A8D04D500EEDBC8 /* CurrencyView */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */,
+				E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */,
+				E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */,
+				E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */,
+			);
+			path = CurrencyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,8 +352,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
+				E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */,
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
+				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
 				E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
@@ -351,6 +370,7 @@
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
 				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
+				E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

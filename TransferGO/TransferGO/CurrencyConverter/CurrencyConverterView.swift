@@ -14,12 +14,11 @@ struct CurrencyConverterView: View {
         NavigationView {
             VStack {
                 ZStack {
-                    CurrencyView(
+                    EditableCurrencyView(
                         title: "Sending from",
                         country: viewModel.fromCountry,
                         amount: $viewModel.fromAmount,
                         isSelected: viewModel.selectedItem == .from,
-                        isAmountEditable: true,
                         onTap: {
                             viewModel.sendFromTapped()
                         },
@@ -32,9 +31,8 @@ struct CurrencyConverterView: View {
                     CurrencyView(
                         title: "Receiver gets",
                         country: viewModel.toCountry,
-                        amount: $viewModel.toAmount,
+                        amount: viewModel.toAmount,
                         isSelected: viewModel.selectedItem == .to,
-                        isAmountEditable: false,
                         onTap: {
                             viewModel.sendToTapped()
                         }

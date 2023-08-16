@@ -11,7 +11,7 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country!
     @Published var toCountry: Country!
     @Published var fromAmount: String = ""
-    @Published var toAmount: String = "" // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
+    @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
     @Published var selectedItem: SelectType = .from
     var fromZIndex: Double { (selectedItem == .from) ? 1 : 0 }
