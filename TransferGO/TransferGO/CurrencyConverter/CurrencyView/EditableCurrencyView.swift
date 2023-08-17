@@ -16,8 +16,8 @@ struct EditableCurrencyView: View {
     var country: Country
     @Binding var amount: String
     @Binding var shouldFocusTextField: Bool
-    var isSelected: Bool
-    var isEnabled: Bool
+    var selected: Bool
+    var enabled: Bool
     var isLimitExceeded: Bool
     
     var onTap: () -> Void
@@ -29,7 +29,7 @@ struct EditableCurrencyView: View {
     var body: some View {
         ZStack {
             CurrencyViewBackground(
-                selected: isSelected,
+                selected: selected,
                 borderVisible: isLimitExceeded
             )
             HStack {
@@ -78,10 +78,11 @@ struct EditableCurrencyView: View {
             onTap()
         }
         .overlay {
-            CurrencyViewOverlay(
-                isEnabled: isEnabled,
-                isSelected: isSelected
-            )
+            if !enabled {
+                CurrencyViewOverlay(
+                    selected: selected
+                )
+            }
         }
     }
 }
@@ -93,8 +94,8 @@ struct EditableCurrencyView_Previews: PreviewProvider {
             country: PredefinedCountry.poland,
             amount: .constant("100.00"), // or empty,
             shouldFocusTextField: .constant(true), // or false
-            isSelected: true, // or false
-            isEnabled: true, // or false
+            selected: true, // or false
+            enabled: true, // or false
             isLimitExceeded: true,
             onTap: { print("onTap") },
             onAmountTap: { print("onAmountTap") }

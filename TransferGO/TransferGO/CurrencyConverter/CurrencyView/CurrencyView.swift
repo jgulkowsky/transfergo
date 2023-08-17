@@ -13,15 +13,15 @@ struct CurrencyView: View {
     var title: String
     var country: Country
     var amount: Double?
-    var isSelected: Bool
-    var isEnabled: Bool
+    var selected: Bool
+    var enabled: Bool
     
     var onTap: () -> Void
     
     var body: some View {
         ZStack {
             CurrencyViewBackground(
-                selected: isSelected
+                selected: selected
             )
             HStack {
                 TitleAndFlagView(
@@ -46,10 +46,11 @@ struct CurrencyView: View {
             onTap()
         }
         .overlay {
-            CurrencyViewOverlay(
-                isEnabled: isEnabled,
-                isSelected: isSelected
-            )
+            if !enabled {
+                CurrencyViewOverlay(
+                    selected: selected
+                )
+            }
         }
     }
 }
@@ -60,8 +61,8 @@ struct CurrencyView_Previews: PreviewProvider {
             title: "Sending from:",
             country: PredefinedCountry.poland,
             amount: nil, // or 100.0
-            isSelected: false, // or true
-            isEnabled: true, // or false
+            selected: false, // or true
+            enabled: true, // or false
             onTap: { print("onTap") }
         )
     }

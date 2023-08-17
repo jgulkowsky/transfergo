@@ -21,8 +21,8 @@ struct CurrencyConverterView: View {
                         country: viewModel.fromCountry,
                         amount: $viewModel.fromAmount,
                         shouldFocusTextField: $viewModel.fromAmountFocused,
-                        isSelected: true,
-                        isEnabled: viewModel.shouldEnableFields,
+                        selected: true,
+                        enabled: viewModel.shouldEnableFields,
                         isLimitExceeded: viewModel.limitExceededError != nil,
                         onTap: {
                             viewModel.sendFromTapped()
@@ -42,8 +42,8 @@ struct CurrencyConverterView: View {
                         title: "Receiver gets",
                         country: viewModel.toCountry,
                         amount: viewModel.toAmount,
-                        isSelected: false,
-                        isEnabled: viewModel.shouldEnableFields,
+                        selected: false,
+                        enabled: viewModel.shouldEnableFields,
                         onTap: {
                             viewModel.sendToTapped()
                         }
