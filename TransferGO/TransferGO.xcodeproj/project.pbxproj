@@ -42,6 +42,7 @@
 		E36B98B42A8E44E800EEDBC8 /* SolidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98B32A8E44E800EEDBC8 /* SolidButton.swift */; };
 		E36B98B92A8E46FC00EEDBC8 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98B82A8E46FC00EEDBC8 /* MenuItemView.swift */; };
 		E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */; };
+		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		E36B98B32A8E44E800EEDBC8 /* SolidButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
 		E36B98B82A8E46FC00EEDBC8 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellItemView.swift; sourceTree = "<group>"; };
+		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 			children = (
 				E36B98B82A8E46FC00EEDBC8 /* MenuItemView.swift */,
 				E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */,
+				E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */,
 			);
 			path = NavigationSection;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
 				E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
+				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
 				E36B98AE2A8D47BE00EEDBC8 /* ErrorText.swift in Sources */,

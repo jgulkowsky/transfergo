@@ -11,13 +11,10 @@ struct BellItemView: View {
     var onTap: () -> Void
     
     var body: some View {
-        Button {
-            onTap()
-        } label: {
-            Image(systemName: "bell") // or bell.badge when we have notification
-        }
-        .tint(.black)
-        .fontWeight(.bold)
+        ToolbarItemView(
+            imageAssetName: "bell", // or bell.badge when we have notification
+            onTap: onTap
+        )
     }
 }
 

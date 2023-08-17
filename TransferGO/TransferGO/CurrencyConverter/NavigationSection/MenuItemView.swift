@@ -11,16 +11,11 @@ struct MenuItemView: View {
     var onTap: () -> Void
     
     var body: some View {
-        Button {
-            onTap()
-        } label: {
-            HStack {
-                Image(systemName: "line.3.horizontal")
-                Text("Menu")
-            }
-        }
-        .tint(.black)
-        .fontWeight(.bold)
+        ToolbarItemView(
+            imageAssetName: "line.3.horizontal",
+            text: "Menu",
+            onTap: onTap
+        )
     }
 }
 
