@@ -44,6 +44,7 @@
 		E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */; };
 		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
 		E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */; };
+		E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellItemView.swift; sourceTree = "<group>"; };
 		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
 		E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+to2DecPlaces.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */,
+				E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
+				E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */,
 				E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */,
 				E36B98972A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,

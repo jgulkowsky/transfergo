@@ -7,8 +7,6 @@
 
 import Foundation
 
-// todo: we should have one place where we change amount into String(format: "%.2f", amount)
-
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
 class CurrencyConverterViewModel: ObservableObject {
@@ -54,7 +52,7 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = String(format: "%.2f", fromAmount) // maybe we should pass this to be in EditableCurrencyView only?
+            self.fromAmount = fromAmount.to2DecPlaces() // maybe we should pass this to be in EditableCurrencyView only?
         }
         
         // todo: check connection - show error if problems
@@ -98,7 +96,7 @@ private extension CurrencyConverterViewModel {
     func checkLimits() {
         if let amount = Double(fromAmount),
            amount > fromCountry.currencyLimit {
-            limitExceededError = "Maximum sending amount \(String(format: "%.2f", fromCountry.currencyLimit)) \(fromCountry.currencyCode)"
+            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.to2DecPlaces()) \(fromCountry.currencyCode)"
         } else {
             limitExceededError = nil
         }
