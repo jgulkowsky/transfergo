@@ -34,7 +34,7 @@ struct SolidButton: View {
             if !enabled {
                 RoundedRectangle(cornerRadius: 15)
                     .strokeBorder(.white, lineWidth: 0)
-                    .background(.white.opacity(0.5))
+                    .background(.white.opacity(0.8))
                     .cornerRadius(15)
             }
         }
@@ -48,7 +48,7 @@ struct SolidButton_Previews: PreviewProvider {
             text: "My button",
             foregroundColor: .white,
             backgroundColor: .purple,
-            enabled: true,
+            enabled: false,
             onTap: { print("onTap") }
         )
     }
