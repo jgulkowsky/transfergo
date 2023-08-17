@@ -50,7 +50,7 @@ class CurrencyConverterViewModel: ObservableObject {
         currentRate = "1 PLN ~ 7.23384 UAH" // todo: later on we need to get it from server
         
         // todo: check connection - show error if problems
-        connectionError = "No internet connection"
+//        connectionError = "No internet connection"
         
         self.coordinator = coordinator
     }

@@ -9,11 +9,13 @@ import SwiftUI
 
 struct CurrencyViewBackground: View {
     var isSelected: Bool
+    var isLimitExceeded: Bool = false
+    
     private var color: Color { isSelected ? .white : Color(.systemGray5) }
     
     var body: some View {
-        Rectangle()
-            .strokeBorder(color, lineWidth: 0)
+        RoundedRectangle(cornerRadius: 15)
+            .strokeBorder(.red, lineWidth: isLimitExceeded ? 2 : 0)
             .background(color)
             .cornerRadius(15)
             .shadow(radius: isSelected ? 10 : 0)
@@ -23,7 +25,8 @@ struct CurrencyViewBackground: View {
 struct CurrencyViewBackground_Previews: PreviewProvider {
     static var previews: some View {
         CurrencyViewBackground(
-            isSelected: true
+            isSelected: true,
+            isLimitExceeded: true
         )
     }
 }

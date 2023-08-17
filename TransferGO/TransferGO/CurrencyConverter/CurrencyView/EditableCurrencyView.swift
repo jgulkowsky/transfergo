@@ -18,6 +18,7 @@ struct EditableCurrencyView: View {
     @Binding var shouldFocusTextField: Bool
     var isSelected: Bool
     var isEnabled: Bool
+    var isLimitExceeded: Bool
     
     var onTap: () -> Void
     var onAmountTap: () -> Void
@@ -28,7 +29,8 @@ struct EditableCurrencyView: View {
     var body: some View {
         ZStack {
             CurrencyViewBackground(
-                isSelected: isSelected
+                isSelected: isSelected,
+                isLimitExceeded: isLimitExceeded
             )
             HStack {
                 TitleAndFlagView(
@@ -93,6 +95,7 @@ struct EditableCurrencyView_Previews: PreviewProvider {
             shouldFocusTextField: .constant(true), // or false
             isSelected: true, // or false
             isEnabled: true, // or false
+            isLimitExceeded: true,
             onTap: { print("onTap") },
             onAmountTap: { print("onAmountTap") }
         )

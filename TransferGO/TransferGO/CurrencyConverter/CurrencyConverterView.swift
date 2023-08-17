@@ -23,6 +23,7 @@ struct CurrencyConverterView: View {
                         shouldFocusTextField: $viewModel.fromAmountFocused,
                         isSelected: true,
                         isEnabled: viewModel.shouldEnableFields,
+                        isLimitExceeded: viewModel.limitExceededError != nil,
                         onTap: {
                             viewModel.sendFromTapped()
                         },
@@ -70,10 +71,19 @@ struct CurrencyConverterView: View {
                     .offset(y: 53)
                 }
                 
-                ErrorText(
-                    error: $viewModel.connectionError
-                )
-                .offset(y: 100)
+                if viewModel.connectionError != nil {
+                    ErrorText(
+                        error: $viewModel.connectionError
+                    )
+                    .offset(y: 100)
+                }
+                
+                if viewModel.limitExceededError != nil {
+                    ErrorText(
+                        error: $viewModel.limitExceededError
+                    )
+                    .offset(y: 100)
+                }
                 
                 Spacer()
             }
