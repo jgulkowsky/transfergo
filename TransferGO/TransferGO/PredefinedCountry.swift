@@ -8,8 +8,35 @@
 import Foundation
 
 struct PredefinedCountry {
-    static let poland = Country(name: "Poland", currency: "Polish Zloty", code: "PLN", flagImage: "Poland")
-    static let ukraine = Country(name: "Ukraine", currency: "Hrivna", code: "UAH", flagImage: "Ukraine")
-    static let germany = Country(name: "Germany", currency: "Euro", code: "EUR", flagImage: "Germany")
-    static let greatBritain = Country(name: "Great Britain", currency: "British Pound", code: "GBP", flagImage: "Great Britain")
+    static let poland = Country(
+        name: "Poland",
+        flagImageAssetName: "Poland",
+        currency: "Polish Zloty",
+        currencyCode: "PLN",
+        currencyLimit: 20000
+    )
+    
+    static let ukraine = Country(
+        name: "Ukraine",
+        flagImageAssetName: "Ukraine",
+        currency: "Hrivna",
+        currencyCode: "UAH",
+        currencyLimit: 50000
+    )
+    
+    static let germany = Country(
+        name: "Germany",
+        flagImageAssetName: "Germany",
+        currency: "Euro",
+        currencyCode: "EUR",
+        currencyLimit: 5000
+    )
+    
+    static let greatBritain = Country(
+        name: "Great Britain",
+        flagImageAssetName: "Great Britain",
+        currency: "British Pound",
+        currencyCode: "GBP",
+        currencyLimit: 1000
+    )
 }

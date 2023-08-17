@@ -19,7 +19,7 @@ struct SearchBar: View {
            .padding(.leading, 5)
            .padding(.trailing, 30)
            .overlay {
-               RoundedRectangle(cornerRadius: 8)
+               RoundedRectangle(cornerRadius: 15)
                    .stroke(.gray, lineWidth: 1)
                HStack {
                    Spacer()

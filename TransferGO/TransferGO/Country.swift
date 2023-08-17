@@ -9,7 +9,8 @@ import Foundation
 
 struct Country: Hashable {
     var name: String
+    var flagImageAssetName: String
     var currency: String
-    var code: String
-    var flagImage: String
+    var currencyCode: String
+    var currencyLimit: Double
 }
