@@ -86,11 +86,25 @@ struct CurrencyConverterView: View {
                 }
                 
                 Spacer()
+                
+                HStack {
+                    Spacer()
+                    RequestButton(enabled: false) {
+                        viewModel.requestTapped()
+                    }
+                    Spacer().frame(width: 15)
+                    SendButton(enabled: false) {
+                        viewModel.sendTapped()
+                    }
+                    Spacer()
+                }
+                
+                Spacer().frame(height: 10)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-//                        viewModel.menuTapped()
+                        viewModel.menuTapped()
                     } label: {
                         HStack {
                             Image(systemName: "line.3.horizontal")
@@ -103,7 +117,7 @@ struct CurrencyConverterView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-//                        viewModel.bellTapped()
+                        viewModel.bellTapped()
                     } label: {
                         Image(systemName: "bell") // or bell.badge when we have notification
                     }

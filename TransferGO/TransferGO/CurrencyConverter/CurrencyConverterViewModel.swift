@@ -81,6 +81,22 @@ class CurrencyConverterViewModel: ObservableObject {
     func amountTapped() {
 //        selectedItem = .from
     }
+    
+    func requestTapped() {
+        
+    }
+    
+    func sendTapped() {
+        
+    }
+    
+    func menuTapped() {
+        
+    }
+    
+    func bellTapped() {
+        
+    }
 }
 
 private extension CurrencyConverterViewModel {

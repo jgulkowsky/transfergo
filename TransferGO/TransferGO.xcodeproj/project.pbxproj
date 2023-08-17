@@ -37,6 +37,8 @@
 		E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A92A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift */; };
 		E36B98AC2A8D374700EEDBC8 /* CurrencyViewOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98AB2A8D374700EEDBC8 /* CurrencyViewOverlay.swift */; };
 		E36B98AE2A8D47BE00EEDBC8 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */; };
+		E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98AF2A8E3E4800EEDBC8 /* RequestButton.swift */; };
+		E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98B12A8E3E5400EEDBC8 /* SendButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		E36B98A92A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewsSeparator.swift; sourceTree = "<group>"; };
 		E36B98AB2A8D374700EEDBC8 /* CurrencyViewOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewOverlay.swift; sourceTree = "<group>"; };
 		E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
+		E36B98AF2A8E3E4800EEDBC8 /* RequestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButton.swift; sourceTree = "<group>"; };
+		E36B98B12A8E3E5400EEDBC8 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 				E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */,
 				E36B98A92A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift */,
 				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
+				E36B98AF2A8E3E4800EEDBC8 /* RequestButton.swift */,
+				E36B98B12A8E3E5400EEDBC8 /* SendButton.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -372,9 +378,11 @@
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
+				E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */,
 				E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
+				E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
 				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
