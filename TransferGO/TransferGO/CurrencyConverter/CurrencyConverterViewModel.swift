@@ -26,7 +26,10 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
     
     @Published var fromAmountFocused: Bool = false
-    @Published var currentRate: String = "---"
+    var currentRate: String {
+        "1 \(fromCountry.currencyCode) ~ 7.23384 \(toCountry.currencyCode)" // todo: later on we need to get it from server
+        // todo: when there's no rate we should use "---"
+    }
     
     @Published var connectionError: String? = nil
     @Published var limitExceededError: String? = nil
@@ -53,8 +56,6 @@ class CurrencyConverterViewModel: ObservableObject {
         if let fromAmount = info.fromAmount {
             self.fromAmount = String(format: "%.2f", fromAmount) // maybe we should pass this to be in EditableCurrencyView only?
         }
-        
-        currentRate = "1 PLN ~ 7.23384 UAH" // todo: later on we need to get it from server
         
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"

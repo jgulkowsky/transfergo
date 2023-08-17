@@ -62,7 +62,7 @@ struct CurrencyConverterView: View {
                     .offset(y: 53)
                     
                     CurrentRateView(
-                        currentRate: $viewModel.currentRate,
+                        currentRate: viewModel.currentRate,
                         isEnabled: viewModel.shouldEnableFields
                     )
                     .zIndex(2)

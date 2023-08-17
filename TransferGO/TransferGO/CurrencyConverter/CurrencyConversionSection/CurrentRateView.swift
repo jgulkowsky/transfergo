@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrentRateView: View {
-    @Binding var currentRate: String
+    var currentRate: String
     var isEnabled: Bool
     
     var body: some View {
@@ -33,7 +33,7 @@ struct CurrentRateView: View {
 struct CurrentRateView_Previews: PreviewProvider {
     static var previews: some View {
         CurrentRateView(
-            currentRate: .constant("1 PLN ~ 7.23384 UAH"),
+            currentRate: "1 PLN ~ 7.23384 UAH",
             isEnabled: false // or true
         )
     }
