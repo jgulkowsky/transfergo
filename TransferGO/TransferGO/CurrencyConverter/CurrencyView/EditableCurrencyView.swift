@@ -29,8 +29,8 @@ struct EditableCurrencyView: View {
     var body: some View {
         ZStack {
             CurrencyViewBackground(
-                isSelected: isSelected,
-                isLimitExceeded: isLimitExceeded
+                selected: isSelected,
+                borderVisible: isLimitExceeded
             )
             HStack {
                 TitleAndFlagView(

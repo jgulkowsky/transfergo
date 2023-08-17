@@ -21,7 +21,7 @@ struct CurrencyView: View {
     var body: some View {
         ZStack {
             CurrencyViewBackground(
-                isSelected: isSelected
+                selected: isSelected
             )
             HStack {
                 TitleAndFlagView(
