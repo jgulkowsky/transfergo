@@ -23,7 +23,7 @@ struct CurrencyConverterView: View {
                         shouldFocusTextField: $viewModel.fromAmountFocused,
                         selected: true,
                         enabled: viewModel.shouldEnableFields,
-                        isLimitExceeded: viewModel.limitExceededError != nil,
+                        limitExceeded: viewModel.limitExceeded,
                         onTap: {
                             viewModel.sendFromTapped()
                         },

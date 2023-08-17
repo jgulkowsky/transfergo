@@ -32,6 +32,10 @@ class CurrencyConverterViewModel: ObservableObject {
         return connectionError == nil
     }
     
+    var limitExceeded: Bool {
+        return limitExceededError != nil
+    }
+    
     private var coordinator: Coordinator
     
     init(info: CurrencyConverterInfo, coordinator: Coordinator) {
