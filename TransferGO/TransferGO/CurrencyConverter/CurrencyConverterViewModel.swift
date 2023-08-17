@@ -64,13 +64,11 @@ class CurrencyConverterViewModel: ObservableObject {
     }
     
     func sendFromTapped() {
-//        selectedItem = .from
         fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .from))
     }
     
     func sendToTapped() {
-//        selectedItem = .to
         fromAmountFocused = false
         coordinator.goToSelectCountry(SelectCountryInfo(type: .to))
     }
@@ -81,25 +79,15 @@ class CurrencyConverterViewModel: ObservableObject {
         checkLimits()
     }
     
-    func amountTapped() {
-//        selectedItem = .from
-    }
+    func amountTapped() {}
     
-    func requestTapped() {
-        
-    }
+    func requestTapped() {}
     
-    func sendTapped() {
-        
-    }
+    func sendTapped() {}
     
-    func menuTapped() {
-        
-    }
+    func menuTapped() {}
     
-    func bellTapped() {
-        
-    }
+    func bellTapped() {}
 }
 
 private extension CurrencyConverterViewModel {
