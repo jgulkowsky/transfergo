@@ -79,6 +79,10 @@ class CurrencyConverterViewModel: ObservableObject {
         checkLimits()
     }
     
+    func backgroundTapped() {
+        fromAmountFocused = false
+    }
+    
     func amountTapped() {}
     
     func requestTapped() {}

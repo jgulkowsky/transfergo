@@ -99,6 +99,11 @@ struct CurrencyConverterView: View {
                 
                 Spacer().frame(height: 10)
             }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                viewModel.backgroundTapped()
+            }
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     MenuItemView {

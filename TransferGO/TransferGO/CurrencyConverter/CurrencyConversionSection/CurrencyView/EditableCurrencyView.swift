@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: would be nice to be able to close the keypad with some button or just background click - there's no such button on the decimal keypad as we have on normal one
-
 struct EditableCurrencyView: View {
     var title: String
     var country: Country
