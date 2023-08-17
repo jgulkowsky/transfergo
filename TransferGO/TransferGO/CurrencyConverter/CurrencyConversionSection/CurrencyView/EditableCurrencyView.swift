@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: this view is related to NoneditableCurrencyView - when we change this one we probably should change another one too - we should deal with this somehow differently so we make changes to common things only in one place
-
 // todo: would be nice to be able to close the keypad with some button or just background click - there's no such button on the decimal keypad as we have on normal one
 
 struct EditableCurrencyView: View {
@@ -27,17 +25,13 @@ struct EditableCurrencyView: View {
     @State private var storedLastAmount: String = ""
     
     var body: some View {
-        ZStack {
-            CurrencyViewBackground(
-                selected: selected,
-                borderVisible: limitExceeded
-            )
-            HStack {
-                TitleAndFlagView(
-                    title: title,
-                    country: country
-                )
-                Spacer().frame(width: 30)
+        CurrencyView(
+            title: title,
+            country: country,
+            selected: selected,
+            enabled: enabled,
+            borderVisible: limitExceeded,
+            amountView:
                 TextField(storedLastAmount, text: $amount)
                     .focused($textFieldFocused)
                     .onChange(of: textFieldFocused) {
@@ -68,22 +62,9 @@ struct EditableCurrencyView: View {
                     .minimumScaleFactor(0.01)
                     .onTapGesture {
                         onAmountTap()
-                    }
-            }
-            .padding()
-        }
-        .frame(height: 105)
-        .padding()
-        .onTapGesture {
-            onTap()
-        }
-        .overlay {
-            if !enabled {
-                CurrencyViewOverlay(
-                    selected: selected
-                )
-            }
-        }
+                    },
+            onTap: onTap
+        )
     }
 }
 

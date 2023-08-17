@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CurrencyViewBackground: View {
     var selected: Bool
-    var borderVisible: Bool = false
+    var borderVisible: Bool
     
     var body: some View {
         RoundedRectangle(cornerRadius: 15)

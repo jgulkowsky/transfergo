@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: this view is related to EditableCurrencyView - when we change this one we probably should change another one too - we should deal with this somehow differently so we make changes to common things only in one place
-
 struct NoneditableCurrencyView: View {
     var title: String
     var country: Country
@@ -19,39 +17,23 @@ struct NoneditableCurrencyView: View {
     var onTap: () -> Void
     
     var body: some View {
-        ZStack {
-            CurrencyViewBackground(
-                selected: selected
-            )
-            HStack {
-                TitleAndFlagView(
-                    title: title,
-                    country: country
-                )
-                Spacer()
+        CurrencyView(
+            title: title,
+            country: country,
+            selected: selected,
+            enabled: enabled,
+            borderVisible: false,
+            amountView:
                 Text((amount != nil) ? String(format: "%.2f", amount!) : "---")
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)
                     .foregroundColor(.black)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.01)
-                    .padding(.leading, 30)
-            }
-            .padding()
-        }
-        .frame(height: 105)
-        .padding()
-        .onTapGesture {
-            onTap()
-        }
-        .overlay {
-            if !enabled {
-                CurrencyViewOverlay(
-                    selected: selected
-                )
-            }
-        }
+                .minimumScaleFactor(0.01)
+                .padding(.leading, 30),
+            onTap: onTap
+        )
     }
 }
 
@@ -60,7 +42,7 @@ struct NoneditableCurrencyView_Previews: PreviewProvider {
         NoneditableCurrencyView(
             title: "Sending from:",
             country: PredefinedCountry.poland,
-            amount: nil, // or 100.0
+            amount: 100.0, // or nil
             selected: false, // or true
             enabled: true, // or false
             onTap: { print("onTap") }

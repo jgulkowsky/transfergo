@@ -43,6 +43,7 @@
 		E36B98B92A8E46FC00EEDBC8 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98B82A8E46FC00EEDBC8 /* MenuItemView.swift */; };
 		E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */; };
 		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
+		E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		E36B98B82A8E46FC00EEDBC8 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellItemView.swift; sourceTree = "<group>"; };
 		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
+		E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			children = (
 				E36B98962A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift */,
 				E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */,
+				E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */,
 				E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */,
 				E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */,
 				E36B98AB2A8D374700EEDBC8 /* CurrencyViewOverlay.swift */,
@@ -427,6 +430,7 @@
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
+				E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
