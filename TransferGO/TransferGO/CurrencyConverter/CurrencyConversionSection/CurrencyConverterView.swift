@@ -103,26 +103,16 @@ struct CurrencyConverterView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
+                    MenuItemView {
                         viewModel.menuTapped()
-                    } label: {
-                        HStack {
-                            Image(systemName: "line.3.horizontal")
-                            Text("Menu")
-                        }
                     }
-                    .tint(.black)
-                    .fontWeight(.bold)
                     .disabled(true)
                 }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                    BellItemView {
                         viewModel.bellTapped()
-                    } label: {
-                        Image(systemName: "bell") // or bell.badge when we have notification
                     }
-                    .tint(.black)
-                    .fontWeight(.bold)
                     .disabled(true)
                 }
             }
