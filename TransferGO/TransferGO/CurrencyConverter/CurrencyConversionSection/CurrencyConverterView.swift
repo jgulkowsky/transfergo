@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: we have problem as when we taps on the bottom currency view the switch button and current rate view are not aligned with the border between currencyViews (as this border is movable): for now I'm fixing this with moving the switch button and current rate view up and down but this is not fine - we should either remove possibility to select bottom view or separate them more so everything looks fine
-
 struct CurrencyConverterView: View {
     @ObservedObject var viewModel: CurrencyConverterViewModel
 

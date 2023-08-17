@@ -9,6 +9,8 @@ import Foundation
 
 // todo: we should have one place where we change amount into String(format: "%.2f", amount)
 
+// todo: maybe we also should one place with overlays? (eventually parametrize opacity)
+
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {
