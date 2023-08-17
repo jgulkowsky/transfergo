@@ -14,11 +14,11 @@ struct ErrorText: View {
         HStack {
             if error != nil {
                 Image(systemName: "exclamationmark.circle")
-                    .foregroundStyle(.red)
                 Text(error!)
-                    .foregroundColor(.red)
+                    .font(.system(size: 16))
             }
         }
+        .foregroundStyle(.red)
     }
 }
 

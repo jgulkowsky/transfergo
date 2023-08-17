@@ -7,17 +7,18 @@
 
 import Foundation
 
+// todo: we should have one place where we change amount into String(format: "%.2f", amount)
+
 class CurrencyConverterViewModel: ObservableObject {
-    @Published var fromCountry: Country!
+    @Published var fromCountry: Country! {
+        didSet {
+            checkLimits()
+        }
+    }
     @Published var toCountry: Country!
     @Published var fromAmount: String = "" {
         didSet {
-            if let amount = Double(fromAmount),
-               amount > 20000 { // todo: this limit should be related to Country
-                limitExceededError = "Maximum sending amount 20 000 PLN" // todo: this message is also related to the Country
-            } else {
-                limitExceededError = nil
-            }
+            checkLimits()
         }
     }
     @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
@@ -74,9 +75,21 @@ class CurrencyConverterViewModel: ObservableObject {
     func switchTapped() {
         (fromCountry, toCountry) = (toCountry, fromCountry)
         fromAmountFocused = false
+        checkLimits()
     }
     
     func amountTapped() {
 //        selectedItem = .from
+    }
+}
+
+private extension CurrencyConverterViewModel {
+    func checkLimits() {
+        if let amount = Double(fromAmount),
+           amount > fromCountry.limit {
+            limitExceededError = "Maximum sending amount \(String(format: "%.2f", fromCountry.limit)) \(fromCountry.code)"
+        } else {
+            limitExceededError = nil
+        }
     }
 }
