@@ -86,8 +86,8 @@ class CurrencyConverterViewModel: ObservableObject {
 private extension CurrencyConverterViewModel {
     func checkLimits() {
         if let amount = Double(fromAmount),
-           amount > fromCountry.limit {
-            limitExceededError = "Maximum sending amount \(String(format: "%.2f", fromCountry.limit)) \(fromCountry.code)"
+           amount > fromCountry.currencyLimit {
+            limitExceededError = "Maximum sending amount \(String(format: "%.2f", fromCountry.currencyLimit)) \(fromCountry.currencyCode)"
         } else {
             limitExceededError = nil
         }

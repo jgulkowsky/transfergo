@@ -18,7 +18,7 @@ struct CountryView: View {
                     .fill(Color(.systemGray5))
                     .frame(width: 45, height: 45)
                 
-                Image(country.flagImage)
+                Image(country.flagImageAssetName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
@@ -33,7 +33,7 @@ struct CountryView: View {
                 
                 Spacer().frame(height: 5)
                 
-                Text(country.currency + " - " + country.code)
+                Text(country.currency + " - " + country.currencyCode)
                     .font(.system(size: 14))
                     .fontWeight(.regular)
                     .foregroundColor(Color(.systemGray))
