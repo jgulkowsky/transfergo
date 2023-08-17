@@ -34,9 +34,9 @@ struct CurrencyConverterView: View {
                     CurrencyViewsSeparator(
                         isEnabled: viewModel.shouldEnableFields
                     )
-                    .zIndex(1) // it makes bottom CurrencyView top rounded corners invisible
+                    .zIndex(1) // it makes bottom NoneditableCurrencyView top rounded corners invisible
                     
-                    CurrencyView(
+                    NoneditableCurrencyView(
                         title: "Receiver gets",
                         country: viewModel.toCountry,
                         amount: viewModel.toAmount,

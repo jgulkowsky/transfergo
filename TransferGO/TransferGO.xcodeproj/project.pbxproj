@@ -27,7 +27,7 @@
 		E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */; };
 		E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98922A8A502A00EEDBC8 /* SearchBar.swift */; };
 		E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98942A8A564C00EEDBC8 /* CountryView.swift */; };
-		E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */; };
+		E36B98972A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98962A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift */; };
 		E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */; };
 		E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */; };
 		E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */; };
@@ -86,7 +86,7 @@
 		E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedCountry.swift; sourceTree = "<group>"; };
 		E36B98922A8A502A00EEDBC8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E36B98942A8A564C00EEDBC8 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
-		E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		E36B98962A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoneditableCurrencyView.swift; sourceTree = "<group>"; };
 		E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+cornerRadius.swift"; sourceTree = "<group>"; };
 		E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCurrencyView.swift; sourceTree = "<group>"; };
 		E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndFlagView.swift; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 		E36B98A22A8D04D500EEDBC8 /* CurrencyView */ = {
 			isa = PBXGroup;
 			children = (
-				E36B98962A8A7AA700EEDBC8 /* CurrencyView.swift */,
+				E36B98962A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift */,
 				E36B989E2A8D01EC00EEDBC8 /* EditableCurrencyView.swift */,
 				E36B98A02A8D047200EEDBC8 /* TitleAndFlagView.swift */,
 				E36B98A32A8D058B00EEDBC8 /* CurrencyViewBackground.swift */,
@@ -418,7 +418,7 @@
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
 				E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */,
-				E36B98972A8A7AA700EEDBC8 /* CurrencyView.swift in Sources */,
+				E36B98972A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
 				E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */,

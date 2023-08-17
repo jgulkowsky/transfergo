@@ -1,5 +1,5 @@
 //
-//  CurrencyView.swift
+//  NoneditableCurrencyView.swift
 //  TransferGO
 //
 //  Created by Jan Gulkowski on 14/08/2023.
@@ -9,7 +9,7 @@ import SwiftUI
 
 // todo: this view is related to EditableCurrencyView - when we change this one we probably should change another one too - we should deal with this somehow differently so we make changes to common things only in one place
 
-struct CurrencyView: View {
+struct NoneditableCurrencyView: View {
     var title: String
     var country: Country
     var amount: Double?
@@ -55,9 +55,9 @@ struct CurrencyView: View {
     }
 }
 
-struct CurrencyView_Previews: PreviewProvider {
+struct NoneditableCurrencyView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrencyView(
+        NoneditableCurrencyView(
             title: "Sending from:",
             country: PredefinedCountry.poland,
             amount: nil, // or 100.0
