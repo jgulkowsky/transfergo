@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// todo: make textField foregroundColor red on limitExceeded
+
 struct EditableCurrencyView: View {
     var title: String
     var country: Country

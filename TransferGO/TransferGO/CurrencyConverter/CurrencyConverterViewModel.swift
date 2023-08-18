@@ -26,12 +26,22 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
-            getCurrentRateAndToAmount() // todo: this doesn't work perfectly as fromAmount is also being changed when user types and until he clicks enter (or in other words the TextField looses focus)
+            getCurrentRateTask?.cancel()
+            resetCurrentRateAndToAmount()
         }
     }
     @Published var toAmount: Double?
     
-    @Published var fromAmountFocused: Bool = false
+    @Published var fromAmountFocused: Bool = false {
+        didSet {
+            guard !fromAmountFocused
+                    && !fromAmount.isEmpty
+                    && !limitExceeded else {
+                return
+            }
+            getCurrentRateAndToAmount()
+        }
+    }
     
     @Published var currentRate: Rate? = nil
     var currentRateText: String {
@@ -108,6 +118,17 @@ class CurrencyConverterViewModel: ObservableObject {
     func menuTapped() {}
     
     func bellTapped() {}
+}
+
+private extension CurrencyConverterViewModel {
+    func checkLimits() {
+        if let amount = Double(fromAmount),
+           amount > fromCountry.currencyLimit {
+            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.to2DecPlaces()) \(fromCountry.currencyCode)"
+        } else {
+            limitExceededError = nil
+        }
+    }
     
     func getCurrentRateAndToAmount() {
         guard let amount = Double(fromAmount) else {
@@ -119,8 +140,7 @@ class CurrencyConverterViewModel: ObservableObject {
         getCurrentRateTask = Task {
             do {
                 await MainActor.run {
-                    currentRate = nil
-                    toAmount = nil
+                    resetCurrentRateAndToAmount()
                 }
                 let rate = try await rateProvider.getRate(
                     from: fromCountry,
@@ -138,15 +158,9 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
     }
-}
-
-private extension CurrencyConverterViewModel {
-    func checkLimits() {
-        if let amount = Double(fromAmount),
-           amount > fromCountry.currencyLimit {
-            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.to2DecPlaces()) \(fromCountry.currencyCode)"
-        } else {
-            limitExceededError = nil
-        }
+    
+    func resetCurrentRateAndToAmount() {
+        currentRate = nil
+        toAmount = nil
     }
 }
