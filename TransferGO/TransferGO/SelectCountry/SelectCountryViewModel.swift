@@ -56,8 +56,6 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
                 showLoadingIndicator = false
                 showError = true
             }
-            // todo: add error handling - show some warning
-            // todo: for now the only place that can throw is Task.sleep but you rather should be prepared for situation where your call for countries ends up with failure
         }
     }
     

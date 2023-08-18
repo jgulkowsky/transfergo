@@ -22,7 +22,7 @@ class CountriesProvider: CountriesProviding {
 extension CountriesProvider {
     actor BackgroundActor {
         func getCountries() async throws -> [Country] {
-            try await Task.sleep(nanoseconds: 1_000_000_000)
+            try await Task.sleep(nanoseconds: 1_000_000_000) // todo: for now the only place that can throw is Task.sleep but you rather should be prepared for situation where your call for countries ends up with failure
 
             return [
                 PredefinedCountry.poland,
