@@ -160,9 +160,9 @@
 		E36B984E2A8A28EB00EEDBC8 /* TransferGO */ = {
 			isa = PBXGroup;
 			children = (
+				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
 				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
-				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
 				E36B988E2A8A466100EEDBC8 /* Country.swift */,
 				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
@@ -263,7 +263,6 @@
 				E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */,
 				E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */,
 				E36B98A92A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift */,
-				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
 				E36B98A22A8D04D500EEDBC8 /* CurrencyView */,
 			);
 			path = CurrencyConversionSection;
@@ -296,6 +295,15 @@
 				E36B98CF2A8F916E00EEDBC8 /* CountryProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		E36B98D12A8FA7B200EEDBC8 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
+				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
+			);
+			path = CommonUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

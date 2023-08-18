@@ -69,18 +69,14 @@ struct CurrencyConverterView: View {
                     .offset(y: 53)
                 }
                 
-                if viewModel.connectionError != nil {
-                    ErrorText(
-                        error: $viewModel.connectionError
-                    )
-                    .offset(y: 100)
+                if let error = viewModel.connectionError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
                 }
                 
-                if viewModel.limitExceededError != nil {
-                    ErrorText(
-                        error: $viewModel.limitExceededError
-                    )
-                    .offset(y: 100)
+                if let error = viewModel.limitExceededError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
                 }
                 
                 Spacer()

@@ -39,7 +39,7 @@ struct SelectCountryView: View {
             
             if viewModel.showError {
                 Spacer().frame(height: 20)
-                ErrorText(error: .constant("Cannot fetch countries")) // todo: we should rather get rid off binding in ErrorText - just normal String should be enough
+                ErrorText(error: "Cannot fetch countries")
                 Spacer()
             }
             
