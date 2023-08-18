@@ -45,8 +45,8 @@
 		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
 		E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */; };
 		E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
-		E36B98CE2A8F914A00EEDBC8 /* CountryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountryProviding.swift */; };
-		E36B98D02A8F916E00EEDBC8 /* CountryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountryProvider.swift */; };
+		E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
+		E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,8 +108,8 @@
 		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
 		E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+to2DecPlaces.swift"; sourceTree = "<group>"; };
-		E36B98CD2A8F914A00EEDBC8 /* CountryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryProviding.swift; sourceTree = "<group>"; };
-		E36B98CF2A8F916E00EEDBC8 /* CountryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryProvider.swift; sourceTree = "<group>"; };
+		E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProviding.swift; sourceTree = "<group>"; };
+		E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,8 +291,7 @@
 		E36B98CC2A8F912800EEDBC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E36B98CD2A8F914A00EEDBC8 /* CountryProviding.swift */,
-				E36B98CF2A8F916E00EEDBC8 /* CountryProvider.swift */,
+				E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -304,6 +303,15 @@
 				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
 			);
 			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */,
+				E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */,
+			);
+			path = CountriesProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +450,7 @@
 				E36B98A82A8D1A9100EEDBC8 /* CurrentRateView.swift in Sources */,
 				E36B98B42A8E44E800EEDBC8 /* SolidButton.swift in Sources */,
 				E36B98B92A8E46FC00EEDBC8 /* MenuItemView.swift in Sources */,
-				E36B98D02A8F916E00EEDBC8 /* CountryProvider.swift in Sources */,
+				E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */,
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
@@ -454,7 +462,7 @@
 				E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
 				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
-				E36B98CE2A8F914A00EEDBC8 /* CountryProviding.swift in Sources */,
+				E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
