@@ -11,6 +11,10 @@ import Foundation
 
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
+// todo: we should rather not to resetCurrentRateAndToAmount() when we go to SelectCountryView (only when we actuall change it)
+
+// todo: there's also a bug when user types in out of limit value (then no rate is shown) and then he clicks on switch button and even the value is still out of limit the rate is downloaded (and should behave as earlier) - this probably applies to taps on other things that trigger getting rate - also check it for scenario when value is out of limit for the first currency but after switch it's not out of limit for another one - then you should call for rate
+
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {

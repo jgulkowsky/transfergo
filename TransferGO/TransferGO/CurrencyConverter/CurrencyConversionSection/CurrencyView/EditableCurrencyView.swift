@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: make textField foregroundColor red on limitExceeded
-
 struct EditableCurrencyView: View {
     var title: String
     var country: Country
@@ -57,7 +55,7 @@ struct EditableCurrencyView: View {
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.blue)
+                    .foregroundColor(limitExceeded ? .red : .blue)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)
                     .onTapGesture {
