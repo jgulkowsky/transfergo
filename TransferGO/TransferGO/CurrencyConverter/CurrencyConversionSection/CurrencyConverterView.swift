@@ -128,7 +128,8 @@ struct ContentView_Previews: PreviewProvider {
                     toCountry: PredefinedCountry.ukraine,
                     fromAmount: 300.0
                 ),
-                coordinator: CoordinatorObject()
+                coordinator: CoordinatorObject(),
+                rateProvider: RateProvider()
             )
         )
     }

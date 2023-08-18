@@ -40,9 +40,12 @@ class CurrencyConverterViewModel: ObservableObject {
         return limitExceededError != nil
     }
     
-    private var coordinator: Coordinator
+    private let coordinator: Coordinator
+    private let rateProvider: RateProviding
     
-    init(info: CurrencyConverterInfo, coordinator: Coordinator) {
+    init(info: CurrencyConverterInfo,
+         coordinator: Coordinator,
+         rateProvider: RateProviding) {
         if let fromCountry = info.fromCountry {
             self.fromCountry = fromCountry
         }
@@ -52,13 +55,14 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = fromAmount.to2DecPlaces() // maybe we should pass this to be in EditableCurrencyView only?
+            self.fromAmount = fromAmount.to2DecPlaces() // todo: maybe we should pass this to be in EditableCurrencyView only?
         }
+        
+        self.coordinator = coordinator
+        self.rateProvider = rateProvider
         
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"
-        
-        self.coordinator = coordinator
     }
     
     func sendFromTapped() {

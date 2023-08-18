@@ -47,6 +47,9 @@
 		E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
 		E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
 		E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */; };
+		E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */; };
+		E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D62A8FB84400EEDBC8 /* Rate.swift */; };
+		E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,9 @@
 		E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+to2DecPlaces.swift"; sourceTree = "<group>"; };
 		E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProviding.swift; sourceTree = "<group>"; };
 		E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProvider.swift; sourceTree = "<group>"; };
+		E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProviding.swift; sourceTree = "<group>"; };
+		E36B98D62A8FB84400EEDBC8 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +297,7 @@
 		E36B98CC2A8F912800EEDBC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E36B98D32A8FB79700EEDBC8 /* RateProvider */,
 				E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */,
 			);
 			path = Services;
@@ -312,6 +319,16 @@
 				E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */,
 			);
 			path = CountriesProvider;
+			sourceTree = "<group>";
+		};
+		E36B98D32A8FB79700EEDBC8 /* RateProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */,
+				E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */,
+				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
+			);
+			path = RateProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,16 +477,19 @@
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
 				E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */,
+				E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
 				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
 				E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
+				E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
 				E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
+				E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
 				E36B98AE2A8D47BE00EEDBC8 /* ErrorText.swift in Sources */,
