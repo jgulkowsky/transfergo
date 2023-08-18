@@ -21,12 +21,13 @@ class CurrencyConverterViewModel: ObservableObject {
             checkLimits()
         }
     }
-    @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
+    @Published var toAmount: Double?
     
     @Published var fromAmountFocused: Bool = false
-    var currentRate: String {
-        "1 \(fromCountry.currencyCode) ~ 7.23384 \(toCountry.currencyCode)" // todo: later on we need to get it from server
-        // todo: when there's no rate we should use "---"
+    
+    @Published var currentRate: Rate? = nil
+    var currentRateText: String {
+        currentRate?.toString() ?? "---"
     }
     
     @Published var connectionError: String? = nil
@@ -94,6 +95,27 @@ class CurrencyConverterViewModel: ObservableObject {
     func menuTapped() {}
     
     func bellTapped() {}
+    
+    func getCurrentRate() async {
+        guard let amount = Double(fromAmount) else {
+            return
+        }
+        
+        do {
+            let rate = try await rateProvider.getRate(
+                from: fromCountry,
+                to: toCountry,
+                amount: amount
+            )
+            await MainActor.run {
+                currentRate = rate
+                toAmount = rate.toAmount
+            }
+        } catch {
+            // todo: handle error - first of all currentRateText should be ---
+            // todo: secondly we should show some popup or use our errorText to tell that sth went wrong
+        }
+    }
 }
 
 private extension CurrencyConverterViewModel {

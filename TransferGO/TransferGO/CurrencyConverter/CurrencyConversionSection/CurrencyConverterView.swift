@@ -62,7 +62,7 @@ struct CurrencyConverterView: View {
                     .offset(y: 53)
                     
                     CurrentRateView(
-                        currentRate: viewModel.currentRate,
+                        currentRate: viewModel.currentRateText,
                         isEnabled: viewModel.shouldEnableFields
                     )
                     .zIndex(2)
@@ -115,6 +115,10 @@ struct CurrencyConverterView: View {
                     .disabled(true)
                 }
             }
+        }
+        .task {
+            await viewModel.getCurrentRate()
+            // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
         }
     }
 }

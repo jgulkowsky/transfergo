@@ -24,7 +24,7 @@ struct NoneditableCurrencyView: View {
             enabled: enabled,
             borderVisible: false,
             amountView:
-                Text((amount != nil) ? amount!.to2DecPlaces() : "---")
+                Text((amount != nil) ? amount!.to2DecPlaces() : "-")
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)

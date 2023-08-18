@@ -15,4 +15,8 @@ struct Rate: Decodable {
     var rate: Double
     var fromAmount: Double
     var toAmount: Double
+    
+    func toString() -> String {
+        return "1 \(from) ~ \(rate) \(to)"
+    }
 }
