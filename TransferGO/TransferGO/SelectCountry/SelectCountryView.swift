@@ -64,7 +64,7 @@ struct SelectCountryView: View {
                 .padding(.top, -10)
             }
         }
-        .task { // todo: it would be nice to start this task as soon as we open the app - so when user gets to this screen he sees countries (that are held in cache) - and only when he is really fast he will see loading indicator for the task that was started before we opened this screen
+        .task {
             await viewModel.getAllCountries()
         }
     }
