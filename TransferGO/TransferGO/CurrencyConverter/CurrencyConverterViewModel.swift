@@ -7,18 +7,26 @@
 
 import Foundation
 
+// todo: we should lock possibility to select same from and to country - there should not be current in SelectCountryViewModel list of countries
+
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {
             checkLimits()
+            getCurrentRateAndToAmount()
         }
     }
-    @Published var toCountry: Country!
+    @Published var toCountry: Country! {
+        didSet {
+            getCurrentRateAndToAmount()
+        }
+    }
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
+            getCurrentRateAndToAmount() // todo: this doesn't work perfectly as fromAmount is also being changed when user types and until he clicks enter (or in other words the TextField looses focus)
         }
     }
     @Published var toAmount: Double?
@@ -44,6 +52,8 @@ class CurrencyConverterViewModel: ObservableObject {
     private let coordinator: Coordinator
     private let rateProvider: RateProviding
     
+    private var getCurrentRateTask: Task<(), Never>? = nil
+    
     init(info: CurrencyConverterInfo,
          coordinator: Coordinator,
          rateProvider: RateProviding) {
@@ -64,6 +74,8 @@ class CurrencyConverterViewModel: ObservableObject {
         
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"
+        
+        getCurrentRateAndToAmount()
     }
     
     func sendFromTapped() {
@@ -80,6 +92,7 @@ class CurrencyConverterViewModel: ObservableObject {
         (fromCountry, toCountry) = (toCountry, fromCountry)
         fromAmountFocused = false
         checkLimits()
+        getCurrentRateAndToAmount()
     }
     
     func backgroundTapped() {
@@ -96,25 +109,34 @@ class CurrencyConverterViewModel: ObservableObject {
     
     func bellTapped() {}
     
-    func getCurrentRate() async {
+    func getCurrentRateAndToAmount() {
         guard let amount = Double(fromAmount) else {
             return
         }
         
-        do {
-            let rate = try await rateProvider.getRate(
-                from: fromCountry,
-                to: toCountry,
-                amount: amount
-            )
-            await MainActor.run {
-                currentRate = rate
-                toAmount = rate.toAmount
+        getCurrentRateTask?.cancel()
+        
+        getCurrentRateTask = Task {
+            do {
+                await MainActor.run {
+                    currentRate = nil
+                    toAmount = nil
+                }
+                let rate = try await rateProvider.getRate(
+                    from: fromCountry,
+                    to: toCountry,
+                    amount: amount
+                )
+                await MainActor.run {
+                    currentRate = rate
+                    toAmount = rate.toAmount // todo: do we need this? can't we just use currentRate.toAmount in the View?
+                }
+            } catch {
+                // todo: handle error - first of all currentRateText should be ---
+                // todo: secondly we should show some popup or use our errorText to tell that sth went wrong
             }
-        } catch {
-            // todo: handle error - first of all currentRateText should be ---
-            // todo: secondly we should show some popup or use our errorText to tell that sth went wrong
         }
+        // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
     }
 }
 

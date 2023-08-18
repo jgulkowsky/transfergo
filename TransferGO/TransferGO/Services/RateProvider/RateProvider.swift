@@ -14,8 +14,8 @@ class RateProvider: RateProviding {
         try await Task.sleep(nanoseconds: 2_000_000_000) // todo: remove later on when we have actual call to remote service
         
         return Rate(
-            from: "PLN",
-            to: "UAH",
+            from: from.currencyCode,
+            to: to.currencyCode,
             rate: 8.99932,
             fromAmount: 300.0,
             toAmount: 2699.8

@@ -116,10 +116,6 @@ struct CurrencyConverterView: View {
                 }
             }
         }
-        .task {
-            await viewModel.getCurrentRate()
-            // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
-        }
     }
 }
 
