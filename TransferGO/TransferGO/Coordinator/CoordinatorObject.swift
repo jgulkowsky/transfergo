@@ -11,6 +11,8 @@ class CoordinatorObject: ObservableObject, Coordinator {
     @Published var currencyConverterViewModel: CurrencyConverterViewModel!
     @Published var selectCountryViewModel: SelectCountryViewModel?
     
+    private let countriesProvider = CountriesProvider()
+    
     init() {
         self.currencyConverterViewModel = CurrencyConverterViewModel(
             info: CurrencyConverterInfo(
@@ -23,7 +25,7 @@ class CoordinatorObject: ObservableObject, Coordinator {
     
     func goToSelectCountry(_ info: SelectCountryInfo) {
         self.selectCountryViewModel = SelectCountryViewModel(
-            info: info, coordinator: self
+            info: info, coordinator: self, countriesProvider: countriesProvider
         )
     }
     
