@@ -15,21 +15,23 @@ class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {
             checkLimits()
-            tryGetCurrentRateAndToAmount()
+            tryToUpdateCurrentRate()
         }
     }
     @Published var toCountry: Country! {
         didSet {
-            tryGetCurrentRateAndToAmount()
+            tryToUpdateCurrentRate()
         }
     }
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
-            tryGetCurrentRateAndToAmount()
+            tryToUpdateCurrentRate()
         }
     }
-    @Published var toAmount: Double?
+    var toAmount: Double? {
+        return currentRate?.toAmount
+    }
     
     @Published var fromAmountFocused: Bool = false
     
@@ -75,7 +77,7 @@ class CurrencyConverterViewModel: ObservableObject {
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"
         
-        tryGetCurrentRateAndToAmount()
+        tryToUpdateCurrentRate()
     }
     
     func sendFromTapped() {
@@ -92,7 +94,7 @@ class CurrencyConverterViewModel: ObservableObject {
         (fromCountry, toCountry) = (toCountry, fromCountry)
         fromAmountFocused = false
         checkLimits()
-        tryGetCurrentRateAndToAmount()
+        tryToUpdateCurrentRate()
     }
     
     func backgroundTapped() {
@@ -120,29 +122,20 @@ private extension CurrencyConverterViewModel {
         }
     }
     
-    func tryGetCurrentRateAndToAmount() {
+    func tryToUpdateCurrentRate() {
         // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
         getCurrentRateTask?.cancel()
-        
-        resetCurrentRateAndToAmount()
-        
-        guard areRequirementsSatisfied() else {
-            return
-        }
-        
-        getCurrentRateAndToAmount()
-    }
-    
-    func resetCurrentRateAndToAmount() {
         currentRate = nil
-        toAmount = nil
+        if areRequirementsSatisfied() {
+            getCurrentRate()
+        }
     }
     
     func areRequirementsSatisfied() -> Bool {
         return Double(fromAmount) != nil && !fromAmountFocused && !limitExceeded
     }
     
-    func getCurrentRateAndToAmount() {
+    func getCurrentRate() {
         guard let amount = Double(fromAmount) else {
             return
         }
@@ -156,7 +149,6 @@ private extension CurrencyConverterViewModel {
                 )
                 await MainActor.run {
                     currentRate = rate
-                    toAmount = rate.toAmount // todo: do we need this? can't we just use currentRate.toAmount in the View?
                 }
             } catch {
                 // todo: handle error - first of all currentRateText should be ---
