@@ -72,12 +72,15 @@ struct CurrencyConverterView: View {
                 if let error = viewModel.connectionError {
                     ErrorText(error: error)
                         .offset(y: 100)
-                }
-                
-                if let error = viewModel.limitExceededError {
+                } else if let error = viewModel.limitExceededError {
                     ErrorText(error: error)
                         .offset(y: 100)
-                }
+                } else if let error = viewModel.getCurrentRateError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
+                } // todo: sth wrong with throwing from RateProvider as we get error immediatelly sometimes without waiting for Task.sleep()
+                // todo: bug when we select TextField before we get rate for initial 300.00 we immediatelly get error
+                // todo: but when we select TextField when we actually have rate for initial 300.00 we immedaitelly get error too
                 
                 Spacer()
                 

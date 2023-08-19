@@ -13,6 +13,8 @@ class RateProvider: RateProviding {
         
         try await Task.sleep(nanoseconds: 2_000_000_000) // todo: remove later on when we have actual call to remote service
         
+        throw URLError(.badURL) // todo: remove later on - it's just for test
+        
         return Rate(
             from: from.currencyCode,
             to: to.currencyCode,

@@ -42,6 +42,7 @@ class CurrencyConverterViewModel: ObservableObject {
     
     @Published var connectionError: String? = nil
     @Published var limitExceededError: String? = nil
+    @Published var getCurrentRateError: String? = nil
     
     var shouldEnableFields: Bool {
         return connectionError == nil
@@ -126,6 +127,7 @@ private extension CurrencyConverterViewModel {
         // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
         getCurrentRateTask?.cancel()
         currentRate = nil
+        getCurrentRateError = nil
         if areRequirementsSatisfied() {
             getCurrentRate()
         }
@@ -151,8 +153,9 @@ private extension CurrencyConverterViewModel {
                     currentRate = rate
                 }
             } catch {
-                // todo: handle error - first of all currentRateText should be ---
-                // todo: secondly we should show some popup or use our errorText to tell that sth went wrong
+                await MainActor.run {
+                    getCurrentRateError = "Cannot get current rate for \(fromCountry.currencyCode) ~ \(toCountry.currencyCode)"
+                }
             }
         }
         // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
