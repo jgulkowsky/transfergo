@@ -11,41 +11,27 @@ import Foundation
 
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
-// todo: we should rather not to resetCurrentRateAndToAmount() when we go to SelectCountryView (only when we actuall change it)
-
-// todo: there's also a bug when user types in out of limit value (then no rate is shown) and then he clicks on switch button and even the value is still out of limit the rate is downloaded (and should behave as earlier) - this probably applies to taps on other things that trigger getting rate - also check it for scenario when value is out of limit for the first currency but after switch it's not out of limit for another one - then you should call for rate
-
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {
             checkLimits()
-            getCurrentRateAndToAmount()
+            tryGetCurrentRateAndToAmount()
         }
     }
     @Published var toCountry: Country! {
         didSet {
-            getCurrentRateAndToAmount()
+            tryGetCurrentRateAndToAmount()
         }
     }
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
-            getCurrentRateTask?.cancel()
-            resetCurrentRateAndToAmount()
+            tryGetCurrentRateAndToAmount()
         }
     }
     @Published var toAmount: Double?
     
-    @Published var fromAmountFocused: Bool = false {
-        didSet {
-            guard !fromAmountFocused
-                    && !fromAmount.isEmpty
-                    && !limitExceeded else {
-                return
-            }
-            getCurrentRateAndToAmount()
-        }
-    }
+    @Published var fromAmountFocused: Bool = false
     
     @Published var currentRate: Rate? = nil
     var currentRateText: String {
@@ -89,7 +75,7 @@ class CurrencyConverterViewModel: ObservableObject {
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"
         
-        getCurrentRateAndToAmount()
+        tryGetCurrentRateAndToAmount()
     }
     
     func sendFromTapped() {
@@ -106,7 +92,7 @@ class CurrencyConverterViewModel: ObservableObject {
         (fromCountry, toCountry) = (toCountry, fromCountry)
         fromAmountFocused = false
         checkLimits()
-        getCurrentRateAndToAmount()
+        tryGetCurrentRateAndToAmount()
     }
     
     func backgroundTapped() {
@@ -134,18 +120,35 @@ private extension CurrencyConverterViewModel {
         }
     }
     
+    func tryGetCurrentRateAndToAmount() {
+        // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
+        getCurrentRateTask?.cancel()
+        
+        resetCurrentRateAndToAmount()
+        
+        guard areRequirementsSatisfied() else {
+            return
+        }
+        
+        getCurrentRateAndToAmount()
+    }
+    
+    func resetCurrentRateAndToAmount() {
+        currentRate = nil
+        toAmount = nil
+    }
+    
+    func areRequirementsSatisfied() -> Bool {
+        return Double(fromAmount) != nil && !fromAmountFocused && !limitExceeded
+    }
+    
     func getCurrentRateAndToAmount() {
         guard let amount = Double(fromAmount) else {
             return
         }
         
-        getCurrentRateTask?.cancel()
-        
         getCurrentRateTask = Task {
             do {
-                await MainActor.run {
-                    resetCurrentRateAndToAmount()
-                }
                 let rate = try await rateProvider.getRate(
                     from: fromCountry,
                     to: toCountry,
@@ -161,10 +164,5 @@ private extension CurrencyConverterViewModel {
             }
         }
         // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
-    }
-    
-    func resetCurrentRateAndToAmount() {
-        currentRate = nil
-        toAmount = nil
     }
 }
