@@ -7,20 +7,37 @@
 
 import Foundation
 
+// todo: move it to separate file
+enum RateProviderError: Error {
+    case dataNil
+    case cannotCreateUrl
+}
+
 class RateProvider: RateProviding {
+    func handleResponse(data: Data?, response: URLResponse?) throws -> Rate {
+        // todo: also check if response has correct status code
+        let decoder = JSONDecoder()
+        guard let data = data else {
+            throw RateProviderError.dataNil
+        }
+        return try decoder.decode(Rate.self, from: data)
+    }
+    
     func getRate(from: Country, to: Country, amount: Double) async throws -> Rate {
         // todo: make call to https://my.transfergo.com/api/fx-rates?from=PLN&to=UAH&amount=1000.49
+        let base = "https://my.transfergo.com/api/fx-rates"
+        let fromParam = "from=\(from.currencyCode)"
+        let toParam = "to=\(to.currencyCode)"
+        let amountParam = "amount=\(amount)"
+        guard let url = URL(string: "\(base)?\(fromParam)&\(toParam)&\(amountParam)") else {
+            throw RateProviderError.cannotCreateUrl
+        }
         
-        try await Task.sleep(nanoseconds: 2_000_000_000) // todo: remove later on when we have actual call to remote service
+        // todo: do it in actor
+        let (data, response) = try await URLSession.shared.data(from: url, delegate: nil)
         
-        throw URLError(.badURL) // todo: remove later on - it's just for test
-        
-        return Rate(
-            from: from.currencyCode,
-            to: to.currencyCode,
-            rate: 8.99932,
-            fromAmount: 300.0,
-            toAmount: 2699.8
-        )
+        return try handleResponse(data: data, response: response)
     }
 }
+
+// todo: use more parts here - Decoder, RequestHandler, ResponseHandler etc - and make it more generic - not only related to Rate
