@@ -50,6 +50,16 @@
 		E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */; };
 		E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D62A8FB84400EEDBC8 /* Rate.swift */; };
 		E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */; };
+		E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1402A93753C007E0404 /* RequestHandler.swift */; };
+		E37DC1432A937556007E0404 /* RequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1422A937556007E0404 /* RequestHandling.swift */; };
+		E37DC1462A937588007E0404 /* ResponseHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1452A937588007E0404 /* ResponseHandling.swift */; };
+		E37DC1482A937597007E0404 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1472A937597007E0404 /* ResponseHandler.swift */; };
+		E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */; };
+		E37DC14D2A9375D4007E0404 /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC14C2A9375D4007E0404 /* URLProvider.swift */; };
+		E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC14E2A9375E2007E0404 /* URLProviding.swift */; };
+		E37DC1512A9375F3007E0404 /* URLProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1502A9375F3007E0404 /* URLProviderError.swift */; };
+		E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1532A937648007E0404 /* DataDecoder.swift */; };
+		E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1552A93766E007E0404 /* DataDecoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +126,16 @@
 		E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProviding.swift; sourceTree = "<group>"; };
 		E36B98D62A8FB84400EEDBC8 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProvider.swift; sourceTree = "<group>"; };
+		E37DC1402A93753C007E0404 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		E37DC1422A937556007E0404 /* RequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandling.swift; sourceTree = "<group>"; };
+		E37DC1452A937588007E0404 /* ResponseHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandling.swift; sourceTree = "<group>"; };
+		E37DC1472A937597007E0404 /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
+		E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandlerError.swift; sourceTree = "<group>"; };
+		E37DC14C2A9375D4007E0404 /* URLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProvider.swift; sourceTree = "<group>"; };
+		E37DC14E2A9375E2007E0404 /* URLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProviding.swift; sourceTree = "<group>"; };
+		E37DC1502A9375F3007E0404 /* URLProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProviderError.swift; sourceTree = "<group>"; };
+		E37DC1532A937648007E0404 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
+		E37DC1552A93766E007E0404 /* DataDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +317,10 @@
 		E36B98CC2A8F912800EEDBC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC1522A93762E007E0404 /* DataDecoder */,
+				E37DC14B2A9375B4007E0404 /* URLProvider */,
+				E37DC1442A937562007E0404 /* ResponseHandler */,
+				E37DC13F2A937503007E0404 /* RequestHandler */,
 				E36B98D32A8FB79700EEDBC8 /* RateProvider */,
 				E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */,
 			);
@@ -329,6 +353,44 @@
 				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
 			);
 			path = RateProvider;
+			sourceTree = "<group>";
+		};
+		E37DC13F2A937503007E0404 /* RequestHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1422A937556007E0404 /* RequestHandling.swift */,
+				E37DC1402A93753C007E0404 /* RequestHandler.swift */,
+			);
+			path = RequestHandler;
+			sourceTree = "<group>";
+		};
+		E37DC1442A937562007E0404 /* ResponseHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1452A937588007E0404 /* ResponseHandling.swift */,
+				E37DC1472A937597007E0404 /* ResponseHandler.swift */,
+				E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */,
+			);
+			path = ResponseHandler;
+			sourceTree = "<group>";
+		};
+		E37DC14B2A9375B4007E0404 /* URLProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC14E2A9375E2007E0404 /* URLProviding.swift */,
+				E37DC14C2A9375D4007E0404 /* URLProvider.swift */,
+				E37DC1502A9375F3007E0404 /* URLProviderError.swift */,
+			);
+			path = URLProvider;
+			sourceTree = "<group>";
+		};
+		E37DC1522A93762E007E0404 /* DataDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1532A937648007E0404 /* DataDecoder.swift */,
+				E37DC1552A93766E007E0404 /* DataDecoding.swift */,
+			);
+			path = DataDecoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,7 +543,10 @@
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
 				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
 				E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */,
+				E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */,
+				E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
+				E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
@@ -490,15 +555,22 @@
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
 				E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */,
+				E37DC1432A937556007E0404 /* RequestHandling.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
+				E37DC1512A9375F3007E0404 /* URLProviderError.swift in Sources */,
 				E36B98AE2A8D47BE00EEDBC8 /* ErrorText.swift in Sources */,
+				E37DC14D2A9375D4007E0404 /* URLProvider.swift in Sources */,
 				E36B98A62A8D168F00EEDBC8 /* SwitchButton.swift in Sources */,
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
 				E36B98AC2A8D374700EEDBC8 /* CurrencyViewOverlay.swift in Sources */,
 				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
+				E37DC1462A937588007E0404 /* ResponseHandling.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
+				E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */,
+				E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */,
 				E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */,
+				E37DC1482A937597007E0404 /* ResponseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,14 @@ class CoordinatorObject: ObservableObject, Coordinator {
     @Published var selectCountryViewModel: SelectCountryViewModel?
     
     private let countriesProvider = CountriesProvider()
-    private let rateProvider = RateProvider()
+    
+    private let rateProvider: RateProviding = RateProvider(
+        urlProvider: URLProvider(),
+        requestHandler: RequestHandler(),
+        responseHandler: ResponseHandler(
+            decoder: DataDecoder()
+        )
+    )
     
     init() {
         self.currencyConverterViewModel = CurrencyConverterViewModel(
