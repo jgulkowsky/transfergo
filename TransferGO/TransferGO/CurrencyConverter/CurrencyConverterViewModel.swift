@@ -63,13 +63,15 @@ class CurrencyConverterViewModel: ObservableObject {
     private let coordinator: Coordinator
     private let rateProvider: RateProviding
     private let scheduler: Scheduling
+    private let networkStatusProvider: NetworkStatusProviding
     
     private var getCurrentRateTask: Task<(), Never>? = nil
     
     init(info: CurrencyConverterInfo,
          coordinator: Coordinator,
          rateProvider: RateProviding,
-         scheduler: Scheduling) {
+         scheduler: Scheduling,
+         networkStatusProvider: NetworkStatusProviding) {
         if let fromCountry = info.fromCountry {
             self.fromCountry = fromCountry
         }
@@ -85,23 +87,24 @@ class CurrencyConverterViewModel: ObservableObject {
         self.coordinator = coordinator
         self.rateProvider = rateProvider
         self.scheduler = scheduler
-        
-        // todo: check connection - show error if problems
-//        connectionError = "No internet connection"
+        self.networkStatusProvider = networkStatusProvider
         
         tryToUpdateCurrentRate()
     }
     
     func onSceneActive() {
         startRegularCurrentRateUpdates()
+        startGettingNetworkStatus()
     }
     
     func onSceneInactive() {
         stopRegularCurrentRateUpdates()
+        stopGettingNetworkStatus()
     }
     
     func onSceneInBackground() {
         stopRegularCurrentRateUpdates()
+        stopGettingNetworkStatus()
     }
     
     func sendFromTapped() {
@@ -197,5 +200,19 @@ private extension CurrencyConverterViewModel {
                 }
             }
         }
+    }
+    
+    func startGettingNetworkStatus() {
+        networkStatusProvider.start { [weak self] isConnected in
+            if isConnected {
+                self?.connectionError = nil
+            } else {
+                self?.connectionError = "No internet connection"
+            }
+        }
+    }
+    
+    func stopGettingNetworkStatus() {
+        networkStatusProvider.stop()
     }
 }

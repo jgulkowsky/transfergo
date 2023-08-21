@@ -63,6 +63,9 @@
 		E37DC1582A937FBF007E0404 /* MockRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1572A937FBF007E0404 /* MockRateProvider.swift */; };
 		E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1592A93871D007E0404 /* Scheduler.swift */; };
 		E37DC15D2A9391C0007E0404 /* Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15C2A9391C0007E0404 /* Scheduling.swift */; };
+		E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */; };
+		E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */; };
+		E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +145,9 @@
 		E37DC1572A937FBF007E0404 /* MockRateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRateProvider.swift; sourceTree = "<group>"; };
 		E37DC1592A93871D007E0404 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		E37DC15C2A9391C0007E0404 /* Scheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduling.swift; sourceTree = "<group>"; };
+		E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProvider.swift; sourceTree = "<group>"; };
+		E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProviding.swift; sourceTree = "<group>"; };
+		E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkStatusProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +329,7 @@
 		E36B98CC2A8F912800EEDBC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC15E2A93A8AC007E0404 /* NetworkStatusProvider */,
 				E37DC15B2A9391A1007E0404 /* Scheduler */,
 				E37DC1522A93762E007E0404 /* DataDecoder */,
 				E37DC14B2A9375B4007E0404 /* URLProvider */,
@@ -408,6 +415,16 @@
 				E37DC15C2A9391C0007E0404 /* Scheduling.swift */,
 			);
 			path = Scheduler;
+			sourceTree = "<group>";
+		};
+		E37DC15E2A93A8AC007E0404 /* NetworkStatusProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */,
+				E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */,
+				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
+			);
+			path = NetworkStatusProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,16 +580,19 @@
 				E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */,
 				E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */,
 				E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */,
+				E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
 				E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
+				E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 				E37DC1582A937FBF007E0404 /* MockRateProvider.swift in Sources */,
 				E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
+				E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */,
 				E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */,
 				E37DC1432A937556007E0404 /* RequestHandling.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
