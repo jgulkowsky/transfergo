@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrencyConverterView: View {
     @ObservedObject var viewModel: CurrencyConverterViewModel
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         NavigationView {
@@ -119,6 +120,15 @@ struct CurrencyConverterView: View {
                 }
             }
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                viewModel.onSceneActive()
+            } else if newPhase == .inactive {
+                viewModel.onSceneInactive()
+            } else if newPhase == .background {
+                viewModel.onSceneInBackground()
+            }
+        }
     }
 }
 
@@ -132,7 +142,8 @@ struct ContentView_Previews: PreviewProvider {
                     fromAmount: 300.0
                 ),
                 coordinator: CoordinatorObject(),
-                rateProvider: MockRateProvider()
+                rateProvider: MockRateProvider(),
+                scheduler: Scheduler()
             )
         )
     }

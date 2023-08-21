@@ -61,6 +61,8 @@
 		E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1532A937648007E0404 /* DataDecoder.swift */; };
 		E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1552A93766E007E0404 /* DataDecoding.swift */; };
 		E37DC1582A937FBF007E0404 /* MockRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1572A937FBF007E0404 /* MockRateProvider.swift */; };
+		E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1592A93871D007E0404 /* Scheduler.swift */; };
+		E37DC15D2A9391C0007E0404 /* Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15C2A9391C0007E0404 /* Scheduling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		E37DC1532A937648007E0404 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 		E37DC1552A93766E007E0404 /* DataDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoding.swift; sourceTree = "<group>"; };
 		E37DC1572A937FBF007E0404 /* MockRateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRateProvider.swift; sourceTree = "<group>"; };
+		E37DC1592A93871D007E0404 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		E37DC15C2A9391C0007E0404 /* Scheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +323,7 @@
 		E36B98CC2A8F912800EEDBC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC15B2A9391A1007E0404 /* Scheduler */,
 				E37DC1522A93762E007E0404 /* DataDecoder */,
 				E37DC14B2A9375B4007E0404 /* URLProvider */,
 				E37DC1442A937562007E0404 /* ResponseHandler */,
@@ -394,6 +399,15 @@
 				E37DC1552A93766E007E0404 /* DataDecoding.swift */,
 			);
 			path = DataDecoder;
+			sourceTree = "<group>";
+		};
+		E37DC15B2A9391A1007E0404 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1592A93871D007E0404 /* Scheduler.swift */,
+				E37DC15C2A9391C0007E0404 /* Scheduling.swift */,
+			);
+			path = Scheduler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,6 +543,7 @@
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
 				E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */,
 				E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */,
+				E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */,
 				E36B98A82A8D1A9100EEDBC8 /* CurrentRateView.swift in Sources */,
 				E36B98B42A8E44E800EEDBC8 /* SolidButton.swift in Sources */,
 				E36B98B92A8E46FC00EEDBC8 /* MenuItemView.swift in Sources */,
@@ -571,6 +586,7 @@
 				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
 				E37DC1462A937588007E0404 /* ResponseHandling.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
+				E37DC15D2A9391C0007E0404 /* Scheduling.swift in Sources */,
 				E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */,
 				E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */,
 				E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */,

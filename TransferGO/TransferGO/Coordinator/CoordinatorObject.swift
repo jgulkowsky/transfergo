@@ -29,7 +29,8 @@ class CoordinatorObject: ObservableObject, Coordinator {
                 fromAmount: 300.0
             ),
             coordinator: self,
-            rateProvider: rateProvider)
+            rateProvider: rateProvider,
+            scheduler: Scheduler())
     }
     
     func goToSelectCountry(_ info: SelectCountryInfo) {

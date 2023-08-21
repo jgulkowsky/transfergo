@@ -54,12 +54,14 @@ class CurrencyConverterViewModel: ObservableObject {
     
     private let coordinator: Coordinator
     private let rateProvider: RateProviding
+    private let scheduler: Scheduling
     
     private var getCurrentRateTask: Task<(), Never>? = nil // todo: or Task<(), Error>?
     
     init(info: CurrencyConverterInfo,
          coordinator: Coordinator,
-         rateProvider: RateProviding) {
+         rateProvider: RateProviding,
+         scheduler: Scheduling) {
         if let fromCountry = info.fromCountry {
             self.fromCountry = fromCountry
         }
@@ -74,11 +76,24 @@ class CurrencyConverterViewModel: ObservableObject {
         
         self.coordinator = coordinator
         self.rateProvider = rateProvider
+        self.scheduler = scheduler
         
         // todo: check connection - show error if problems
 //        connectionError = "No internet connection"
         
         tryToUpdateCurrentRate()
+    }
+    
+    func onSceneActive() {
+        startRegularCurrentRateUpdates()
+    }
+    
+    func onSceneInactive() {
+        stopRegularCurrentRateUpdates()
+    }
+    
+    func onSceneInBackground() {
+        stopRegularCurrentRateUpdates()
     }
     
     func sendFromTapped() {
@@ -123,16 +138,29 @@ private extension CurrencyConverterViewModel {
         }
     }
     
-    func tryToUpdateCurrentRate() {
+    func tryToUpdateCurrentRate(shouldResetCurrentValues: Bool = true) {
         // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
         getCurrentRateTask?.cancel()
-        currentRate = nil
-        getCurrentRateError = nil
+        if shouldResetCurrentValues {
+            currentRate = nil
+            getCurrentRateError = nil
+        }
         if areRequirementsSatisfied() {
             getCurrentRate()
         }
     }
     
+    func startRegularCurrentRateUpdates() {
+        self.scheduler.start(withInterval: 2.0) { [weak self] in
+            self?.tryToUpdateCurrentRate(shouldResetCurrentValues: false)
+        }
+    }
+    
+    func stopRegularCurrentRateUpdates() {
+        self.scheduler.stop()
+    }
+    
+    // todo: what requirements - you should rename this method
     func areRequirementsSatisfied() -> Bool {
         return Double(fromAmount) != nil && !fromAmountFocused && !limitExceeded
     }
