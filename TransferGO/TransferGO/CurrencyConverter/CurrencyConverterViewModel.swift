@@ -151,7 +151,7 @@ private extension CurrencyConverterViewModel {
     }
     
     func startRegularCurrentRateUpdates() {
-        self.scheduler.start(withInterval: 2.0) { [weak self] in
+        self.scheduler.start(withInterval: 10.0) { [weak self] in
             self?.tryToUpdateCurrentRate(shouldResetCurrentValues: false)
         }
     }
