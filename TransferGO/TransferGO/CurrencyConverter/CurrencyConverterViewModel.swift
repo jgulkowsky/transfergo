@@ -206,7 +206,7 @@ private extension CurrencyConverterViewModel {
     }
     
     func getNetworkStatus() {
-        networkStatusProvider.start { [weak self] isConnected in
+        networkStatusProvider.getStatus { [weak self] isConnected in
             if isConnected {
                 self?.connectionError = nil
             } else {

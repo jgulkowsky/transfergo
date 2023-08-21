@@ -12,7 +12,7 @@ class MockNetworkStatusProvider: NetworkStatusProviding {
     private var onStatusUpdated: ((Bool) -> Void)!
     private var timer: Timer? = nil
     
-    func start(onStatusUpdated: @escaping (Bool) -> Void) {
+    func getStatus(onStatusUpdated: @escaping (Bool) -> Void) {
         if timer != nil { return }
         
         print("@jgu: MockNetworkStatusProvider.start()")

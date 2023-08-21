@@ -8,6 +8,5 @@
 import Foundation
 
 protocol NetworkStatusProviding {
-    func start(onStatusUpdated: @escaping (Bool) -> Void)
-    func stop()
+    func getStatus(onStatusUpdated: @escaping (Bool) -> Void)
 }

@@ -31,7 +31,7 @@ class CoordinatorObject: ObservableObject, Coordinator {
             coordinator: self,
             rateProvider: rateProvider,
             scheduler: Scheduler(),
-            networkStatusProvider: NetworkStatusProviderAlternative())
+            networkStatusProvider: NetworkStatusProvider())
     }
     
     func goToSelectCountry(_ info: SelectCountryInfo) {
