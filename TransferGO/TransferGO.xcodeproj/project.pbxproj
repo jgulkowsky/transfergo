@@ -45,6 +45,27 @@
 		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
 		E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */; };
 		E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
+		E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
+		E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */; };
+		E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */; };
+		E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D62A8FB84400EEDBC8 /* Rate.swift */; };
+		E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */; };
+		E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1402A93753C007E0404 /* RequestHandler.swift */; };
+		E37DC1432A937556007E0404 /* RequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1422A937556007E0404 /* RequestHandling.swift */; };
+		E37DC1462A937588007E0404 /* ResponseHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1452A937588007E0404 /* ResponseHandling.swift */; };
+		E37DC1482A937597007E0404 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1472A937597007E0404 /* ResponseHandler.swift */; };
+		E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */; };
+		E37DC14D2A9375D4007E0404 /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC14C2A9375D4007E0404 /* URLProvider.swift */; };
+		E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC14E2A9375E2007E0404 /* URLProviding.swift */; };
+		E37DC1512A9375F3007E0404 /* URLProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1502A9375F3007E0404 /* URLProviderError.swift */; };
+		E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1532A937648007E0404 /* DataDecoder.swift */; };
+		E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1552A93766E007E0404 /* DataDecoding.swift */; };
+		E37DC1582A937FBF007E0404 /* MockRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1572A937FBF007E0404 /* MockRateProvider.swift */; };
+		E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1592A93871D007E0404 /* Scheduler.swift */; };
+		E37DC15D2A9391C0007E0404 /* Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15C2A9391C0007E0404 /* Scheduling.swift */; };
+		E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */; };
+		E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */; };
+		E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +127,27 @@
 		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
 		E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+to2DecPlaces.swift"; sourceTree = "<group>"; };
+		E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProviding.swift; sourceTree = "<group>"; };
+		E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProvider.swift; sourceTree = "<group>"; };
+		E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProviding.swift; sourceTree = "<group>"; };
+		E36B98D62A8FB84400EEDBC8 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProvider.swift; sourceTree = "<group>"; };
+		E37DC1402A93753C007E0404 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		E37DC1422A937556007E0404 /* RequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandling.swift; sourceTree = "<group>"; };
+		E37DC1452A937588007E0404 /* ResponseHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandling.swift; sourceTree = "<group>"; };
+		E37DC1472A937597007E0404 /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
+		E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandlerError.swift; sourceTree = "<group>"; };
+		E37DC14C2A9375D4007E0404 /* URLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProvider.swift; sourceTree = "<group>"; };
+		E37DC14E2A9375E2007E0404 /* URLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProviding.swift; sourceTree = "<group>"; };
+		E37DC1502A9375F3007E0404 /* URLProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProviderError.swift; sourceTree = "<group>"; };
+		E37DC1532A937648007E0404 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
+		E37DC1552A93766E007E0404 /* DataDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoding.swift; sourceTree = "<group>"; };
+		E37DC1572A937FBF007E0404 /* MockRateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRateProvider.swift; sourceTree = "<group>"; };
+		E37DC1592A93871D007E0404 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		E37DC15C2A9391C0007E0404 /* Scheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduling.swift; sourceTree = "<group>"; };
+		E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProvider.swift; sourceTree = "<group>"; };
+		E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProviding.swift; sourceTree = "<group>"; };
+		E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkStatusProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,14 +198,15 @@
 		E36B984E2A8A28EB00EEDBC8 /* TransferGO */ = {
 			isa = PBXGroup;
 			children = (
+				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
 				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
-				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
 				E36B988E2A8A466100EEDBC8 /* Country.swift */,
 				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
 				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
+				E36B98CC2A8F912800EEDBC8 /* Services */,
 				E36B98982A8A831600EEDBC8 /* Extensions */,
 				E36B98532A8A28EC00EEDBC8 /* Assets.xcassets */,
 				E36B98552A8A28EC00EEDBC8 /* Preview Content */,
@@ -258,7 +301,6 @@
 				E36B98A52A8D168F00EEDBC8 /* SwitchButton.swift */,
 				E36B98A72A8D1A9100EEDBC8 /* CurrentRateView.swift */,
 				E36B98A92A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift */,
-				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
 				E36B98A22A8D04D500EEDBC8 /* CurrencyView */,
 			);
 			path = CurrencyConversionSection;
@@ -282,6 +324,107 @@
 				E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */,
 			);
 			path = NavigationSection;
+			sourceTree = "<group>";
+		};
+		E36B98CC2A8F912800EEDBC8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC15E2A93A8AC007E0404 /* NetworkStatusProvider */,
+				E37DC15B2A9391A1007E0404 /* Scheduler */,
+				E37DC1522A93762E007E0404 /* DataDecoder */,
+				E37DC14B2A9375B4007E0404 /* URLProvider */,
+				E37DC1442A937562007E0404 /* ResponseHandler */,
+				E37DC13F2A937503007E0404 /* RequestHandler */,
+				E36B98D32A8FB79700EEDBC8 /* RateProvider */,
+				E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E36B98D12A8FA7B200EEDBC8 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98922A8A502A00EEDBC8 /* SearchBar.swift */,
+				E36B98AD2A8D47BE00EEDBC8 /* ErrorText.swift */,
+			);
+			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		E36B98D22A8FB72B00EEDBC8 /* CountriesProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */,
+				E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */,
+			);
+			path = CountriesProvider;
+			sourceTree = "<group>";
+		};
+		E36B98D32A8FB79700EEDBC8 /* RateProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */,
+				E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */,
+				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
+				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
+			);
+			path = RateProvider;
+			sourceTree = "<group>";
+		};
+		E37DC13F2A937503007E0404 /* RequestHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1422A937556007E0404 /* RequestHandling.swift */,
+				E37DC1402A93753C007E0404 /* RequestHandler.swift */,
+			);
+			path = RequestHandler;
+			sourceTree = "<group>";
+		};
+		E37DC1442A937562007E0404 /* ResponseHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1452A937588007E0404 /* ResponseHandling.swift */,
+				E37DC1472A937597007E0404 /* ResponseHandler.swift */,
+				E37DC1492A9375AA007E0404 /* ResponseHandlerError.swift */,
+			);
+			path = ResponseHandler;
+			sourceTree = "<group>";
+		};
+		E37DC14B2A9375B4007E0404 /* URLProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC14E2A9375E2007E0404 /* URLProviding.swift */,
+				E37DC14C2A9375D4007E0404 /* URLProvider.swift */,
+				E37DC1502A9375F3007E0404 /* URLProviderError.swift */,
+			);
+			path = URLProvider;
+			sourceTree = "<group>";
+		};
+		E37DC1522A93762E007E0404 /* DataDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1532A937648007E0404 /* DataDecoder.swift */,
+				E37DC1552A93766E007E0404 /* DataDecoding.swift */,
+			);
+			path = DataDecoder;
+			sourceTree = "<group>";
+		};
+		E37DC15B2A9391A1007E0404 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1592A93871D007E0404 /* Scheduler.swift */,
+				E37DC15C2A9391C0007E0404 /* Scheduling.swift */,
+			);
+			path = Scheduler;
+			sourceTree = "<group>";
+		};
+		E37DC15E2A93A8AC007E0404 /* NetworkStatusProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */,
+				E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */,
+				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
+			);
+			path = NetworkStatusProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,9 +560,11 @@
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
 				E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */,
 				E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */,
+				E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */,
 				E36B98A82A8D1A9100EEDBC8 /* CurrentRateView.swift in Sources */,
 				E36B98B42A8E44E800EEDBC8 /* SolidButton.swift in Sources */,
 				E36B98B92A8E46FC00EEDBC8 /* MenuItemView.swift in Sources */,
+				E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */,
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
@@ -429,24 +574,43 @@
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
 				E36B98822A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift in Sources */,
 				E36B98B02A8E3E4800EEDBC8 /* RequestButton.swift in Sources */,
+				E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */,
 				E36B988A2A8A41E100EEDBC8 /* SelectCountryViewModel.swift in Sources */,
 				E36B988F2A8A466100EEDBC8 /* Country.swift in Sources */,
+				E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */,
+				E37DC1562A93766E007E0404 /* DataDecoding.swift in Sources */,
+				E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */,
+				E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
+				E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
+				E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */,
 				E36B98522A8A28EB00EEDBC8 /* CurrencyConverterView.swift in Sources */,
+				E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */,
+				E37DC1582A937FBF007E0404 /* MockRateProvider.swift in Sources */,
 				E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */,
 				E36B98AA2A8D31EE00EEDBC8 /* CurrencyViewsSeparator.swift in Sources */,
 				E36B98802A8A413600EEDBC8 /* Coordinator.swift in Sources */,
 				E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */,
+				E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */,
+				E36B98D92A8FB8BC00EEDBC8 /* RateProvider.swift in Sources */,
+				E37DC1432A937556007E0404 /* RequestHandling.swift in Sources */,
 				E36B987E2A8A411100EEDBC8 /* CoordinatorObject.swift in Sources */,
 				E36B98842A8A419200EEDBC8 /* CurrencyConverterInfo.swift in Sources */,
+				E37DC1512A9375F3007E0404 /* URLProviderError.swift in Sources */,
 				E36B98AE2A8D47BE00EEDBC8 /* ErrorText.swift in Sources */,
+				E37DC14D2A9375D4007E0404 /* URLProvider.swift in Sources */,
 				E36B98A62A8D168F00EEDBC8 /* SwitchButton.swift in Sources */,
 				E36B98502A8A28EB00EEDBC8 /* TransferGOApp.swift in Sources */,
 				E36B98AC2A8D374700EEDBC8 /* CurrencyViewOverlay.swift in Sources */,
 				E36B989C2A8A834B00EEDBC8 /* View+cornerRadius.swift in Sources */,
+				E37DC1462A937588007E0404 /* ResponseHandling.swift in Sources */,
 				E36B987C2A8A2F4B00EEDBC8 /* CoordinatorView.swift in Sources */,
+				E37DC15D2A9391C0007E0404 /* Scheduling.swift in Sources */,
+				E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */,
+				E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */,
 				E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */,
+				E37DC1482A937597007E0404 /* ResponseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

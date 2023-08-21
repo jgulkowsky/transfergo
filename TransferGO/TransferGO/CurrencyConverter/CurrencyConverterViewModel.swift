@@ -7,30 +7,50 @@
 
 import Foundation
 
+// todo: from requirements: Mocked supported currencies pairs. I.e. 2 lists for FROM, TO (supported countries/currencies: Poland/PLN, Germany/EUR, Great Britain/GBP, Ukraine/UAH) - what does it mean?
+
+// todo: add tests
+
+// todo: built as a module that could be reused in multiple apps.
+
+// todo: on the background there should be these 2 tabs too... inactive
+
+// todo: we should lock possibility to select same from and to country - there should not be current in SelectCountryViewModel list of countries
+
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         didSet {
             checkLimits()
+            tryToUpdateCurrentRate()
         }
     }
-    @Published var toCountry: Country!
+    @Published var toCountry: Country! {
+        didSet {
+            tryToUpdateCurrentRate()
+        }
+    }
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
+            tryToUpdateCurrentRate()
         }
     }
-    @Published var toAmount: Double? // todo: update every time we have change something (user clicks sth) or even with regular frequency with some scheduler (when user doesn't do anything)
+    var toAmount: Double? {
+        return currentRate?.toAmount
+    }
     
     @Published var fromAmountFocused: Bool = false
-    var currentRate: String {
-        "1 \(fromCountry.currencyCode) ~ 7.23384 \(toCountry.currencyCode)" // todo: later on we need to get it from server
-        // todo: when there's no rate we should use "---"
+    
+    @Published var currentRate: Rate? = nil
+    var currentRateText: String {
+        currentRate?.toString() ?? "---"
     }
     
     @Published var connectionError: String? = nil
     @Published var limitExceededError: String? = nil
+    @Published var getCurrentRateError: String? = nil
     
     var shouldEnableFields: Bool {
         return connectionError == nil
@@ -40,9 +60,18 @@ class CurrencyConverterViewModel: ObservableObject {
         return limitExceededError != nil
     }
     
-    private var coordinator: Coordinator
+    private let coordinator: Coordinator
+    private let rateProvider: RateProviding
+    private let scheduler: Scheduling
+    private let networkStatusProvider: NetworkStatusProviding
     
-    init(info: CurrencyConverterInfo, coordinator: Coordinator) {
+    private var getCurrentRateTask: Task<(), Never>? = nil
+    
+    init(info: CurrencyConverterInfo,
+         coordinator: Coordinator,
+         rateProvider: RateProviding,
+         scheduler: Scheduling,
+         networkStatusProvider: NetworkStatusProviding) {
         if let fromCountry = info.fromCountry {
             self.fromCountry = fromCountry
         }
@@ -52,13 +81,30 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = fromAmount.to2DecPlaces() // maybe we should pass this to be in EditableCurrencyView only?
+            self.fromAmount = fromAmount.limitDecimalPlaces(to: 2) // todo: maybe we should pass this to be in EditableCurrencyView only?
         }
         
-        // todo: check connection - show error if problems
-//        connectionError = "No internet connection"
-        
         self.coordinator = coordinator
+        self.rateProvider = rateProvider
+        self.scheduler = scheduler
+        self.networkStatusProvider = networkStatusProvider
+        
+        tryToUpdateCurrentRate()
+    }
+    
+    func onSceneActive() {
+        startRegularCurrentRateUpdates()
+        startGettingNetworkStatus()
+    }
+    
+    func onSceneInactive() {
+        stopRegularCurrentRateUpdates()
+        stopGettingNetworkStatus()
+    }
+    
+    func onSceneInBackground() {
+        stopRegularCurrentRateUpdates()
+        stopGettingNetworkStatus()
     }
     
     func sendFromTapped() {
@@ -75,6 +121,7 @@ class CurrencyConverterViewModel: ObservableObject {
         (fromCountry, toCountry) = (toCountry, fromCountry)
         fromAmountFocused = false
         checkLimits()
+        tryToUpdateCurrentRate()
     }
     
     func backgroundTapped() {
@@ -96,9 +143,76 @@ private extension CurrencyConverterViewModel {
     func checkLimits() {
         if let amount = Double(fromAmount),
            amount > fromCountry.currencyLimit {
-            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.to2DecPlaces()) \(fromCountry.currencyCode)"
+            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.limitDecimalPlaces(to: 2)) \(fromCountry.currencyCode)"
         } else {
             limitExceededError = nil
         }
+    }
+    
+    func tryToUpdateCurrentRate(shouldResetCurrentValues: Bool = true) {
+        getCurrentRateTask?.cancel()
+        if shouldResetCurrentValues {
+            currentRate = nil
+            getCurrentRateError = nil
+        }
+        if areRequirementsForGettingCurrentRateSatisfied() {
+            getCurrentRate()
+        }
+    }
+    
+    func startRegularCurrentRateUpdates() {
+        self.scheduler.start(withInterval: 10.0) { [weak self] in
+            self?.tryToUpdateCurrentRate(shouldResetCurrentValues: false)
+        }
+    }
+    
+    func stopRegularCurrentRateUpdates() {
+        self.scheduler.stop()
+    }
+    
+    func areRequirementsForGettingCurrentRateSatisfied() -> Bool {
+        return Double(fromAmount) != nil && !fromAmountFocused && !limitExceeded
+    }
+    
+    func getCurrentRate() {
+        guard let amount = Double(fromAmount) else {
+            return
+        }
+        
+        getCurrentRateTask = Task {
+            do {
+                let rate = try await rateProvider.getRate(
+                    from: fromCountry,
+                    to: toCountry,
+                    amount: amount
+                )
+                await MainActor.run {
+                    currentRate = rate
+                    getCurrentRateError = nil
+                }
+            }
+            catch URLError.cancelled {}
+            catch (let error) where error is CancellationError {}
+            catch {
+                await MainActor.run {
+                    getCurrentRateError = "Cannot get current rate for \(fromCountry.currencyCode) ~ \(toCountry.currencyCode)"
+                    currentRate = nil
+                }
+            }
+        }
+    }
+    
+    func startGettingNetworkStatus() {
+        networkStatusProvider.start { [weak self] isConnected in
+            if isConnected {
+                self?.connectionError = nil
+            } else {
+                self?.connectionError = "No internet connection"
+            }
+        }
+    }
+    
+    func stopGettingNetworkStatus() {
+        networkStatusProvider.stop()
     }
 }

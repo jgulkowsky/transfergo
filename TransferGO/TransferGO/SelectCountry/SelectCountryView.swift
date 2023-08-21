@@ -26,24 +26,46 @@ struct SelectCountryView: View {
             
             SearchBar(text: $viewModel.searchText)
             
-            List {
-                Section(header: Text("All Countries")) {
-                    ForEach(viewModel.countries, id: \.self) { country in
-                        CountryView(
-                            country: country,
-                            onTap: {
-                                dismiss()
-                                viewModel.onCountryTapped(country)
-                            }
-                        )
-                    }
+            if viewModel.showLoadingIndicator {
+                Spacer().frame(height: 20)
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Spacer()
                 }
-                .listSectionSeparator(.hidden)
-                .foregroundColor(.black)
-                .fontWeight(.bold)
+                Spacer()
             }
-            .listStyle(.plain)
-            .padding(.top, -10)
+            
+            if viewModel.showError {
+                Spacer().frame(height: 20)
+                ErrorText(error: "Cannot fetch countries")
+                Spacer()
+            }
+            
+            if viewModel.showList {
+                List {
+                    Section(header: Text("All Countries")) {
+                        ForEach(viewModel.countries, id: \.self) { country in
+                            CountryView(
+                                country: country,
+                                onTap: {
+                                    dismiss()
+                                    viewModel.onCountryTapped(country)
+                                }
+                            )
+                        }
+                    }
+                    .listSectionSeparator(.hidden)
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
+                }
+                .listStyle(.plain)
+                .padding(.top, -10)
+            }
+        }
+        .task {
+            await viewModel.getAllCountries()
         }
     }
 }
@@ -53,7 +75,8 @@ struct SelectCountrySheetView_Previews: PreviewProvider {
         SelectCountryView(
             viewModel: SelectCountryViewModel(
                 info: SelectCountryInfo(type: .from),
-                coordinator: CoordinatorObject()
+                coordinator: CoordinatorObject(),
+                countriesProvider: CountriesProvider()
             )
         )
     }

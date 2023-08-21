@@ -46,7 +46,7 @@ struct EditableCurrencyView: View {
                         if amount == "" {
                             amount = storedLastAmount
                         } else if let number = Double(amount) {
-                            amount = number.to2DecPlaces()
+                            amount = number.limitDecimalPlaces(to: 2)
                         } else {
                             amount = storedLastAmount
                         }
@@ -55,7 +55,7 @@ struct EditableCurrencyView: View {
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.blue)
+                    .foregroundColor(limitExceeded ? .red : .blue)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)
                     .onTapGesture {

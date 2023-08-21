@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrencyConverterView: View {
     @ObservedObject var viewModel: CurrencyConverterViewModel
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         NavigationView {
@@ -62,25 +63,22 @@ struct CurrencyConverterView: View {
                     .offset(y: 53)
                     
                     CurrentRateView(
-                        currentRate: viewModel.currentRate,
+                        currentRate: viewModel.currentRateText,
                         isEnabled: viewModel.shouldEnableFields
                     )
                     .zIndex(2)
                     .offset(y: 53)
                 }
                 
-                if viewModel.connectionError != nil {
-                    ErrorText(
-                        error: $viewModel.connectionError
-                    )
-                    .offset(y: 100)
-                }
-                
-                if viewModel.limitExceededError != nil {
-                    ErrorText(
-                        error: $viewModel.limitExceededError
-                    )
-                    .offset(y: 100)
+                if let error = viewModel.connectionError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
+                } else if let error = viewModel.limitExceededError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
+                } else if let error = viewModel.getCurrentRateError {
+                    ErrorText(error: error)
+                        .offset(y: 100)
                 }
                 
                 Spacer()
@@ -120,6 +118,15 @@ struct CurrencyConverterView: View {
                 }
             }
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                viewModel.onSceneActive()
+            } else if newPhase == .inactive {
+                viewModel.onSceneInactive()
+            } else if newPhase == .background {
+                viewModel.onSceneInBackground()
+            }
+        }
     }
 }
 
@@ -132,7 +139,10 @@ struct ContentView_Previews: PreviewProvider {
                     toCountry: PredefinedCountry.ukraine,
                     fromAmount: 300.0
                 ),
-                coordinator: CoordinatorObject()
+                coordinator: CoordinatorObject(),
+                rateProvider: MockRateProvider(),
+                scheduler: Scheduler(),
+                networkStatusProvider: MockNetworkStatusProvider()
             )
         )
     }

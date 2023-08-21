@@ -8,7 +8,7 @@
 import Foundation
 
 extension Double {
-    func to2DecPlaces() -> String {
-        return String(format: "%.2f", self)
+    func limitDecimalPlaces(to limit: Int) -> String {
+        return String(format: "%.\(limit)f", self)
     }
 }

@@ -16,34 +16,47 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
         }
     }
     @Published var countries: [Country] = []
+    @Published var showLoadingIndicator: Bool = false
+    @Published var showError: Bool = false
+    @Published var showList: Bool = false
     
-    var coordinator: Coordinator
     private var type: SelectType
     
     private var allCountries: [Country] = []
     
-    init(info: SelectCountryInfo, coordinator: Coordinator) {
+    private let coordinator: Coordinator
+    private let countriesProvider: CountriesProviding
+    
+    init(info: SelectCountryInfo,
+         coordinator: Coordinator,
+         countriesProvider: CountriesProviding) {
         self.coordinator = coordinator
+        self.countriesProvider = countriesProvider
         type = info.type
         title = (type == .from) ? "Sending from" : "Sending to"
-        getAllCountries()
-        updateCountries()
     }
     
-    func getAllCountries() {
-        // todo: add service that will return them with aync method
-        self.allCountries = [
-            PredefinedCountry.poland,
-            PredefinedCountry.germany,
-            PredefinedCountry.greatBritain,
-            PredefinedCountry.ukraine
-        ]
-    }
-    
-    func updateCountries() {
-        self.countries = self.allCountries.filter {
-            $0.name.starts(with: searchText)
-            // todo: you should also consider option of typing currency or code
+    func getAllCountries() async {
+        do {
+            await MainActor.run {
+                showError = false
+                showLoadingIndicator = true
+                showList = false
+            }
+            
+            allCountries = try await countriesProvider.getCountries()
+            
+            await MainActor.run {
+                updateCountries()
+                showLoadingIndicator = false
+                showList = true
+            }
+        } catch {
+            // todo: here you should also deal with cancellation errors like in CurrencyConverterViewModel or no? 
+            await MainActor.run {
+                showLoadingIndicator = false
+                showError = true
+            }
         }
     }
     
@@ -53,5 +66,14 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
                 ? CurrencyConverterInfo(fromCountry: country)
                 : CurrencyConverterInfo(toCountry: country)
         )
+    }
+}
+
+private extension SelectCountryViewModel {
+    func updateCountries() {
+        self.countries = self.allCountries.filter {
+            $0.name.starts(with: searchText)
+            // todo: you should also consider option of typing currency or code
+        }
     }
 }
