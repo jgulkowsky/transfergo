@@ -125,7 +125,6 @@ private extension CurrencyConverterViewModel {
     
     func tryToUpdateCurrentRate() {
         // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
-        print("@jgu: getCurrentRateTask?.cancel()")
         getCurrentRateTask?.cancel()
         currentRate = nil
         getCurrentRateError = nil
@@ -145,7 +144,6 @@ private extension CurrencyConverterViewModel {
         
         getCurrentRateTask = Task {
             do {
-                print("@jgu: try await rateProvider.getRate")
                 let rate = try await rateProvider.getRate(
                     from: fromCountry,
                     to: toCountry,
@@ -153,11 +151,14 @@ private extension CurrencyConverterViewModel {
                 )
                 await MainActor.run {
                     currentRate = rate
+                    getCurrentRateError = nil
                 }
-            } catch {
+            }
+            catch URLError.cancelled {}
+            catch {
                 await MainActor.run {
-                    print("@jgu: throws") // todo: this is thrown from somewhere but I dunno from where - we get currentRate too - so it's really strange
                     getCurrentRateError = "Cannot get current rate for \(fromCountry.currencyCode) ~ \(toCountry.currencyCode)"
+                    currentRate = nil
                 }
             }
         }
