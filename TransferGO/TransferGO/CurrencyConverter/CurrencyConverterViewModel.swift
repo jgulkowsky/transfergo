@@ -13,6 +13,8 @@ import Foundation
 
 // todo: built as a module that could be reused in multiple apps.
 
+// todo: on the background there should be these 2 tabs too... inactive
+
 // todo: we should lock possibility to select same from and to country - there should not be current in SelectCountryViewModel list of countries
 
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
