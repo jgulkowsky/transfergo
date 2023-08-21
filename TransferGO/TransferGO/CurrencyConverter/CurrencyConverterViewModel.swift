@@ -64,7 +64,7 @@ class CurrencyConverterViewModel: ObservableObject {
     private let rateProvider: RateProviding
     private let scheduler: Scheduling
     
-    private var getCurrentRateTask: Task<(), Never>? = nil // todo: or Task<(), Error>?
+    private var getCurrentRateTask: Task<(), Never>? = nil
     
     init(info: CurrencyConverterInfo,
          coordinator: Coordinator,
@@ -147,13 +147,12 @@ private extension CurrencyConverterViewModel {
     }
     
     func tryToUpdateCurrentRate(shouldResetCurrentValues: Bool = true) {
-        // todo: it would be also nice to return rate and toAmount immediately if nothing has changed after reset - on the other hand the rate could change in meantime so maybe we should leave it as it is - or add timer that checks how old is our current value - if we have scheduler that gets the values on the background then this still will be updated
         getCurrentRateTask?.cancel()
         if shouldResetCurrentValues {
             currentRate = nil
             getCurrentRateError = nil
         }
-        if areRequirementsSatisfied() {
+        if areRequirementsForGettingCurrentRateSatisfied() {
             getCurrentRate()
         }
     }
@@ -168,8 +167,7 @@ private extension CurrencyConverterViewModel {
         self.scheduler.stop()
     }
     
-    // todo: what requirements - you should rename this method
-    func areRequirementsSatisfied() -> Bool {
+    func areRequirementsForGettingCurrentRateSatisfied() -> Bool {
         return Double(fromAmount) != nil && !fromAmountFocused && !limitExceeded
     }
     
@@ -199,6 +197,5 @@ private extension CurrencyConverterViewModel {
                 }
             }
         }
-        // todo: btw we should regularly check the rate e.g. every 10 seconds and also when user does sth
     }
 }

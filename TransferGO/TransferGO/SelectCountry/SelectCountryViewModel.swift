@@ -52,6 +52,7 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
                 showList = true
             }
         } catch {
+            // todo: here you should also deal with cancellation errors like in CurrencyConverterViewModel or no? 
             await MainActor.run {
                 showLoadingIndicator = false
                 showError = true
