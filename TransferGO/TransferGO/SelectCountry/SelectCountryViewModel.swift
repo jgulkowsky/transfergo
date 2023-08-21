@@ -75,7 +75,8 @@ private extension SelectCountryViewModel {
     func updateCountries() {
         self.countries = self.allCountries.filter {
             $0.name.starts(with: searchText)
-            // todo: you should also consider option of typing currency or code
+            || $0.currencyCode.starts(with: searchText)
+            || $0.currency.starts(with: searchText)
         }
     }
 }
