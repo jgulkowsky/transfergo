@@ -58,7 +58,7 @@ struct CurrencyView_Previews: PreviewProvider {
             enabled: true,
             borderVisible: true,
             amountView:
-                Text(1200.0.to2DecPlaces()) // or "---"
+                Text(1200.0.limitDecimalPlaces(to: 2)) // or "---"
                     .multilineTextAlignment(.trailing)
                     .font(.system(size: 35))
                     .fontWeight(.bold)

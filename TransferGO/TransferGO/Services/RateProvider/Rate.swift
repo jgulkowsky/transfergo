@@ -17,6 +17,6 @@ struct Rate: Decodable {
     var toAmount: Double
     
     func toString() -> String {
-        return "1 \(from) ~ \(rate) \(to)"
+        return "1 \(from) ~ \(rate.limitDecimalPlaces(to: 5)) \(to)"
     }
 }

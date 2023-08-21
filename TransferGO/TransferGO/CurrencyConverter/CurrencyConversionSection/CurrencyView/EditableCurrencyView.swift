@@ -46,7 +46,7 @@ struct EditableCurrencyView: View {
                         if amount == "" {
                             amount = storedLastAmount
                         } else if let number = Double(amount) {
-                            amount = number.to2DecPlaces()
+                            amount = number.limitDecimalPlaces(to: 2)
                         } else {
                             amount = storedLastAmount
                         }

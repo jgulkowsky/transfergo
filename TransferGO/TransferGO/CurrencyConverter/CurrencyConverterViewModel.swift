@@ -69,7 +69,7 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = fromAmount.to2DecPlaces() // todo: maybe we should pass this to be in EditableCurrencyView only?
+            self.fromAmount = fromAmount.limitDecimalPlaces(to: 2) // todo: maybe we should pass this to be in EditableCurrencyView only?
         }
         
         self.coordinator = coordinator
@@ -117,7 +117,7 @@ private extension CurrencyConverterViewModel {
     func checkLimits() {
         if let amount = Double(fromAmount),
            amount > fromCountry.currencyLimit {
-            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.to2DecPlaces()) \(fromCountry.currencyCode)"
+            limitExceededError = "Maximum sending amount \(fromCountry.currencyLimit.limitDecimalPlaces(to: 2)) \(fromCountry.currencyCode)"
         } else {
             limitExceededError = nil
         }
@@ -155,6 +155,7 @@ private extension CurrencyConverterViewModel {
                 }
             }
             catch URLError.cancelled {}
+            catch (let error) where error is CancellationError {}
             catch {
                 await MainActor.run {
                     getCurrentRateError = "Cannot get current rate for \(fromCountry.currencyCode) ~ \(toCountry.currencyCode)"

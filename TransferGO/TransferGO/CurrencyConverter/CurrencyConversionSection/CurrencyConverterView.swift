@@ -132,13 +132,7 @@ struct ContentView_Previews: PreviewProvider {
                     fromAmount: 300.0
                 ),
                 coordinator: CoordinatorObject(),
-                rateProvider: RateProvider(
-                    urlProvider: URLProvider(),
-                    requestHandler: RequestHandler(),
-                    responseHandler: ResponseHandler(
-                        decoder: DataDecoder()
-                    )
-                )
+                rateProvider: MockRateProvider()
             )
         )
     }
