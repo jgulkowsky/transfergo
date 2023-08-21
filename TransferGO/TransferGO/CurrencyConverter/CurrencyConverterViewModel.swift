@@ -15,20 +15,32 @@ import Foundation
 
 // todo: on the background there should be these 2 tabs too... inactive
 
-// todo: we should lock possibility to select same from and to country - there should not be current in SelectCountryViewModel list of countries
-
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
+        willSet {
+            if !isBeingAutoSwitched && toCountry == newValue {
+                isBeingAutoSwitched = true
+                toCountry = fromCountry
+            }
+        }
         didSet {
             checkLimits()
             tryToUpdateCurrentRate()
+            isBeingAutoSwitched = false
         }
     }
     @Published var toCountry: Country! {
+        willSet {
+            if !isBeingAutoSwitched && fromCountry == newValue {
+                isBeingAutoSwitched = true
+                fromCountry = toCountry
+            }
+        }
         didSet {
             tryToUpdateCurrentRate()
+            isBeingAutoSwitched = false
         }
     }
     @Published var fromAmount: String = "" {
@@ -40,6 +52,8 @@ class CurrencyConverterViewModel: ObservableObject {
     var toAmount: Double? {
         return currentRate?.toAmount
     }
+    
+    private var isBeingAutoSwitched = false
     
     @Published var fromAmountFocused: Bool = false
     
