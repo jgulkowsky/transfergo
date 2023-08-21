@@ -7,8 +7,6 @@
 
 import Foundation
 
-// todo: this rather should be in some model folder
-
 struct Rate: Decodable {
     var from: String
     var to: String

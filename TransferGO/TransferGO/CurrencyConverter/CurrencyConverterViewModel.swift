@@ -95,7 +95,7 @@ class CurrencyConverterViewModel: ObservableObject {
         }
         
         if let fromAmount = info.fromAmount {
-            self.fromAmount = fromAmount.limitDecimalPlaces(to: 2) // todo: maybe we should pass this to be in EditableCurrencyView only?
+            self.fromAmount = fromAmount.limitDecimalPlaces(to: 2)
         }
         
         self.coordinator = coordinator

@@ -198,11 +198,9 @@
 		E36B984E2A8A28EB00EEDBC8 /* TransferGO */ = {
 			isa = PBXGroup;
 			children = (
-				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
-				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
-				E36B988E2A8A466100EEDBC8 /* Country.swift */,
-				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
+				E37DC1672A93CB8F007E0404 /* Model */,
+				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
 				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
@@ -256,7 +254,6 @@
 				E36B98B52A8E463C00EEDBC8 /* CurrencyConversionSection */,
 				E36B98B72A8E466D00EEDBC8 /* RequestAndSendSection */,
 				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
-				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -265,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */,
-				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
 				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
 				E36B98942A8A564C00EEDBC8 /* CountryView.swift */,
 			);
@@ -364,7 +360,6 @@
 			children = (
 				E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */,
 				E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */,
-				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
 				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
 			);
 			path = RateProvider;
@@ -425,6 +420,19 @@
 				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
 			);
 			path = NetworkStatusProvider;
+			sourceTree = "<group>";
+		};
+		E37DC1672A93CB8F007E0404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
+				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
+				E36B988E2A8A466100EEDBC8 /* Country.swift */,
+				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
+				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
+				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
