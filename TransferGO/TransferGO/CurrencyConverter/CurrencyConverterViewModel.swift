@@ -24,17 +24,20 @@ class CurrencyConverterViewModel: ObservableObject {
         didSet {
             checkLimits()
             tryToUpdateCurrentRate()
+            getNetworkStatus()
         }
     }
     @Published var toCountry: Country! {
         didSet {
             tryToUpdateCurrentRate()
+            getNetworkStatus()
         }
     }
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
             tryToUpdateCurrentRate()
+            getNetworkStatus()
         }
     }
     var toAmount: Double? {
@@ -90,21 +93,19 @@ class CurrencyConverterViewModel: ObservableObject {
         self.networkStatusProvider = networkStatusProvider
         
         tryToUpdateCurrentRate()
+        getNetworkStatus()
     }
     
     func onSceneActive() {
-        startRegularCurrentRateUpdates()
-        startGettingNetworkStatus()
+        startRegularCurrentRateAndNetworkStatusUpdates()
     }
     
     func onSceneInactive() {
-        stopRegularCurrentRateUpdates()
-        stopGettingNetworkStatus()
+        stopRegularCurrentRateAndNetworkStatusUpdates()
     }
     
     func onSceneInBackground() {
-        stopRegularCurrentRateUpdates()
-        stopGettingNetworkStatus()
+        stopRegularCurrentRateAndNetworkStatusUpdates()
     }
     
     func sendFromTapped() {
@@ -122,6 +123,7 @@ class CurrencyConverterViewModel: ObservableObject {
         fromAmountFocused = false
         checkLimits()
         tryToUpdateCurrentRate()
+        getNetworkStatus()
     }
     
     func backgroundTapped() {
@@ -160,13 +162,14 @@ private extension CurrencyConverterViewModel {
         }
     }
     
-    func startRegularCurrentRateUpdates() {
+    func startRegularCurrentRateAndNetworkStatusUpdates() {
         self.scheduler.start(withInterval: 10.0) { [weak self] in
             self?.tryToUpdateCurrentRate(shouldResetCurrentValues: false)
+            self?.getNetworkStatus()
         }
     }
     
-    func stopRegularCurrentRateUpdates() {
+    func stopRegularCurrentRateAndNetworkStatusUpdates() {
         self.scheduler.stop()
     }
     
@@ -202,7 +205,7 @@ private extension CurrencyConverterViewModel {
         }
     }
     
-    func startGettingNetworkStatus() {
+    func getNetworkStatus() {
         networkStatusProvider.start { [weak self] isConnected in
             if isConnected {
                 self?.connectionError = nil
@@ -210,9 +213,5 @@ private extension CurrencyConverterViewModel {
                 self?.connectionError = "No internet connection"
             }
         }
-    }
-    
-    func stopGettingNetworkStatus() {
-        networkStatusProvider.stop()
     }
 }

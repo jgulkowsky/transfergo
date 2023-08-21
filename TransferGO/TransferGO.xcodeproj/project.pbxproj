@@ -66,6 +66,7 @@
 		E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */; };
 		E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */; };
 		E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
+		E37DC1662A93BEC2007E0404 /* NetworkStatusProviderAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1652A93BEC1007E0404 /* NetworkStatusProviderAlternative.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProvider.swift; sourceTree = "<group>"; };
 		E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProviding.swift; sourceTree = "<group>"; };
 		E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkStatusProvider.swift; sourceTree = "<group>"; };
+		E37DC1652A93BEC1007E0404 /* NetworkStatusProviderAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProviderAlternative.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 				E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */,
 				E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */,
 				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
+				E37DC1652A93BEC1007E0404 /* NetworkStatusProviderAlternative.swift */,
 			);
 			path = NetworkStatusProvider;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				E37DC1412A93753C007E0404 /* RequestHandler.swift in Sources */,
 				E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */,
 				E36B98882A8A41C300EEDBC8 /* SelectType.swift in Sources */,
+				E37DC1662A93BEC2007E0404 /* NetworkStatusProviderAlternative.swift in Sources */,
 				E37DC1542A937648007E0404 /* DataDecoder.swift in Sources */,
 				E36B98932A8A502A00EEDBC8 /* SearchBar.swift in Sources */,
 				E36B98D72A8FB84400EEDBC8 /* Rate.swift in Sources */,
