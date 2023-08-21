@@ -7,6 +7,12 @@
 
 import Foundation
 
+// todo: from requirements: Mocked supported currencies pairs. I.e. 2 lists for FROM, TO (supported countries/currencies: Poland/PLN, Germany/EUR, Great Britain/GBP, Ukraine/UAH) - what does it mean?
+
+// todo: add tests
+
+// todo: built as a module that could be reused in multiple apps.
+
 // todo: we should lock possibility to select same from and to country - there should not be current in SelectCountryViewModel list of countries
 
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
