@@ -104,6 +104,10 @@
 		E37DC1AD2A9548DF007E0404 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
 		E37DC1AF2A954933007E0404 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1AE2A954933007E0404 /* MockCoordinator.swift */; };
 		E37DC1B12A9549A2007E0404 /* MockCountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */; };
+		E37DC1B32A957F43007E0404 /* CurrencyConverterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1B22A957F43007E0404 /* CurrencyConverterViewModelTests.swift */; };
+		E37DC1B42A957F8D007E0404 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */; };
+		E37DC1B52A958069007E0404 /* Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15C2A9391C0007E0404 /* Scheduling.swift */; };
+		E37DC1B92A9580D0007E0404 /* MockScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1B82A9580D0007E0404 /* MockScheduler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +205,8 @@
 		E37DC1A92A954879007E0404 /* SelectCountryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewModelTests.swift; sourceTree = "<group>"; };
 		E37DC1AE2A954933007E0404 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCountriesProvider.swift; sourceTree = "<group>"; };
+		E37DC1B22A957F43007E0404 /* CurrencyConverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModelTests.swift; sourceTree = "<group>"; };
+		E37DC1B82A9580D0007E0404 /* MockScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +509,7 @@
 				E37DC1992A9512E5007E0404 /* MockError.swift */,
 				E37DC1AE2A954933007E0404 /* MockCoordinator.swift */,
 				E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */,
+				E37DC1B82A9580D0007E0404 /* MockScheduler.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -547,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				E37DC1A92A954879007E0404 /* SelectCountryViewModelTests.swift */,
+				E37DC1B22A957F43007E0404 /* CurrencyConverterViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -753,13 +761,16 @@
 				E37DC1892A95089C007E0404 /* URLProvider.swift in Sources */,
 				E37DC1712A95010A007E0404 /* MockDataDecoder.swift in Sources */,
 				E37DC16C2A94F96E007E0404 /* RateProviding.swift in Sources */,
+				E37DC1B92A9580D0007E0404 /* MockScheduler.swift in Sources */,
 				E37DC1912A9511CA007E0404 /* RateProvider.swift in Sources */,
 				E37DC17B2A9502EF007E0404 /* CurrencyConverterInfo.swift in Sources */,
+				E37DC1B42A957F8D007E0404 /* CurrencyConverterViewModel.swift in Sources */,
 				E37DC1962A951274007E0404 /* MockRequestHandler.swift in Sources */,
 				E37DC1AC2A9548D2007E0404 /* Coordinator.swift in Sources */,
 				E37DC1982A951289007E0404 /* MockResponseHandler.swift in Sources */,
 				E37DC1792A9502E9007E0404 /* PredefinedCountry.swift in Sources */,
 				E37DC1752A9502AC007E0404 /* ResponseHandler.swift in Sources */,
+				E37DC1B52A958069007E0404 /* Scheduling.swift in Sources */,
 				E37DC1AA2A954879007E0404 /* SelectCountryViewModelTests.swift in Sources */,
 				E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */,
 				E37DC1902A9511B6007E0404 /* RateProviderTests.swift in Sources */,
@@ -772,6 +783,7 @@
 				E37DC16E2A94F979007E0404 /* Rate.swift in Sources */,
 				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 				E37DC1A22A951E58007E0404 /* DoubleExtensions.swift in Sources */,
+				E37DC1B32A957F43007E0404 /* CurrencyConverterViewModelTests.swift in Sources */,
 				E37DC16D2A94F973007E0404 /* Country.swift in Sources */,
 				E37DC1AB2A9548B5007E0404 /* SelectCountryViewModel.swift in Sources */,
 				E37DC1722A95012A007E0404 /* DataDecoding.swift in Sources */,
