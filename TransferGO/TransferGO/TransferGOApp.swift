@@ -7,17 +7,6 @@
 
 import SwiftUI
 
-@main
-struct AppLauncher {
-    static func main() throws {
-        if NSClassFromString("XCTestCase") == nil {
-            TransferGOApp.main()
-        } else {
-            TestApp.main()
-        }
-    }
-}
-
 struct TransferGOApp: App {
     @StateObject var coordinatorObject = CoordinatorObject()
     
@@ -28,12 +17,3 @@ struct TransferGOApp: App {
         }
     }
 }
-
-struct TestApp: App {
-    var body: some Scene {
-        WindowGroup {
-            Text("Running Unit Tests")
-        }
-    }
-}
-

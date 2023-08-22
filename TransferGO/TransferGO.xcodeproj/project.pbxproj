@@ -83,6 +83,8 @@
 		E37DC17A2A9502EC007E0404 /* SelectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98872A8A41C300EEDBC8 /* SelectType.swift */; };
 		E37DC17B2A9502EF007E0404 /* CurrencyConverterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */; };
 		E37DC17C2A9502F1007E0404 /* SelectCountryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */; };
+		E37DC17E2A950616007E0404 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC17D2A950616007E0404 /* AppLauncher.swift */; };
+		E37DC1822A950700007E0404 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC17F2A950638007E0404 /* TestApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,8 @@
 		E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusProviding.swift; sourceTree = "<group>"; };
 		E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkStatusProvider.swift; sourceTree = "<group>"; };
 		E37DC1702A95010A007E0404 /* MockDataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataDecoder.swift; sourceTree = "<group>"; };
+		E37DC17D2A950616007E0404 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		E37DC17F2A950638007E0404 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +220,9 @@
 		E36B984E2A8A28EB00EEDBC8 /* TransferGO */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC17D2A950616007E0404 /* AppLauncher.swift */,
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
+				E37DC17F2A950638007E0404 /* TestApp.swift */,
 				E37DC1672A93CB8F007E0404 /* Model */,
 				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
@@ -593,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36B98952A8A564C00EEDBC8 /* CountryView.swift in Sources */,
+				E37DC1822A950700007E0404 /* TestApp.swift in Sources */,
 				E36B98A42A8D058B00EEDBC8 /* CurrencyViewBackground.swift in Sources */,
 				E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */,
 				E37DC15A2A93871D007E0404 /* Scheduler.swift in Sources */,
@@ -645,6 +652,7 @@
 				E37DC14A2A9375AA007E0404 /* ResponseHandlerError.swift in Sources */,
 				E37DC14F2A9375E2007E0404 /* URLProviding.swift in Sources */,
 				E36B98A12A8D047200EEDBC8 /* TitleAndFlagView.swift in Sources */,
+				E37DC17E2A950616007E0404 /* AppLauncher.swift in Sources */,
 				E37DC1482A937597007E0404 /* ResponseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
