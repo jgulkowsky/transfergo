@@ -98,6 +98,12 @@
 		E37DC19D2A9518CD007E0404 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC19C2A9518CD007E0404 /* TestHelper.swift */; };
 		E37DC1A02A951CB1007E0404 /* Rate+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC19F2A951CB1007E0404 /* Rate+Equatable.swift */; };
 		E37DC1A22A951E58007E0404 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1A12A951E58007E0404 /* DoubleExtensions.swift */; };
+		E37DC1AA2A954879007E0404 /* SelectCountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1A92A954879007E0404 /* SelectCountryViewModelTests.swift */; };
+		E37DC1AB2A9548B5007E0404 /* SelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */; };
+		E37DC1AC2A9548D2007E0404 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B987F2A8A413600EEDBC8 /* Coordinator.swift */; };
+		E37DC1AD2A9548DF007E0404 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
+		E37DC1AF2A954933007E0404 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1AE2A954933007E0404 /* MockCoordinator.swift */; };
+		E37DC1B12A9549A2007E0404 /* MockCountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +198,9 @@
 		E37DC19C2A9518CD007E0404 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		E37DC19F2A951CB1007E0404 /* Rate+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rate+Equatable.swift"; sourceTree = "<group>"; };
 		E37DC1A12A951E58007E0404 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		E37DC1A92A954879007E0404 /* SelectCountryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewModelTests.swift; sourceTree = "<group>"; };
+		E37DC1AE2A954933007E0404 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
+		E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCountriesProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +501,8 @@
 				E37DC1952A951274007E0404 /* MockRequestHandler.swift */,
 				E37DC1972A951289007E0404 /* MockResponseHandler.swift */,
 				E37DC1992A9512E5007E0404 /* MockError.swift */,
+				E37DC1AE2A954933007E0404 /* MockCoordinator.swift */,
+				E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -516,6 +527,7 @@
 		E37DC1A42A9547B0007E0404 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC1A62A95483C007E0404 /* ViewModels */,
 				E37DC1A52A9547DB007E0404 /* ServicesTests */,
 			);
 			path = Tests;
@@ -529,6 +541,14 @@
 				E37DC18F2A9511B6007E0404 /* RateProviderTests.swift */,
 			);
 			path = ServicesTests;
+			sourceTree = "<group>";
+		};
+		E37DC1A62A95483C007E0404 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1A92A954879007E0404 /* SelectCountryViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -725,6 +745,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E37DC18A2A9509BB007E0404 /* URLProviding.swift in Sources */,
+				E37DC1AD2A9548DF007E0404 /* CountriesProviding.swift in Sources */,
+				E37DC1AF2A954933007E0404 /* MockCoordinator.swift in Sources */,
 				E37DC17C2A9502F1007E0404 /* SelectCountryInfo.swift in Sources */,
 				E37DC19D2A9518CD007E0404 /* TestHelper.swift in Sources */,
 				E36B98612A8A28ED00EEDBC8 /* ResponseHandlerTests.swift in Sources */,
@@ -734,9 +756,11 @@
 				E37DC1912A9511CA007E0404 /* RateProvider.swift in Sources */,
 				E37DC17B2A9502EF007E0404 /* CurrencyConverterInfo.swift in Sources */,
 				E37DC1962A951274007E0404 /* MockRequestHandler.swift in Sources */,
+				E37DC1AC2A9548D2007E0404 /* Coordinator.swift in Sources */,
 				E37DC1982A951289007E0404 /* MockResponseHandler.swift in Sources */,
 				E37DC1792A9502E9007E0404 /* PredefinedCountry.swift in Sources */,
 				E37DC1752A9502AC007E0404 /* ResponseHandler.swift in Sources */,
+				E37DC1AA2A954879007E0404 /* SelectCountryViewModelTests.swift in Sources */,
 				E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */,
 				E37DC1902A9511B6007E0404 /* RateProviderTests.swift in Sources */,
 				E37DC19A2A9512E5007E0404 /* MockError.swift in Sources */,
@@ -744,10 +768,12 @@
 				E37DC1772A9502D3007E0404 /* ResponseHandlerError.swift in Sources */,
 				E37DC1942A951255007E0404 /* MockURLProvider.swift in Sources */,
 				E37DC16F2A94F991007E0404 /* Double+to2DecPlaces.swift in Sources */,
+				E37DC1B12A9549A2007E0404 /* MockCountriesProvider.swift in Sources */,
 				E37DC16E2A94F979007E0404 /* Rate.swift in Sources */,
 				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 				E37DC1A22A951E58007E0404 /* DoubleExtensions.swift in Sources */,
 				E37DC16D2A94F973007E0404 /* Country.swift in Sources */,
+				E37DC1AB2A9548B5007E0404 /* SelectCountryViewModel.swift in Sources */,
 				E37DC1722A95012A007E0404 /* DataDecoding.swift in Sources */,
 				E37DC1A02A951CB1007E0404 /* Rate+Equatable.swift in Sources */,
 				E37DC1882A950870007E0404 /* URLProviderTests.swift in Sources */,

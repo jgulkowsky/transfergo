@@ -7,6 +7,8 @@
 
 import XCTest
 
+// todo: this tests are wrong - we don't wait for Tasks to finish - checkout SelectCountryViewModelTests for proper approach
+
 final class RateProviderTests: XCTestCase {
     private var rateProvider: RateProvider!
     private var mockURLProvider: MockURLProvider!

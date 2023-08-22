@@ -39,9 +39,9 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
     func getAllCountries() async {
         do {
             await MainActor.run {
-                showError = false
                 showLoadingIndicator = true
                 showList = false
+                showError = false
             }
             
             allCountries = try await countriesProvider.getCountries()
@@ -50,13 +50,13 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
                 updateCountries()
                 showLoadingIndicator = false
                 showList = true
+                showError = false
             }
         }
-        catch URLError.cancelled {}
-        catch (let error) where error is CancellationError {}
         catch {
             await MainActor.run {
                 showLoadingIndicator = false
+                showList = false
                 showError = true
             }
         }
