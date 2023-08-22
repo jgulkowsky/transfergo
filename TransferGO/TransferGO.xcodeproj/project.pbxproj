@@ -66,6 +66,8 @@
 		E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */; };
 		E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */; };
 		E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
+		E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
+		E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1572A937FBF007E0404 /* MockRateProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +225,7 @@
 		E36B985F2A8A28ED00EEDBC8 /* TransferGOTests */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC1682A94F4B6007E0404 /* Mocks */,
 				E36B98602A8A28ED00EEDBC8 /* TransferGOTests.swift */,
 			);
 			path = TransferGOTests;
@@ -360,7 +363,6 @@
 			children = (
 				E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */,
 				E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */,
-				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
 			);
 			path = RateProvider;
 			sourceTree = "<group>";
@@ -417,7 +419,6 @@
 			children = (
 				E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */,
 				E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */,
-				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
 			);
 			path = NetworkStatusProvider;
 			sourceTree = "<group>";
@@ -433,6 +434,15 @@
 				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E37DC1682A94F4B6007E0404 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
+				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -627,6 +637,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36B98612A8A28ED00EEDBC8 /* TransferGOTests.swift in Sources */,
+				E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */,
+				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

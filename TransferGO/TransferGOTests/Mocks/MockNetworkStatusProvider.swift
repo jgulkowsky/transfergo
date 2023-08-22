@@ -7,7 +7,6 @@
 
 import Foundation
 
-// todo: move into test target and folder
 class MockNetworkStatusProvider: NetworkStatusProviding {
     private var onStatusUpdated: ((Bool) -> Void)!
     private var timer: Timer? = nil
