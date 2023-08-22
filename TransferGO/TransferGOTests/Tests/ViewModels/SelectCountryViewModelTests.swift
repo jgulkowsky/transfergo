@@ -18,6 +18,7 @@ final class SelectCountryViewModelTests: XCTestCase {
         info = SelectCountryInfo(type: .from)
         coordinator = MockCoordinator()
         countriesProvider = MockCountriesProvider()
+        countriesProvider.countriesToReturn = [PredefinedCountry.poland, PredefinedCountry.ukraine]
         
         viewModel = SelectCountryViewModel(
             info: info,
@@ -41,14 +42,14 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.title, "Sending to")
     }
     
-    func test_whenViewModelIsInitialized_thenLoadingIndicatorIsHidden_listIsHidden_andErrorIsHidden() async {
+    func test_whenViewModelIsInitialized_then_loadingIndicatorIsHidden_listIsHidden_andErrorIsHidden_countriesIsEmpty() async {
         // then
         XCTAssertEqual(viewModel.showLoadingIndicator, false)
         XCTAssertEqual(viewModel.showList, false)
         XCTAssertEqual(viewModel.showError, false)
+        XCTAssert(viewModel.countries.isEmpty)
     }
     
-    // todo: we should probably also update countries to be empty each time we call countriesProvider - that's not done
     func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whenViewModelIsGettingAllCountries_thenBeforeTheseCountriesAreGotten_loadingIndicatorIsShown_listIsHidden_andErrorIsHidden() async {
         // when
         let (showLoadingIndicatorValues, showListValues, showErrorValues) = await whenViewModelIsGettingAllCountries_thenThisIsHow_showLoadingIndicator_showList_andShowError_valuesAreSet()
@@ -59,7 +60,7 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(showErrorValues[1], false)
     }
     
-    func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whenViewModelIsGettingAllCountries_thenAfterTheseCountriesAreGotten_loadingIndicatorIsHidden_listIsShown_andErrorIsHidden() async {
+    func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whenViewModelIsGettingAllCountries_thenAfterTheseCountriesAreGotten_loadingIndicatorIsHidden_listIsShown_errorIsHidden_andCountriesIsSet() async {
         // when
         let (showLoadingIndicatorValues, showListValues, showErrorValues) = await whenViewModelIsGettingAllCountries_thenThisIsHow_showLoadingIndicator_showList_andShowError_valuesAreSet()
         
@@ -67,6 +68,7 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(showLoadingIndicatorValues[2], false)
         XCTAssertEqual(showListValues[2], true)
         XCTAssertEqual(showErrorValues[2], false)
+        XCTAssertFalse(viewModel.countries.isEmpty)
     }
     
     func test_givenThatCountriesProviderThrowsDuringGettingListOfCountries_whenViewModelIsGettingAllCountries_thenBeforeErrorIsThrown_loadingIndicatorIsShown_listIsHidden_andErrorIsHidden() async {
@@ -87,7 +89,7 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(showErrorValues[1], false)
     }
     
-    func test_givenThatCountriesProviderThrowsDuringGettingListOfCountries_whenViewModelIsGettingAllCountries_thenAfterErrorIsThrown_loadingIndicatorIsHidden_listIsHidden_andErrorIsShown() async {
+    func test_givenThatCountriesProviderThrowsDuringGettingListOfCountries_whenViewModelIsGettingAllCountries_thenAfterErrorIsThrown_loadingIndicatorIsHidden_listIsHidden_errorIsShown_andCountriesIsEmpty() async {
         // given
         countriesProvider.shouldThrow = true
         viewModel = SelectCountryViewModel(
@@ -103,6 +105,7 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(showLoadingIndicatorValues[2], false)
         XCTAssertEqual(showListValues[2], false)
         XCTAssertEqual(showErrorValues[2], true)
+        XCTAssertTrue(viewModel.countries.isEmpty)
     }
 }
 

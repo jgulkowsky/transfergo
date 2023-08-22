@@ -39,6 +39,8 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
     func getAllCountries() async {
         do {
             await MainActor.run {
+                allCountries = []
+                updateCountries()
                 showLoadingIndicator = true
                 showList = false
                 showError = false
@@ -55,6 +57,8 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
         }
         catch {
             await MainActor.run {
+                allCountries = []
+                updateCountries()
                 showLoadingIndicator = false
                 showList = false
                 showError = true
