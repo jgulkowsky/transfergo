@@ -15,18 +15,15 @@ class MockNetworkStatusProvider: NetworkStatusProviding {
     func start(onStatusUpdated: @escaping (Bool) -> Void) {
         if timer != nil { return }
         
-        print("@jgu: MockNetworkStatusProvider.start()")
         self.onStatusUpdated = onStatusUpdated
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             let isConnected = Bool.random()
-            print("@jgu: isConnected: \(isConnected)")
             self?.onStatusUpdated(isConnected)
         }
         timer?.fire()
     }
     
     func stop() {
-        print("@jgu: MockNetworkStatusProvider.stop()")
         timer?.invalidate()
         timer = nil
     }

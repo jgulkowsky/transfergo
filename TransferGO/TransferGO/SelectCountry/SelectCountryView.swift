@@ -58,7 +58,7 @@ struct SelectCountryView: View {
                     }
                     .listSectionSeparator(.hidden)
                     .foregroundColor(.black)
-                    .fontWeight(.bold)
+                    .font(.system(size: 17, weight: .bold))
                 }
                 .listStyle(.plain)
                 .padding(.top, -10)

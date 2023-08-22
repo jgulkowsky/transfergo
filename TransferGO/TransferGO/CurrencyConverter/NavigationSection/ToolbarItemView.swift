@@ -26,7 +26,7 @@ struct ToolbarItemView: View {
             }
         }
         .tint(.black)
-        .fontWeight(.bold)
+        .font(.system(size: 17, weight: .bold))
     }
 }
 

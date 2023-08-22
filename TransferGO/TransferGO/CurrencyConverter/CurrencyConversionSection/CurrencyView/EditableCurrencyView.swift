@@ -53,8 +53,7 @@ struct EditableCurrencyView: View {
                     }
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
-                    .font(.system(size: 35))
-                    .fontWeight(.bold)
+                    .font(.system(size: 35, weight: .bold))
                     .foregroundColor(limitExceeded ? .red : .blue)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)

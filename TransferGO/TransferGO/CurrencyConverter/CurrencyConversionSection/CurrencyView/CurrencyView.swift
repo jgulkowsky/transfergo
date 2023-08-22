@@ -60,8 +60,7 @@ struct CurrencyView_Previews: PreviewProvider {
             amountView:
                 Text(1200.0.limitDecimalPlaces(to: 2)) // or "---"
                     .multilineTextAlignment(.trailing)
-                    .font(.system(size: 35))
-                    .fontWeight(.bold)
+                    .font(.system(size: 35, weight: .bold))
                     .foregroundColor(.black)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)
