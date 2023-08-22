@@ -62,7 +62,13 @@ class CurrencyConverterViewModel: ObservableObject {
         currentRate?.toString() ?? "---"
     }
     
-    @Published var connectionError: String? = nil
+    @Published var connectionError: String? = nil {
+        didSet {
+            if connectionError == nil {
+                tryToUpdateCurrentRate()
+            }
+        }
+    }
     @Published var limitExceededError: String? = nil
     @Published var getCurrentRateError: String? = nil
     
@@ -217,7 +223,6 @@ private extension CurrencyConverterViewModel {
     }
     
     func startGettingNetworkStatus() {
-        // todo: the only problem is that when we don't have connection and slides finger to open overlay where we can turn it on and then we have the internet and we slides the overlay out - then we get isConnected = true here but we still have getCurrentRateError visible for a second - probably when we get isConnected status we should tryToUpdateCurrentRate once again
         networkStatusProvider.start { [weak self] isConnected in
             if isConnected {
                 self?.connectionError = nil
