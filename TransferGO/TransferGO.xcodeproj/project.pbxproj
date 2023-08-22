@@ -66,6 +66,8 @@
 		E37DC1602A93A8C3007E0404 /* NetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */; };
 		E37DC1622A93B013007E0404 /* NetworkStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */; };
 		E37DC1642A93B57F007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
+		E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */; };
+		E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1572A937FBF007E0404 /* MockRateProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,11 +200,9 @@
 		E36B984E2A8A28EB00EEDBC8 /* TransferGO */ = {
 			isa = PBXGroup;
 			children = (
-				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B984F2A8A28EB00EEDBC8 /* TransferGOApp.swift */,
-				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
-				E36B988E2A8A466100EEDBC8 /* Country.swift */,
-				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
+				E37DC1672A93CB8F007E0404 /* Model */,
+				E36B98D12A8FA7B200EEDBC8 /* CommonUI */,
 				E36B988B2A8A426100EEDBC8 /* Coordinator */,
 				E36B988C2A8A426F00EEDBC8 /* CurrencyConverter */,
 				E36B988D2A8A427D00EEDBC8 /* SelectCountry */,
@@ -225,6 +225,7 @@
 		E36B985F2A8A28ED00EEDBC8 /* TransferGOTests */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC1682A94F4B6007E0404 /* Mocks */,
 				E36B98602A8A28ED00EEDBC8 /* TransferGOTests.swift */,
 			);
 			path = TransferGOTests;
@@ -256,7 +257,6 @@
 				E36B98B52A8E463C00EEDBC8 /* CurrencyConversionSection */,
 				E36B98B72A8E466D00EEDBC8 /* RequestAndSendSection */,
 				E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */,
-				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -265,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				E36B98892A8A41E000EEDBC8 /* SelectCountryViewModel.swift */,
-				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
 				E36B98792A8A2A4200EEDBC8 /* SelectCountryView.swift */,
 				E36B98942A8A564C00EEDBC8 /* CountryView.swift */,
 			);
@@ -364,8 +363,6 @@
 			children = (
 				E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */,
 				E36B98D82A8FB8BC00EEDBC8 /* RateProvider.swift */,
-				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
-				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
 			);
 			path = RateProvider;
 			sourceTree = "<group>";
@@ -422,9 +419,30 @@
 			children = (
 				E37DC1612A93B013007E0404 /* NetworkStatusProviding.swift */,
 				E37DC15F2A93A8C3007E0404 /* NetworkStatusProvider.swift */,
-				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
 			);
 			path = NetworkStatusProvider;
+			sourceTree = "<group>";
+		};
+		E37DC1672A93CB8F007E0404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98D62A8FB84400EEDBC8 /* Rate.swift */,
+				E36B98902A8A4B3600EEDBC8 /* PredefinedCountry.swift */,
+				E36B988E2A8A466100EEDBC8 /* Country.swift */,
+				E36B98872A8A41C300EEDBC8 /* SelectType.swift */,
+				E36B98832A8A419200EEDBC8 /* CurrencyConverterInfo.swift */,
+				E36B98852A8A41B000EEDBC8 /* SelectCountryInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E37DC1682A94F4B6007E0404 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1572A937FBF007E0404 /* MockRateProvider.swift */,
+				E37DC1632A93B57F007E0404 /* MockNetworkStatusProvider.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +637,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36B98612A8A28ED00EEDBC8 /* TransferGOTests.swift in Sources */,
+				E37DC16A2A94F4DA007E0404 /* MockRateProvider.swift in Sources */,
+				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,13 +789,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TransferGO/Preview Content\"";
+				DEVELOPMENT_TEAM = TMTU5R2HJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -797,13 +819,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TransferGO/Preview Content\"";
+				DEVELOPMENT_TEAM = TMTU5R2HJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

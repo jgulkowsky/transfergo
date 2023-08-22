@@ -51,8 +51,10 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
                 showLoadingIndicator = false
                 showList = true
             }
-        } catch {
-            // todo: here you should also deal with cancellation errors like in CurrencyConverterViewModel or no? 
+        }
+        catch URLError.cancelled {}
+        catch (let error) where error is CancellationError {}
+        catch {
             await MainActor.run {
                 showLoadingIndicator = false
                 showError = true
@@ -73,7 +75,8 @@ private extension SelectCountryViewModel {
     func updateCountries() {
         self.countries = self.allCountries.filter {
             $0.name.starts(with: searchText)
-            // todo: you should also consider option of typing currency or code
+            || $0.currencyCode.starts(with: searchText)
+            || $0.currency.starts(with: searchText)
         }
     }
 }

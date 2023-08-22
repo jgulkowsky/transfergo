@@ -41,6 +41,7 @@ struct CountryView: View {
             
             Spacer()
         }
+        .contentShape(Rectangle())
         .onTapGesture {
             onTap()
         }

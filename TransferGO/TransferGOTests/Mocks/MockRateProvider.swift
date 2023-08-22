@@ -7,7 +7,6 @@
 
 import Foundation
 
-// todo: move it to Test target / folder later on
 class MockRateProvider: RateProviding {
     func getRate(from: Country, to: Country, amount: Double) async throws -> Rate {
         try await Task.sleep(nanoseconds: 2_000_000_000)
