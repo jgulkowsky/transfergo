@@ -28,17 +28,22 @@ final class SelectCountryViewModelTests: XCTestCase {
     }
     
     func test_givenThatSelectCountryInfoHasTypeFrom_whenViewModelIsInitialized_thenTitleIsSetToSendingFrom() {
+        // then
         XCTAssertEqual(viewModel.title, "Sending from")
     }
     
     func test_givenThatSelectCountryInfoHasTypeTo_whenViewModelIsInitialized_thenTitleIsSetToSendingTo() {
+        // given
         info = SelectCountryInfo(type: .to)
+        
+        // when
         viewModel = SelectCountryViewModel(
             info: info,
             coordinator: coordinator,
             countriesProvider: countriesProvider
         )
         
+        // then
         XCTAssertEqual(viewModel.title, "Sending to")
     }
     
@@ -144,7 +149,45 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.countries, [PredefinedCountry.poland])
     }
     
-    // todo: add tests for onCountryTapped()
+    func test_givenThatSelectCountryInfoHasTypeFrom_whenCountryIsTapped_thenCoordinatorGoesToCurrencyConverter_withInfoContainingFromCountry() {
+        // when
+        viewModel.onCountryTapped(PredefinedCountry.poland)
+        
+        // then
+        XCTAssertTrue(coordinator.wentToCurrencyConverter)
+        XCTAssertNotNil(coordinator.infoPassedToCurrencyConverter)
+        if let info = coordinator.infoPassedToCurrencyConverter,
+           let fromCountry = info.fromCountry,
+            info.toCountry == nil {
+            XCTAssertEqual(fromCountry, PredefinedCountry.poland)
+        } else {
+            XCTFail("info should not be nil and it should have set up fromCountry - so it's also not nil")
+        }
+    }
+    
+    func test_givenThatSelectCountryInfoHasTypeTo_whenCountryIsTapped_thenCoordinatorGoesToCurrencyConverter_withInfoContainingToCountry() {
+        // given
+        info = SelectCountryInfo(type: .to)
+        viewModel = SelectCountryViewModel(
+            info: info,
+            coordinator: coordinator,
+            countriesProvider: countriesProvider
+        )
+        
+        // when
+        viewModel.onCountryTapped(PredefinedCountry.poland)
+        
+        // then
+        XCTAssertTrue(coordinator.wentToCurrencyConverter)
+        XCTAssertNotNil(coordinator.infoPassedToCurrencyConverter)
+        if let info = coordinator.infoPassedToCurrencyConverter,
+           let toCountry = info.toCountry,
+            info.fromCountry == nil {
+            XCTAssertEqual(toCountry, PredefinedCountry.poland)
+        } else {
+            XCTFail("info should not be nil and it should have set up toCountry - so it's also not nil")
+        }
+    }
 }
 
 private extension SelectCountryViewModelTests {

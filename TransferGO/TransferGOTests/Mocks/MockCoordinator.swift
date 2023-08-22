@@ -10,6 +10,7 @@ import Foundation
 class MockCoordinator: Coordinator {
     var wentToSelectCountry: Bool = false
     var wentToCurrencyConverter: Bool = false
+    var infoPassedToCurrencyConverter: CurrencyConverterInfo?
     
     func goToSelectCountry(_ info: SelectCountryInfo) {
         wentToSelectCountry = true
@@ -17,5 +18,6 @@ class MockCoordinator: Coordinator {
     
     func goToCurrencyConverter(_ info: CurrencyConverterInfo) {
         wentToCurrencyConverter = true
+        infoPassedToCurrencyConverter = info
     }
 }
