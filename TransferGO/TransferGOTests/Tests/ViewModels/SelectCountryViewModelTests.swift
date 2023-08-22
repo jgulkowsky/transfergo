@@ -107,6 +107,44 @@ final class SelectCountryViewModelTests: XCTestCase {
         XCTAssertEqual(showErrorValues[2], true)
         XCTAssertTrue(viewModel.countries.isEmpty)
     }
+    
+    func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whereThisListConsistOfJust2CountriesPolandAndUkraine_givenThatSearchTextIsPol_whenViewModelIsGettingAllCountries_thenAfterTheseCountriesAreGotten_countriesIsSetAndConsistOfJustOneCountryPoland() async {
+        // given
+        viewModel.searchText = "Pol" // start of country name
+        
+        // when
+        _ = await whenViewModelIsGettingAllCountries_thenThisIsHow_showLoadingIndicator_showList_andShowError_valuesAreSet()
+        
+        // then
+        XCTAssertFalse(viewModel.countries.isEmpty)
+        XCTAssertEqual(viewModel.countries, [PredefinedCountry.poland])
+    }
+    
+    func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whereThisListConsistOfJust2CountriesPolandAndUkraine_givenThatSearchTextIsUA_whenViewModelIsGettingAllCountries_thenAfterTheseCountriesAreGotten_countriesIsSetAndConsistOfJustOneCountryUkraine() async {
+        // given
+        viewModel.searchText = "UA" // start of currency code
+        
+        // when
+        _ = await whenViewModelIsGettingAllCountries_thenThisIsHow_showLoadingIndicator_showList_andShowError_valuesAreSet()
+        
+        // then
+        XCTAssertFalse(viewModel.countries.isEmpty)
+        XCTAssertEqual(viewModel.countries, [PredefinedCountry.ukraine])
+    }
+    
+    func test_givenThatCountriesProviderReturnsListOfCountriesWithoutThrowing_whereThisListConsistOfJust2CountriesPolandAndUkraine_givenThatSearchTextIsPolishZl_whenViewModelIsGettingAllCountries_thenAfterTheseCountriesAreGotten_countriesIsSetAndConsistOfJustOneCountryPoland() async {
+        // given
+        viewModel.searchText = "Polish Zl" // start of currency name
+        
+        // when
+        _ = await whenViewModelIsGettingAllCountries_thenThisIsHow_showLoadingIndicator_showList_andShowError_valuesAreSet()
+        
+        // then
+        XCTAssertFalse(viewModel.countries.isEmpty)
+        XCTAssertEqual(viewModel.countries, [PredefinedCountry.poland])
+    }
+    
+    // todo: add tests for onCountryTapped()
 }
 
 private extension SelectCountryViewModelTests {
