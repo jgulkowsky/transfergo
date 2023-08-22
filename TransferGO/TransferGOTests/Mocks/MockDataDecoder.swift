@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum MockDataDecoderError: Error {
-    case someError
-}
-
 class MockDataDecoder: DataDecoding {
     var shouldThrow: Bool
     
@@ -22,7 +18,7 @@ class MockDataDecoder: DataDecoding {
     
     func decode<T>(data: Data) throws -> T where T: Decodable {
         if shouldThrow {
-            throw MockDataDecoderError.someError
+            throw MockError.someError
         }
         return try decoder.decode(T.self, from: data)
     }

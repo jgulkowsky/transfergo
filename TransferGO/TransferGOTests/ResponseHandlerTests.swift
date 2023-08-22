@@ -30,8 +30,8 @@ final class ResponseHandlerTests: XCTestCase {
     
     func test_handleResponse_whenResponseBelow200_itShouldThrowBadResponseError() {
         do {
-            let response = getResponse(withStatusCode: 101)
-            let _: SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
+            let response = TestHelper.getResponse(withStatusCode: 101)
+            let _: TestHelper.SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
             XCTFail("it should throw but it returned")
         } catch ResponseHandlerError.badResponse {
             XCTAssert(true)
@@ -42,8 +42,8 @@ final class ResponseHandlerTests: XCTestCase {
     
     func test_handleResponse_whenResponseOver299_itShouldThrowBadResponseError() {
         do {
-            let response = getResponse(withStatusCode: 304)
-            let _: SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
+            let response = TestHelper.getResponse(withStatusCode: 304)
+            let _: TestHelper.SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
             XCTFail("it should throw but it returned")
         } catch ResponseHandlerError.badResponse {
             XCTAssert(true)
@@ -54,8 +54,8 @@ final class ResponseHandlerTests: XCTestCase {
     
     func test_handleResponse_whenResponseInRangeOf200To299_andDataIsNil_itShouldThrowNoDataError() {
         do {
-            let response = getResponse(withStatusCode: Int.random(in: 200...299))
-            let _: SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
+            let response = TestHelper.getResponse(withStatusCode: Int.random(in: 200...299))
+            let _: TestHelper.SomeStruct = try responseHandler.handleResponse(data: nil, response: response)
             XCTFail("it should throw but it returned")
         } catch ResponseHandlerError.noData {
             XCTAssert(true)
@@ -68,9 +68,9 @@ final class ResponseHandlerTests: XCTestCase {
         do {
             mockDataDecoder = MockDataDecoder(shouldThrow: true)
             responseHandler = ResponseHandler(decoder: mockDataDecoder)
-            let data = getData()
-            let response = getResponse(withStatusCode: 200)
-            let _: SomeStruct = try responseHandler.handleResponse(data: data, response: response)
+            let data = TestHelper.getData()
+            let response = TestHelper.getResponse(withStatusCode: 200)
+            let _: TestHelper.SomeStruct = try responseHandler.handleResponse(data: data, response: response)
             XCTFail("it should throw but it returned")
         } catch {
             XCTAssert(true)
@@ -79,34 +79,12 @@ final class ResponseHandlerTests: XCTestCase {
     
     func test_handleResponse_whenResponseInRangeOf200To299_andDataIsNotNil_andDecoderDoesntThrow_itShouldReturnWhatDecoderReturns() {
         do {
-            let data = getData()
-            let response = getResponse(withStatusCode: 200)
-            let _: SomeStruct = try responseHandler.handleResponse(data: data, response: response)
+            let data = TestHelper.getData()
+            let response = TestHelper.getResponse(withStatusCode: 200)
+            let _: TestHelper.SomeStruct = try responseHandler.handleResponse(data: data, response: response)
             XCTAssert(true)
         } catch {
             XCTFail("it should not throw but return value. Error thrown is: \(error)")
         }
-    }
-}
-
-private extension ResponseHandlerTests {
-    struct SomeStruct: Decodable {
-        var someKey: String
-    }
-    
-    func getResponse(withStatusCode statusCode: Int) -> URLResponse {
-        let url = URL(string: "https://some.random.url.com")!
-        let httpURLResponse = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
-        return httpURLResponse as URLResponse
-    }
-    
-    func getData() -> Data {
-        let json = """
-        {
-            "someKey": "someValue"
-        }
-        """
-        let data = Data(json.utf8)
-        return data
     }
 }
