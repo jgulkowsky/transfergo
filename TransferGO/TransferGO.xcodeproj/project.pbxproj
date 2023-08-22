@@ -269,12 +269,10 @@
 		E36B985F2A8A28ED00EEDBC8 /* TransferGOTests */ = {
 			isa = PBXGroup;
 			children = (
+				E37DC1A42A9547B0007E0404 /* Tests */,
 				E37DC1A32A951F7F007E0404 /* Helpers */,
 				E37DC19E2A951CA4007E0404 /* Extensions */,
 				E37DC1682A94F4B6007E0404 /* Mocks */,
-				E36B98602A8A28ED00EEDBC8 /* ResponseHandlerTests.swift */,
-				E37DC1872A950870007E0404 /* URLProviderTests.swift */,
-				E37DC18F2A9511B6007E0404 /* RateProviderTests.swift */,
 			);
 			path = TransferGOTests;
 			sourceTree = "<group>";
@@ -513,6 +511,24 @@
 				E37DC19C2A9518CD007E0404 /* TestHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E37DC1A42A9547B0007E0404 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1A52A9547DB007E0404 /* ServicesTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		E37DC1A52A9547DB007E0404 /* ServicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				E36B98602A8A28ED00EEDBC8 /* ResponseHandlerTests.swift */,
+				E37DC1872A950870007E0404 /* URLProviderTests.swift */,
+				E37DC18F2A9511B6007E0404 /* RateProviderTests.swift */,
+			);
+			path = ServicesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
