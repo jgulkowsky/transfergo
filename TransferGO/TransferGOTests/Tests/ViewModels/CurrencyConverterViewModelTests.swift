@@ -35,14 +35,17 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         )
     }
     
-    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_whenViewModelIsInitialized_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_currentRateIsNil_andGetCurrentRateErrorIsNil() {
+    // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
+    
+    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_whenViewModelIsInitialized_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_andGetCurrentRateErrorIsNil() {
         // then
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
         XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.currentRate)
         XCTAssertNil(viewModel.getCurrentRateError)
     }
+    
+    
     
     // todo: test about tryToUpdateCurrentRate on init
     //  todo: also when requirements are not satisfied

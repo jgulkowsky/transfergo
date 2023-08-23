@@ -45,6 +45,7 @@ class CurrencyConverterViewModel: ObservableObject {
             isBeingAutoSwitched = false
         }
     }
+    
     @Published var fromAmount: String = "" {
         didSet {
             checkLimits()
@@ -54,12 +55,9 @@ class CurrencyConverterViewModel: ObservableObject {
     var toAmount: Double? {
         return currentRate?.toAmount
     }
-    
-    private var isBeingAutoSwitched = false
-    
+
     @Published var fromAmountFocused: Bool = false
     
-    @Published var currentRate: Rate? = nil
     var currentRateText: String {
         currentRate?.toString() ?? "---"
     }
@@ -88,6 +86,8 @@ class CurrencyConverterViewModel: ObservableObject {
     private let networkStatusProvider: NetworkStatusProviding
     
     private var getCurrentRateTask: Task<(), Never>? = nil
+    private var currentRate: Rate? = nil
+    private var isBeingAutoSwitched = false
     
     init(info: CurrencyConverterInfo,
          coordinator: Coordinator,
