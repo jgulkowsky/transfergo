@@ -29,6 +29,8 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         initViewModel()
     }
     
+// MARK: - onViewModelInit tests
+    
     func test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused() {
         // then
         assert_everythingStaysTheSame()
@@ -151,6 +153,14 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         
         assert_everythingStaysTheSame()
     }
+    
+// MARK: - onSceneActive / onSceneInactive / onSceneInBackground tests
+    
+    
+    
+// MARK: - sendFromTapped / sendToTapped / switchTapped / backgroundTapped tests
+    
+// MARK: - setting up fromCountry can change value in toCountry and vice vers tests
     
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
