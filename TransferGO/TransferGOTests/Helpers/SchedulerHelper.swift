@@ -1,13 +1,15 @@
 //
-//  Scheduler.swift
-//  TransferGO
+//  SchedulerHelper.swift
+//  TransferGOTests
 //
-//  Created by Jan Gulkowski on 21/08/2023.
+//  Created by Jan Gulkowski on 23/08/2023.
 //
 
 import Foundation
 
-class Scheduler: Scheduling {
+// todo: seems to do the same as normal scheduler and MockScheduler but it's to help in tests not to mock in them - so later if we need any changes to this one all the others won't be touched
+
+class SchedulerHelper: Scheduling {
     var interval: Double
     
     private var onEvent: (() -> Void)!
@@ -18,8 +20,12 @@ class Scheduler: Scheduling {
     }
     
     func start(onEvent: @escaping () -> Void) {
+        print("@jgu: scheduler started")
+        var eventNumber = 0
         self.onEvent = onEvent
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+            eventNumber += 1
+            print("@jgu: onEvent(\(eventNumber))")
             self?.onEvent()
         }
         timer?.fire()
@@ -28,5 +34,6 @@ class Scheduler: Scheduling {
     func stop() {
         timer?.invalidate()
         timer = nil
+        print("@jgu: scheduler stopped")
     }
 }

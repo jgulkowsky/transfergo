@@ -30,7 +30,7 @@ class CoordinatorObject: ObservableObject, Coordinator {
             ),
             coordinator: self,
             rateProvider: rateProvider,
-            scheduler: Scheduler(),
+            scheduler: Scheduler(interval: 10.0),
             networkStatusProvider: NetworkStatusProvider())
     }
     

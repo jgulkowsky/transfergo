@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@main
 struct TransferGOApp: App {
     @StateObject var coordinatorObject = CoordinatorObject()
     

@@ -141,7 +141,7 @@ struct ContentView_Previews: PreviewProvider {
                 ),
                 coordinator: CoordinatorObject(),
                 rateProvider: MockRateProvider(),
-                scheduler: Scheduler(),
+                scheduler: Scheduler(interval: 10.0),
                 networkStatusProvider: MockNetworkStatusProvider()
             )
         )
