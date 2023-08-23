@@ -24,11 +24,9 @@ class MockScheduler: Scheduling {
     }
     
     func start(onEvent: @escaping () -> Void) {
-        print("@jgu: MockScheduler started with interval: \(interval)")
         hasStarted = true
         self.onEvent = onEvent
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
-            print("@jgu: MockScheduler onEvent")
             self?.numberOfTimesEventWasFired += 1
             self?.onEvent()
         }
@@ -39,6 +37,5 @@ class MockScheduler: Scheduling {
         timer?.invalidate()
         timer = nil
         hasStopped = true
-        print("@jgu: MockScheduler stopped")
     }
 }

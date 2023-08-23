@@ -20,12 +20,8 @@ class SchedulerHelper: Scheduling {
     }
     
     func start(onEvent: @escaping () -> Void) {
-        print("@jgu: scheduler started")
-        var eventNumber = 0
         self.onEvent = onEvent
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
-            eventNumber += 1
-            print("@jgu: onEvent(\(eventNumber))")
             self?.onEvent()
         }
         timer?.fire()
@@ -34,6 +30,5 @@ class SchedulerHelper: Scheduling {
     func stop() {
         timer?.invalidate()
         timer = nil
-        print("@jgu: scheduler stopped")
     }
 }

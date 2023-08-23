@@ -574,7 +574,6 @@ private extension CurrencyConverterViewModelTests {
         
         wait(for: [expectation], timeout: timeout)
         scheduler.stop()
-        print("@jgu: after expectation fulfilled or timeouted")
     }
     
     func wait(numberOfSeconds: Double, thenCheck assertions: () -> Void) {
