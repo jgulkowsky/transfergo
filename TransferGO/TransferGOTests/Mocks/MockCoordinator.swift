@@ -9,11 +9,13 @@ import Foundation
 
 class MockCoordinator: Coordinator {
     var wentToSelectCountry: Bool = false
+    var infoPassedToSelectCountry: SelectCountryInfo?
     var wentToCurrencyConverter: Bool = false
     var infoPassedToCurrencyConverter: CurrencyConverterInfo?
     
     func goToSelectCountry(_ info: SelectCountryInfo) {
         wentToSelectCountry = true
+        infoPassedToSelectCountry = info
     }
     
     func goToCurrencyConverter(_ info: CurrencyConverterInfo) {

@@ -224,6 +224,27 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
 // MARK: - sendFromTapped / sendToTapped / switchTapped / backgroundTapped tests
     
+    func test_when_viewModelSendFromTapped_then_fromAmountFocusedIsFalse_coordinatorGoesToSelectCountry_withSelectCountryInfoContainingTypeFrom() {
+        // when
+        viewModel.sendFromTapped()
+        
+        // then
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertTrue(coordinator.wentToSelectCountry)
+        XCTAssertEqual(coordinator.infoPassedToSelectCountry!.type, .from)
+    }
+    
+    func test_when_viewModelSendToTapped_then_fromAmountFocusedIsFalse_coordinatorGoesToSelectCountry_withSelectCountryInfoContainingTypeTo() {
+        // when
+        viewModel.sendToTapped()
+        
+        // then
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertTrue(coordinator.wentToSelectCountry)
+        XCTAssertEqual(coordinator.infoPassedToSelectCountry!.type, .to)
+    }
+    
+    
 // MARK: - setting up fromCountry can change value in toCountry and vice vers tests
     
     // todo: test about tryToUpdateCurrentRate on init - done
