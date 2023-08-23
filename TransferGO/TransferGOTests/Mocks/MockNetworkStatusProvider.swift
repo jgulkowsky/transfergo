@@ -8,11 +8,15 @@
 import Foundation
 
 class MockNetworkStatusProvider: NetworkStatusProviding {
+    var hasStarted: Bool = false
+    var hasFinished: Bool = false
+    
     private var onStatusUpdated: ((Bool) -> Void)!
     private var timer: Timer? = nil
     
     func start(onStatusUpdated: @escaping (Bool) -> Void) {
         if timer != nil { return }
+        hasStarted = true
         
         self.onStatusUpdated = onStatusUpdated
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
@@ -25,5 +29,6 @@ class MockNetworkStatusProvider: NetworkStatusProviding {
     func stop() {
         timer?.invalidate()
         timer = nil
+        hasFinished = true
     }
 }

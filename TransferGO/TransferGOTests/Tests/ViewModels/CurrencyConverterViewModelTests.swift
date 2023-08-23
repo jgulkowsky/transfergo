@@ -163,8 +163,10 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         
         // when
         viewModel.onSceneActive()
+        
+        // then
+        XCTAssertTrue(scheduler.hasStarted)
         wait(numberOfSeconds: timeout, thenCheck: {
-            // then
             XCTAssertEqual(scheduler.numberOfTimesEventWasFired, numberOfTimesEventWasFired)
             // if scheduler.numberOfTimesEventWasFired = 1 then we didn't start regular rate updates
             XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 1) // todo: for some reason we have even more calls to getRate - probably because some of them are cancelled - but here it should be enough to say that we just have more than 1 - so we started regular getRate calls
@@ -172,11 +174,52 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
     
     func test_onSceneActive_shouldStartGettingNetworkStatus() {
-        // given
-        
         // when
+        viewModel.onSceneActive()
         
         // then
+        XCTAssertTrue(networkStatusProvider.hasStarted)
+        XCTAssertFalse(networkStatusProvider.hasFinished)
+    }
+    
+    func test_givenThatSceneIsActive_whenSceneGetsInactive_shouldStopRegularCurrentRateUpdates() {
+        // when
+        viewModel.onSceneActive()
+        viewModel.onSceneInactive()
+        
+        // then
+        XCTAssertTrue(scheduler.hasStarted)
+        XCTAssertTrue(scheduler.hasStopped)
+    }
+    
+    func test_givenThatSceneIsActive_whenSceneGetsInactive_shouldStopGettingNetworkStatus() {
+        // when
+        viewModel.onSceneActive()
+        viewModel.onSceneInactive()
+        
+        // then
+        XCTAssertTrue(networkStatusProvider.hasStarted)
+        XCTAssertTrue(networkStatusProvider.hasFinished)
+    }
+    
+    func test_givenThatSceneIsActive_whenSceneGetsIntoBackground_shouldStopRegularCurrentRateUpdates() {
+        // when
+        viewModel.onSceneActive()
+        viewModel.onSceneInBackground()
+        
+        // then
+        XCTAssertTrue(scheduler.hasStarted)
+        XCTAssertTrue(scheduler.hasStopped)
+    }
+    
+    func test_givenThatSceneIsActive_whenSceneGetsIntoBackground_shouldStopGettingNetworkStatus() {
+        // when
+        viewModel.onSceneActive()
+        viewModel.onSceneInBackground()
+        
+        // then
+        XCTAssertTrue(networkStatusProvider.hasStarted)
+        XCTAssertTrue(networkStatusProvider.hasFinished)
     }
     
 // MARK: - sendFromTapped / sendToTapped / switchTapped / backgroundTapped tests
@@ -190,9 +233,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     //  todo: also when requirements are satisfied and there's no error but we get the rate - done
     //  todo: also when you tryToUpdateCurrentRate multiple times
     
-    // todo: test about onSceneActive
-    // todo: test about onSceneInactive
-    // todo: test about onSceneInBackground
+    // todo: test about onSceneActive - done
+    // todo: test about onSceneInactive - done
+    // todo: test about onSceneInBackground - done
     
     // todo: test about sendFromTapped
     // todo: test about sendToTapped
