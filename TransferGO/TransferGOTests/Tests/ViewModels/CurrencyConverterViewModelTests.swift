@@ -37,7 +37,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
     // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
     
-    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_whenViewModelIsInitialized_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_toAmountIsNil_fromAmountFocusedIsFalse_currentRateTextIs3Lines_connectionErrorIsNil_limitExceededErrorIsNil_getCurrentRateErrorIsNil_shouldEnableFieldsIsTrue_limitExceededIsFalse() {
+    func test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused() {
         // then
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
@@ -52,7 +52,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.limitExceeded)
     }
     
-    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_andThatRateProviderReturnsRate1Dot23456789AndToAmount370Dot370367_whenViewModelIsInitializedAndRateIsGotten_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_toAmountIs370Dot370367_fromAmountFocusedIsFalse_currentRateTextIs1PLNTilde1Dot23457UAH_connectionErrorIsNil_limitExceededErrorIsNil_getCurrentRateErrorIsNil_shouldEnableFieldsIsTrue_limitExceededIsFalse() {
+    func test_onViewModelInit_whenRateIsGottenWithoutErrors_allStaysTheSame_exceptRateAndToAmountAreSet() {
         // then
         let expectation = XCTestExpectation(description: #function)
         
@@ -85,12 +85,64 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.shouldEnableFields)
         XCTAssertFalse(viewModel.limitExceeded)
     }
+    
+    func test_onViewModelInit_whenUserTypesStrangeValueThatIsNotConvertibleIntoDouble_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
+        // when
+        viewModel.fromAmount = "..12.."
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "..12..")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
 
+    func test_onViewModelInit_whenUserTapsOnFromAmountTextField_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
+        // when
+        viewModel.fromAmountFocused = true
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00") // it will be zeroed in a short time but not now
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertTrue(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
     
+    func test_onViewModelInit_whenUserTypesFromAmountValueOverTheLimit_everythingStaysTheSame_exceptRateAndToAmountAreNotSet_andLimitExceededErrorIsShown() {
+        // when
+        viewModel.fromAmount = "1000000.00" // this should be over any currency limit
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "1000000.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNotNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertTrue(viewModel.limitExceeded)
+    }
     
-    // todo: test about tryToUpdateCurrentRate on init
-    //  todo: also when requirements are not satisfied
-    //  todo: also when requirements are satisfied
+    // todo: test about tryToUpdateCurrentRate on init - done
+    //  todo: also when requirements are not satisfied - done
+    //  todo: also when requirements are satisfied - done
     //  todo: also when requirements are satisfied but error is thrown (URLError.cancelled, CancellationError, other)
     //  todo: also when requirements are satisfied and there's no error but we get the rate
     //  todo: also when you tryToUpdateCurrentRate multiple times
