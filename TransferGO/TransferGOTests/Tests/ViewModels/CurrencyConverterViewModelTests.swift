@@ -374,6 +374,68 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.germany)
     }
     
+// MARK: - setting up fromCountry or fromAmount triggers checking limits
+    
+    func test_givenThat_fromCountryPoland_fromAmount20000_when_fromCountryChangesIntoGermany_thatHasSmallerLimitThan20000_then_limitExceededErrorIsShown() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "20000.00"
+        viewModel.limitExceededError = nil
+        
+        // when
+        viewModel.fromCountry = PredefinedCountry.germany
+        
+        // then
+        XCTAssertNotNil(viewModel.limitExceededError)
+        XCTAssertTrue(viewModel.limitExceeded)
+    }
+    
+    func test_givenThat_fromCountryPoland_fromAmount500_when_fromCountryChangesIntoGermany_thatHasBiggerLimitThan500_then_limitExceededErrorIsNotShown() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "500.00"
+        viewModel.limitExceededError = "Limit exceeded!"
+        
+        // when
+        viewModel.fromCountry = PredefinedCountry.germany
+        
+        // then
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+    func test_givenThat_fromCountryPoland_and_fromAmount20000_whichIsTheSameAsLimitForPoland_when_fromAmountChangesInto20001_then_limitExceededErrorIsShown() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "20000.00"
+        viewModel.limitExceededError = nil // 20000 for Poland should not trigger the error but to be sure let's set it up to nil
+        
+        // when
+        viewModel.fromAmount = "20001.00"
+        
+        // then
+        XCTAssertNotNil(viewModel.limitExceededError)
+        XCTAssertTrue(viewModel.limitExceeded)
+    }
+    
+    func test_givenThat_fromCountryPoland_and_fromAmount30000_whichIsOverLimitForPoland_when_fromAmountChangesInto20000_then_limitExceededErrorIsHidden() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "30000.00"
+        viewModel.limitExceededError = "Limit exceeded!" // 30000 for Poland should trigger the error but to be sure let's set it up
+        
+        // when
+        viewModel.fromAmount = "20000.00"
+        
+        // then
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+// MARK: - setting up fromCountry or toCountry or fromAmount triggers getting new rate
+    
+    
+    
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
     //  todo: also when requirements are satisfied - done
