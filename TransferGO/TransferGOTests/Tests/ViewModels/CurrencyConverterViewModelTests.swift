@@ -299,14 +299,17 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
     
     func test_when_viewModelSwitchTapped_then_rateProviderGetRateIsCalled() {
-        // given
-        rateProvider.numberOfTimesGetRateWasCalled = 0
-        
-        // when
-        viewModel.switchTapped()
-        
-        // then
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // can be more than 1 as didSets from fromCountry and toCountry tries to get rate too
+        wait(numberOfSeconds: 1.1) {
+            rateProvider.numberOfTimesGetRateWasCalled = 0
+            
+            // when
+            viewModel.switchTapped()
+            
+            wait(numberOfSeconds: 0.1) {
+                // then
+                XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+            }
+        }
     }
     
     func test_when_viewModelBackgroundTapped_then_fromAmountIsNotFocused() {
@@ -440,15 +443,19 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         viewModel.fromAmount = "100.00"
         viewModel.limitExceededError = nil
         
-        rateProvider.numberOfTimesGetRateWasCalled = 0
-        
-        // when
-        viewModel.fromCountry = PredefinedCountry.germany
-        
-        // then
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertFalse(viewModel.limitExceeded)
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // todo: there's some race as this sometimes is not true
+        wait(numberOfSeconds: 1.1) {
+            rateProvider.numberOfTimesGetRateWasCalled = 0
+            
+            // when
+            viewModel.fromCountry = PredefinedCountry.germany
+            
+            wait(numberOfSeconds: 0.1) {
+                // then
+                XCTAssertNil(viewModel.limitExceededError)
+                XCTAssertFalse(viewModel.limitExceeded)
+                XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+            }
+        }
     }
     
     func test_when_toCountryIsSet_then_rateProviderGetRateIsTriggered() {
@@ -456,16 +463,19 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         viewModel.fromCountry = PredefinedCountry.poland
         viewModel.fromAmount = "100.00"
         viewModel.limitExceededError = nil
-        
         viewModel.toCountry = PredefinedCountry.germany
         
-        rateProvider.numberOfTimesGetRateWasCalled = 0
-        
-        // when
-        viewModel.toCountry = PredefinedCountry.greatBritain
-        
-        // then
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // todo: there's some race as this sometimes is not true (here too probably)
+        wait(numberOfSeconds: 1.1) {
+            rateProvider.numberOfTimesGetRateWasCalled = 0
+            
+            // when
+            viewModel.toCountry = PredefinedCountry.greatBritain
+            
+            wait(numberOfSeconds: 0.1) {
+                // then
+                XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+            }
+        }
     }
     
     func test_when_fromAmountIsSet_andLimitIsNotReached_then_rateProviderGetRateIsTriggered() {
@@ -474,15 +484,19 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         viewModel.fromAmount = "100.00"
         viewModel.limitExceededError = nil
         
-        rateProvider.numberOfTimesGetRateWasCalled = 0
-        
-        // when
-        viewModel.fromAmount = "200.00"
-        
-        // then
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertFalse(viewModel.limitExceeded)
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+        wait(numberOfSeconds: 1.1) {
+            rateProvider.numberOfTimesGetRateWasCalled = 0
+            
+            // when
+            viewModel.fromAmount = "200.00"
+            
+            wait(numberOfSeconds: 0.1) {
+                // then
+                XCTAssertNil(viewModel.limitExceededError)
+                XCTAssertFalse(viewModel.limitExceeded)
+                XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+            }
+        }
     }
     
 // MARK: - connection error

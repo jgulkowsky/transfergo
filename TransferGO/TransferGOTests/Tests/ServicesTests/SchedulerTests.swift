@@ -10,49 +10,49 @@ import XCTest
 final class SchedulerTests: XCTestCase {
     private var scheduler: Scheduler!
     
-    func test_given_intervalIs_1_when_startIsCalledAndWeWait_500_Milliseconds_then_onEventIsCalledExactly_1_Time() {
+    func test_given_intervalIs_100_Milliseconds_when_startIsCalledAndWeWait_50_Milliseconds_then_onEventIsCalledExactly_1_Time() {
         startScheduler(
-            withInterval: 1.0,
-            andWaitFor: 0.5,
+            withInterval: 0.1,
+            andWaitFor: 0.05,
             andNumberOfEventCallsShouldBe: 1
         )
     }
     
-    func test_given_intervalIs_1_when_startIsCalledAndWeWait_1500_Milliseconds_then_onEventIsCalledExactly_2_Times() {
+    func test_given_intervalIs_100_Milliseconds_when_startIsCalledAndWeWait_150_Milliseconds_then_onEventIsCalledExactly_2_Times() {
         startScheduler(
-            withInterval: 1.0,
-            andWaitFor: 1.5,
+            withInterval: 0.1,
+            andWaitFor: 0.15,
             andNumberOfEventCallsShouldBe: 2
         )
     }
     
-    func test_given_intervalIs_1_when_startIsCalledAndWeWait_2500_Milliseconds_then_onEventIsCalledExactly_3_Times() {
+    func test_given_intervalIs_100_Milliseconds_when_startIsCalledAndWeWait_250_Milliseconds_then_onEventIsCalledExactly_3_Times() {
         startScheduler(
-            withInterval: 1.0,
-            andWaitFor: 2.5,
+            withInterval: 0.1,
+            andWaitFor: 0.25,
             andNumberOfEventCallsShouldBe: 3
         )
     }
     
-    func test_given_intervalIs_2_when_startIsCalledAndWeWait_1500_Milliseconds_then_onEventIsCalledExactly_1_Time() {
+    func test_given_intervalIs_200_Milliseconds_when_startIsCalledAndWeWait_150_Milliseconds_then_onEventIsCalledExactly_1_Time() {
         startScheduler(
-            withInterval: 2.0,
-            andWaitFor: 1.5,
+            withInterval: 0.2,
+            andWaitFor: 0.15,
             andNumberOfEventCallsShouldBe: 1
         )
     }
     
-    func test_given_intervalIs_2_when_startIsCalledAndWeWait_2500_Milliseconds_then_onEventIsCalledExactly_2_Times() {
+    func test_given_intervalIs_200_Milliseconds_when_startIsCalledAndWeWait_250_Milliseconds_then_onEventIsCalledExactly_2_Times() {
         startScheduler(
-            withInterval: 2.0,
-            andWaitFor: 2.5,
+            withInterval: 0.2,
+            andWaitFor: 0.25,
             andNumberOfEventCallsShouldBe: 2
         )
     }
     
-    func test_given_intervalIs_2_when_startIsCalledAndWeWait_500_Milliseconds_andStop_andThenWeWaitAnother2500Milliseconds_then_onEventIsCalledExactly_1_Time_asAfterStopNoMoreEventsWereCalled() {
+    func test_given_intervalIs_200_Milliseconds_when_startIsCalledAndWeWait_50_Milliseconds_andStop_andThenWeWaitAnother250Milliseconds_then_onEventIsCalledExactly_1_Time_asAfterStopNoMoreEventsWereCalled() {
         // given
-        scheduler = Scheduler(interval: 2.0)
+        scheduler = Scheduler(interval: 0.2)
         var numberOfOnEventCalls = 0
         
         // when
@@ -60,10 +60,10 @@ final class SchedulerTests: XCTestCase {
             numberOfOnEventCalls += 1
         }
 
-        wait(numberOfSeconds: 0.5) {
+        wait(numberOfSeconds: 0.05) {
             scheduler.stop()
             
-            wait(numberOfSeconds: 2.5) {
+            wait(numberOfSeconds: 0.25) {
                 // then
                 XCTAssertEqual(numberOfOnEventCalls, 1)
             }
