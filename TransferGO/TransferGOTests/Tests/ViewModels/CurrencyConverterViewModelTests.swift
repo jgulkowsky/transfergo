@@ -520,45 +520,21 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.connectionError)
     }
     
-    // todo: test about tryToUpdateCurrentRate on init - done
-    //  todo: also when requirements are not satisfied - done
-    //  todo: also when requirements are satisfied - done
-    //  todo: also when requirements are satisfied but error is thrown (URLError.cancelled, CancellationError, other) - done
-    //  todo: also when requirements are satisfied and there's no error but we get the rate - done
-    //  todo: also when you tryToUpdateCurrentRate multiple times
+    func test_when_thereIsConnectionError_then_shouldEnableFieldsIsFalse() {
+        // when
+        viewModel.connectionError = "Connection Error"
+        
+        // then
+        XCTAssertFalse(viewModel.shouldEnableFields)
+    }
     
-    // todo: test about onSceneActive - done
-    // todo: test about onSceneInactive - done
-    // todo: test about onSceneInBackground - done
-    
-    // todo: test about sendFromTapped - done
-    // todo: test about sendToTapped - done
-    // todo: test about switchTapped - done
-    // todo: test about backgroundTapped - done
-    
-    // todo: test about setting up fromCountry can change value in toCountry - done
-    // todo: test about setting up toCountry can change value in fromCountry - done
-    
-    // todo: test about setting up fromCountry checksLimits - done
-    // todo: test about setting up fromAmount checksLimits - done
-    
-    // todo: test about setting up fromCountry tries to updateCurrentRate - done
-    // todo: test about setting up toCountry tries to updateCurrentRate - done
-    // todo: test about setting up fromAmount tries to updateCurrentRate - done
-    
-    // todo: test about setting up toAmount (maybe covered in above tests...)
-    // todo: test about setting up fromAmountFocused (maybe covered in above tests...)
-    // todo: test about setting up currentRate (maybe covered in above tests...)
-    
-    // todo: test about connectionError (maybe covered in above tests...) - done
-    // todo: test about limitExceededError (maybe covered in above tests...)
-    // todo: test about getCurrentRateError (maybe covered in above tests...)
-    
-    // todo: test about shouldEnableFields (maybe covered in above tests...)
-    // todo: test about limitExceeded (maybe covered in above tests...)
-    
-    // todo: test about regularCurrentRateUpdates
-    // todo: test about gettingNetworkStatus
+    func test_when_thereIsNoConnectionError_then_shouldEnableFieldsIsTrue() {
+        // when
+        viewModel.connectionError = nil
+        
+        // then
+        XCTAssertTrue(viewModel.shouldEnableFields)
+    }
 }
 
 private extension CurrencyConverterViewModelTests {
@@ -596,8 +572,6 @@ private extension CurrencyConverterViewModelTests {
             XCTFail("Delay interrupted")
         }
     }
-    
-    // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
     
     func assert_everythingStaysTheSame() {
         assert_fromCountry_toCountry_tromAmount_areSet()
