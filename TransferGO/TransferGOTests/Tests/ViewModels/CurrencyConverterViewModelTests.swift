@@ -39,17 +39,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
     func test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused() {
         // then
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.toAmount)
-        XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
+        assertEverythingStaysTheSame()
     }
     
     func test_onViewModelInit_whenRateIsGottenWithoutErrors_allStaysTheSame_exceptRateAndToAmountAreSet() {
@@ -230,17 +220,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         scheduler.stop()
         print("@jgu: after timeout")
         
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.toAmount)
-        XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
+        assertEverythingStaysTheSame()
     }
     
     func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsCancellationError_everythingStaysTheSame() {
@@ -278,18 +258,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         scheduler.stop()
         print("@jgu: after timeout")
         
-        // todo: this is the same as in the first test and one test above - we could move it into separate function
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.toAmount)
-        XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
+        assertEverythingStaysTheSame()
     }
     
     // todo: test about tryToUpdateCurrentRate on init - done
@@ -331,4 +300,20 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
     // todo: test about regularCurrentRateUpdates
     // todo: test about gettingNetworkStatus
+}
+
+private extension CurrencyConverterViewModelTests {
+    func assertEverythingStaysTheSame() {
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
 }
