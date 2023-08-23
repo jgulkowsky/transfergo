@@ -434,7 +434,56 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
 // MARK: - setting up fromCountry or toCountry or fromAmount triggers getting new rate
     
+    func test_when_fromCountryIsSet_andLimitIsNotReached_then_rateProviderGetRateIsTriggered() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "100.00"
+        viewModel.limitExceededError = nil
+        
+        rateProvider.numberOfTimesGetRateWasCalled = 0
+        
+        // when
+        viewModel.fromCountry = PredefinedCountry.germany
+        
+        // then
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertFalse(viewModel.limitExceeded)
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+    }
     
+    func test_when_toCountryIsSet_then_rateProviderGetRateIsTriggered() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "100.00"
+        viewModel.limitExceededError = nil
+        
+        viewModel.toCountry = PredefinedCountry.germany
+        
+        rateProvider.numberOfTimesGetRateWasCalled = 0
+        
+        // when
+        viewModel.toCountry = PredefinedCountry.greatBritain
+        
+        // then
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+    }
+    
+    func test_when_fromAmountIsSet_andLimitIsNotReached_then_rateProviderGetRateIsTriggered() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.fromAmount = "100.00"
+        viewModel.limitExceededError = nil
+        
+        rateProvider.numberOfTimesGetRateWasCalled = 0
+        
+        // when
+        viewModel.fromAmount = "200.00"
+        
+        // then
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertFalse(viewModel.limitExceeded)
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+    }
     
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
@@ -455,12 +504,12 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     // todo: test about setting up fromCountry can change value in toCountry - done
     // todo: test about setting up toCountry can change value in fromCountry - done
     
-    // todo: test about setting up fromCountry checksLimits
-    // todo: test about setting up fromAmount checksLimits
+    // todo: test about setting up fromCountry checksLimits - done
+    // todo: test about setting up fromAmount checksLimits - done
     
-    // todo: test about setting up fromCountry tries to updateCurrentRate
-    // todo: test about setting up toCountry tries to updateCurrentRate
-    // todo: test about setting up fromAmount tries to updateCurrentRate
+    // todo: test about setting up fromCountry tries to updateCurrentRate - done
+    // todo: test about setting up toCountry tries to updateCurrentRate - done
+    // todo: test about setting up fromAmount tries to updateCurrentRate - done
     
     // todo: test about setting up toAmount (maybe covered in above tests...)
     // todo: test about setting up fromAmountFocused (maybe covered in above tests...)
