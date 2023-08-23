@@ -309,6 +309,17 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // can be more than 1 as didSets from fromCountry and toCountry tries to get rate too
     }
     
+    func test_when_viewModelBackgroundTapped_then_fromAmountIsNotFocused() {
+        // given
+        viewModel.fromAmountFocused = true
+        
+        // when
+        viewModel.backgroundTapped()
+        
+        // then
+        XCTAssertFalse(viewModel.fromAmountFocused)
+    }
+    
 // MARK: - setting up fromCountry can change value in toCountry and vice vers tests
     
     // todo: test about tryToUpdateCurrentRate on init - done
@@ -322,9 +333,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     // todo: test about onSceneInactive - done
     // todo: test about onSceneInBackground - done
     
-    // todo: test about sendFromTapped
-    // todo: test about sendToTapped
-    // todo: test about switchTapped
+    // todo: test about sendFromTapped - done
+    // todo: test about sendToTapped - done
+    // todo: test about switchTapped - done
     // todo: test about backgroundTapped
     
     // todo: test about setting up fromCountry can change value in toCountry
