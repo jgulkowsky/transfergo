@@ -9,7 +9,7 @@ import Foundation
 
 class MockResponseHandler<T>: ResponseHandling {
     var shouldThrow = false
-    var returnValue: T! // todo: not sure if this is ok
+    var returnValue: T!
     var wasCalled = false
     
     func handleResponse<T>(data: Data?, response: URLResponse?) throws -> T where T : Decodable {
@@ -17,6 +17,6 @@ class MockResponseHandler<T>: ResponseHandling {
         if shouldThrow {
             throw MockError.someError
         }
-        return returnValue as! T // todo: and this
+        return returnValue as! T
     }
 }

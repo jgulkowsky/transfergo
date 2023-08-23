@@ -8,15 +8,7 @@
 import Foundation
 
 // todo: on iPad you don't see this on main screen but on this left one
-
-// todo: from requirements: Mocked supported currencies pairs. I.e. 2 lists for FROM, TO (supported countries/currencies: Poland/PLN, Germany/EUR, Great Britain/GBP, Ukraine/UAH) - what does it mean?
-
-// todo: add tests
-
-// todo: built as a module that could be reused in multiple apps.
-
 // todo: on the background there should be these 2 tabs too... inactive
-
 // todo: maybe we also should one place with overlays? (eventually parametrize opacity)
 
 class CurrencyConverterViewModel: ObservableObject {

@@ -169,7 +169,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         wait(numberOfSeconds: timeout, thenCheck: {
             XCTAssertEqual(scheduler.numberOfTimesEventWasFired, numberOfTimesEventWasFired)
             // if scheduler.numberOfTimesEventWasFired = 1 then we didn't start regular rate updates
-            XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 1) // todo: for some reason we have even more calls to getRate - probably because some of them are cancelled - but here it should be enough to say that we just have more than 1 - so we started regular getRate calls
+            XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 1) // we can have even more calls to getRate - probably because some of them are cancelled - but here it should be enough to say that we just have more than 1 - so we started regular getRate calls
         })
     }
     

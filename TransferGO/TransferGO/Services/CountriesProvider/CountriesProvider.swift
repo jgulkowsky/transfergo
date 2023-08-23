@@ -10,6 +10,7 @@ import Foundation
 class CountriesProvider: CountriesProviding {
     private let backgroundActor = BackgroundActor()
     private var cache: [Country]? = nil // todo: cache is nice but if sth changes on the server side - e.g. limit for transaction in given currency / some countries are added or removed - we should update it
+    // todo: for now let's say it just kind of mock I could have done it as normal provider which just returns these 4 countries but I have created sth that pretends to get data from backend and even prefetches it so we have them before we actually open the SelectCountryScreen - so I have done more than I should thus I'm finishing to work on this
     private var prefetchTask: Task<(), Never>? = nil
     
     init() {
