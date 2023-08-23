@@ -37,14 +37,55 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
     // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
     
-    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_whenViewModelIsInitialized_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_andGetCurrentRateErrorIsNil() {
+    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_whenViewModelIsInitialized_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_toAmountIsNil_fromAmountFocusedIsFalse_currentRateTextIs3Lines_connectionErrorIsNil_limitExceededErrorIsNil_getCurrentRateErrorIsNil_shouldEnableFieldsIsTrue_limitExceededIsFalse() {
         // then
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
         XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
         XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
     }
     
+    func test_givenThatInfoThatIsPassedOnInitContainsFromPolandToUkraineWithAmount300_andThatRateProviderReturnsRate1Dot23456789AndToAmount370Dot370367_whenViewModelIsInitializedAndRateIsGotten_then_fromCountryIsPoland_toCountryIsUkraine_fromAmountIs300With2decimalPlaces_toAmountIs370Dot370367_fromAmountFocusedIsFalse_currentRateTextIs1PLNTilde1Dot23457UAH_connectionErrorIsNil_limitExceededErrorIsNil_getCurrentRateErrorIsNil_shouldEnableFieldsIsTrue_limitExceededIsFalse() {
+        // then
+        let expectation = XCTestExpectation(description: #function)
+        
+        let scheduler = SchedulerHelper()
+        scheduler.start(
+            withInterval: 0.1,
+            onEvent: {
+                if self.viewModel.toAmount != nil {
+                    expectation.fulfill()
+                }
+            }
+        )
+        
+        wait(for: [expectation], timeout: 5.0)
+        scheduler.stop()
+        print("@jgu: after timeout")
+        
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNotNil(viewModel.toAmount)
+        if let toAmount = viewModel.toAmount {
+            XCTAssertTrue(Double.equal(toAmount, 370.370367, precise: 10))
+        }
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "1 PLN ~ 1.23457 UAH")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+
     
     
     // todo: test about tryToUpdateCurrentRate on init

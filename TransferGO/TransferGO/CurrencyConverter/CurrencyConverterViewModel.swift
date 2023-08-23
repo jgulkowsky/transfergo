@@ -172,12 +172,15 @@ private extension CurrencyConverterViewModel {
     }
     
     func tryToUpdateCurrentRate(shouldResetCurrentValues: Bool = true) {
+        print("@jgu: tryToUpdateCurrentRate - on start")
         getCurrentRateTask?.cancel()
         if shouldResetCurrentValues {
+            print("@jgu: tryToUpdateCurrentRate - resets values")
             currentRate = nil
             getCurrentRateError = nil
         }
         if areRequirementsForGettingCurrentRateSatisfied() {
+            print("@jgu: tryToUpdateCurrentRate - requirements are satisfied")
             getCurrentRate()
         }
     }
@@ -197,18 +200,23 @@ private extension CurrencyConverterViewModel {
     }
     
     func getCurrentRate() {
+        print("@jgu: getCurrentRate - on start")
         guard let amount = Double(fromAmount) else {
             return
         }
         
+        print("@jgu: getCurrentRate - starting task")
         getCurrentRateTask = Task {
             do {
+                print("@jgu: getCurrentRate - started task")
                 let rate = try await rateProvider.getRate(
                     from: fromCountry,
                     to: toCountry,
                     amount: amount
                 )
+                
                 await MainActor.run {
+                    print("@jgu: getCurrentRate - rate gotten - setting up currentRate and getCurrentRateError")
                     currentRate = rate
                     getCurrentRateError = nil
                 }
@@ -217,6 +225,7 @@ private extension CurrencyConverterViewModel {
             catch (let error) where error is CancellationError {}
             catch {
                 await MainActor.run {
+                    print("@jgu: getCurrentRate - there's an error - setting up currentRate and getCurrentRateError")
                     getCurrentRateError = "Cannot get current rate for \(fromCountry.currencyCode) ~ \(toCountry.currencyCode)"
                     currentRate = nil
                 }

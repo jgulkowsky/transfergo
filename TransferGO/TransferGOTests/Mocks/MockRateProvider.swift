@@ -8,21 +8,23 @@
 import Foundation
 
 class MockRateProvider: RateProviding {
+    var shouldThrow: Bool = false
+    var rateToReturn: Double = 1.23456789
+    var amountToReturn: Double?
+    
     func getRate(from: Country, to: Country, amount: Double) async throws -> Rate {
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        let rate = getRandomRate()
+        if shouldThrow {
+            throw MockError.someError
+        }
+        
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+
         return Rate(
             from: from.currencyCode,
             to: to.currencyCode,
-            rate: rate,
+            rate: rateToReturn,
             fromAmount: amount,
-            toAmount: rate * amount
+            toAmount: amountToReturn ?? rateToReturn * amount
         )
-    }
-}
-
-private extension MockRateProvider {
-    func getRandomRate() -> Double {
-        return Double.random(in: 1..<10)
     }
 }

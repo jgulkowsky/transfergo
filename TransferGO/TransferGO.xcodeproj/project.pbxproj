@@ -108,6 +108,8 @@
 		E37DC1B42A957F8D007E0404 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98812A8A417A00EEDBC8 /* CurrencyConverterViewModel.swift */; };
 		E37DC1B52A958069007E0404 /* Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC15C2A9391C0007E0404 /* Scheduling.swift */; };
 		E37DC1B92A9580D0007E0404 /* MockScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1B82A9580D0007E0404 /* MockScheduler.swift */; };
+		E37DC1BA2A961F1A007E0404 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1992A9512E5007E0404 /* MockError.swift */; };
+		E37DC1BC2A962882007E0404 /* SchedulerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1BB2A962882007E0404 /* SchedulerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,7 @@
 		E37DC1B02A9549A2007E0404 /* MockCountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCountriesProvider.swift; sourceTree = "<group>"; };
 		E37DC1B22A957F43007E0404 /* CurrencyConverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModelTests.swift; sourceTree = "<group>"; };
 		E37DC1B82A9580D0007E0404 /* MockScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduler.swift; sourceTree = "<group>"; };
+		E37DC1BB2A962882007E0404 /* SchedulerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -527,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				E37DC19C2A9518CD007E0404 /* TestHelper.swift */,
+				E37DC1BB2A962882007E0404 /* SchedulerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -702,6 +706,7 @@
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
 				E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */,
+				E37DC1BA2A961F1A007E0404 /* MockError.swift in Sources */,
 				E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */,
 				E36B98972A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift in Sources */,
 				E36B987A2A8A2A4200EEDBC8 /* SelectCountryView.swift in Sources */,
@@ -781,6 +786,7 @@
 				E37DC16F2A94F991007E0404 /* Double+to2DecPlaces.swift in Sources */,
 				E37DC1B12A9549A2007E0404 /* MockCountriesProvider.swift in Sources */,
 				E37DC16E2A94F979007E0404 /* Rate.swift in Sources */,
+				E37DC1BC2A962882007E0404 /* SchedulerHelper.swift in Sources */,
 				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 				E37DC1A22A951E58007E0404 /* DoubleExtensions.swift in Sources */,
 				E37DC1B32A957F43007E0404 /* CurrencyConverterViewModelTests.swift in Sources */,
