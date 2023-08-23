@@ -148,7 +148,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.limitExceeded)
     }
     
-    func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_everythingStaysTheSame_exceptGetCurrentRateErrorIsSet() {
+    func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsNotURLErrorCancelledNorCancellationError_everythingStaysTheSame_exceptGetCurrentRateErrorIsSet() {
         // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
         
         // given
@@ -191,6 +191,103 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.connectionError)
         XCTAssertNil(viewModel.limitExceededError)
         XCTAssertNotNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+    func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsURLErrorCancelled_everythingStaysTheSame() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
+        // given
+        rateProvider = MockRateProvider()
+        rateProvider.shouldThrow = true
+        rateProvider.errorToThrow = URLError(.cancelled)
+        
+        viewModel = CurrencyConverterViewModel(
+            info: info,
+            coordinator: coordinator,
+            rateProvider: rateProvider,
+            scheduler: scheduler,
+            networkStatusProvider: networkStatusProvider
+        )
+        
+        // then
+        
+        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
+        let expectation = XCTestExpectation(description: #function)
+        
+        let scheduler = SchedulerHelper()
+        scheduler.start(
+            withInterval: 0.1,
+            onEvent: {
+                if self.rateProvider.errorWasThrown {
+                    expectation.fulfill()
+                }
+            }
+        )
+        
+        wait(for: [expectation], timeout: 5.0)
+        scheduler.stop()
+        print("@jgu: after timeout")
+        
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+    func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsCancellationError_everythingStaysTheSame() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
+        // given
+        rateProvider = MockRateProvider()
+        rateProvider.shouldThrow = true
+        rateProvider.errorToThrow = CancellationError()
+        
+        viewModel = CurrencyConverterViewModel(
+            info: info,
+            coordinator: coordinator,
+            rateProvider: rateProvider,
+            scheduler: scheduler,
+            networkStatusProvider: networkStatusProvider
+        )
+        
+        // then
+        
+        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
+        let expectation = XCTestExpectation(description: #function)
+        
+        let scheduler = SchedulerHelper()
+        scheduler.start(
+            withInterval: 0.1,
+            onEvent: {
+                if self.rateProvider.errorWasThrown {
+                    expectation.fulfill()
+                }
+            }
+        )
+        
+        wait(for: [expectation], timeout: 5.0)
+        scheduler.stop()
+        print("@jgu: after timeout")
+        
+        // todo: this is the same as in the first test and one test above - we could move it into separate function
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNil(viewModel.getCurrentRateError)
         XCTAssertTrue(viewModel.shouldEnableFields)
         XCTAssertFalse(viewModel.limitExceeded)
     }

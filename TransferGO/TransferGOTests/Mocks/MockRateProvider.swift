@@ -9,12 +9,15 @@ import Foundation
 
 class MockRateProvider: RateProviding {
     var shouldThrow: Bool = false
+    var errorToThrow: Error? = nil
     var rateToReturn: Double = 1.23456789
     var amountToReturn: Double?
+    var errorWasThrown = false
     
     func getRate(from: Country, to: Country, amount: Double) async throws -> Rate {
         if shouldThrow {
-            throw MockError.someError
+            errorWasThrown = true
+            throw errorToThrow ?? MockError.someError
         }
         
         try await Task.sleep(nanoseconds: 1_000_000_000)
