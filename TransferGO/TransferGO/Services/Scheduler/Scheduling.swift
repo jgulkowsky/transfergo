@@ -8,6 +8,8 @@
 import Foundation
 
 protocol Scheduling {
-    func start(withInterval interval: Double, onEvent: @escaping () -> Void)
+    var interval: Double { get set }
+    
+    func start(onEvent: @escaping () -> Void)
     func stop()
 }

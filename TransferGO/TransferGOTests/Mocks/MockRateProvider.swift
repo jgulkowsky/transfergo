@@ -13,8 +13,11 @@ class MockRateProvider: RateProviding {
     var rateToReturn: Double = 1.23456789
     var amountToReturn: Double?
     var errorWasThrown = false
+    var numberOfTimesGetRateWasCalled = 0
     
     func getRate(from: Country, to: Country, amount: Double) async throws -> Rate {
+        numberOfTimesGetRateWasCalled += 1
+        
         if shouldThrow {
             errorWasThrown = true
             throw errorToThrow ?? MockError.someError

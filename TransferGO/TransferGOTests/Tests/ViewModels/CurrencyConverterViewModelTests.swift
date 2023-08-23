@@ -23,7 +23,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         )
         coordinator = MockCoordinator()
         rateProvider = MockRateProvider()
-        scheduler = MockScheduler()
+        scheduler = MockScheduler(interval: 2.0)
         networkStatusProvider = MockNetworkStatusProvider()
         
         initViewModel()
@@ -156,7 +156,28 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     
 // MARK: - onSceneActive / onSceneInactive / onSceneInBackground tests
     
+    func test_onSceneActive_shouldStartRegularCurrentRateUpdates() {
+        // given
+        let timeout = 5.0
+        let numberOfTimesEventWasFired = Int(1 + timeout / scheduler.interval)
+        
+        // when
+        viewModel.onSceneActive()
+        wait(numberOfSeconds: timeout, thenCheck: {
+            // then
+            XCTAssertEqual(scheduler.numberOfTimesEventWasFired, numberOfTimesEventWasFired)
+            // if scheduler.numberOfTimesEventWasFired = 1 then we didn't start regular rate updates
+            XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 1) // todo: for some reason we have even more calls to getRate - probably because some of them are cancelled - but here it should be enough to say that we just have more than 1 - so we started regular getRate calls
+        })
+    }
     
+    func test_onSceneActive_shouldStartGettingNetworkStatus() {
+        // given
+        
+        // when
+        
+        // then
+    }
     
 // MARK: - sendFromTapped / sendToTapped / switchTapped / backgroundTapped tests
     
@@ -217,21 +238,27 @@ private extension CurrencyConverterViewModelTests {
     func waitForConditionToBeMet(samplingRate: Double = 0.1, timeout: Double = 5.0, condition: @escaping () -> Bool) {
         let expectation = XCTestExpectation(description: #function) // is it important? because we can pass it also from the upper function
         
-        let scheduler = SchedulerHelper()
-        scheduler.start(
-            withInterval: samplingRate,
-            onEvent: {
-                if condition() {
-                    expectation.fulfill()
-                }
+        let scheduler = SchedulerHelper(interval: samplingRate)
+        scheduler.start {
+            if condition() {
+                expectation.fulfill()
             }
-        )
+        }
         
         wait(for: [expectation], timeout: timeout)
         scheduler.stop()
         print("@jgu: after expectation fulfilled or timeouted")
     }
     
+    func wait(numberOfSeconds: Double, thenCheck assertions: () -> Void) {
+        let exp = expectation(description: #function)
+        let result = XCTWaiter.wait(for: [exp], timeout: numberOfSeconds)
+        if result == XCTWaiter.Result.timedOut {
+            assertions()
+        } else {
+            XCTFail("Delay interrupted")
+        }
+    }
     
     // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
     

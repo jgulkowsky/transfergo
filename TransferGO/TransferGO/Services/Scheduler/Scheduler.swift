@@ -8,10 +8,16 @@
 import Foundation
 
 class Scheduler: Scheduling {
+    var interval: Double
+    
     private var onEvent: (() -> Void)!
     private var timer: Timer? = nil
     
-    func start(withInterval interval: Double, onEvent: @escaping () -> Void) {
+    init(interval: Double) {
+        self.interval = interval
+    }
+    
+    func start(onEvent: @escaping () -> Void) {
         self.onEvent = onEvent
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             self?.onEvent()

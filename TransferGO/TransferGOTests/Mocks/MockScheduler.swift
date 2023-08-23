@@ -10,12 +10,22 @@ import Foundation
 // todo: seems to do the same as normal scheduler but if we can have mock then why not - maybe it will be useful
 
 class MockScheduler: Scheduling {
+    var numberOfTimesEventWasFired: Int = 0
+    var interval: Double
+    
     private var onEvent: (() -> Void)!
     private var timer: Timer? = nil
     
-    func start(withInterval interval: Double, onEvent: @escaping () -> Void) {
+    init(interval: Double) {
+        self.interval = interval
+    }
+    
+    func start(onEvent: @escaping () -> Void) {
+        print("@jgu: MockScheduler started with interval: \(interval)")
         self.onEvent = onEvent
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+            print("@jgu: MockScheduler onEvent")
+            self?.numberOfTimesEventWasFired += 1
             self?.onEvent()
         }
         timer?.fire()
@@ -24,5 +34,6 @@ class MockScheduler: Scheduling {
     func stop() {
         timer?.invalidate()
         timer = nil
+        print("@jgu: MockScheduler stopped")
     }
 }
