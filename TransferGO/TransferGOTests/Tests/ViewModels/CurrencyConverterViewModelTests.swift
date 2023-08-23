@@ -46,21 +46,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
         
         // then
-        let expectation = XCTestExpectation(description: #function)
-        
-        let scheduler = SchedulerHelper()
-        scheduler.start(
-            withInterval: 0.1,
-            onEvent: {
-                if self.viewModel.toAmount != nil {
-                    expectation.fulfill()
-                }
-            }
-        )
-        
-        wait(for: [expectation], timeout: 5.0)
-        scheduler.stop()
-        print("@jgu: after timeout")
+        waitForConditionToBeMet {
+            self.viewModel.toAmount != nil
+        }
         
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
@@ -154,23 +142,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         )
         
         // then
-        
-        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
-        let expectation = XCTestExpectation(description: #function)
-        
-        let scheduler = SchedulerHelper()
-        scheduler.start(
-            withInterval: 0.1,
-            onEvent: {
-                if self.viewModel.getCurrentRateError != nil {
-                    expectation.fulfill()
-                }
-            }
-        )
-        
-        wait(for: [expectation], timeout: 5.0)
-        scheduler.stop()
-        print("@jgu: after timeout")
+        waitForConditionToBeMet {
+            self.viewModel.getCurrentRateError != nil
+        }
         
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
@@ -202,23 +176,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         )
         
         // then
-        
-        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
-        let expectation = XCTestExpectation(description: #function)
-        
-        let scheduler = SchedulerHelper()
-        scheduler.start(
-            withInterval: 0.1,
-            onEvent: {
-                if self.rateProvider.errorWasThrown {
-                    expectation.fulfill()
-                }
-            }
-        )
-        
-        wait(for: [expectation], timeout: 5.0)
-        scheduler.stop()
-        print("@jgu: after timeout")
+        waitForConditionToBeMet {
+            self.rateProvider.errorWasThrown
+        }
         
         assertEverythingStaysTheSame()
     }
@@ -231,6 +191,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         rateProvider.shouldThrow = true
         rateProvider.errorToThrow = CancellationError()
         
+        // todo: this also could be put into separate function
         viewModel = CurrencyConverterViewModel(
             info: info,
             coordinator: coordinator,
@@ -240,23 +201,9 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         )
         
         // then
-        
-        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
-        let expectation = XCTestExpectation(description: #function)
-        
-        let scheduler = SchedulerHelper()
-        scheduler.start(
-            withInterval: 0.1,
-            onEvent: {
-                if self.rateProvider.errorWasThrown {
-                    expectation.fulfill()
-                }
-            }
-        )
-        
-        wait(for: [expectation], timeout: 5.0)
-        scheduler.stop()
-        print("@jgu: after timeout")
+        waitForConditionToBeMet {
+            self.rateProvider.errorWasThrown
+        }
         
         assertEverythingStaysTheSame()
     }
@@ -303,6 +250,24 @@ final class CurrencyConverterViewModelTests: XCTestCase {
 }
 
 private extension CurrencyConverterViewModelTests {
+    func waitForConditionToBeMet(samplingRate: Double = 0.1, timeout: Double = 5.0, condition: @escaping () -> Bool) {
+        let expectation = XCTestExpectation(description: #function) // is it important? because we can pass it also from the upper function
+        
+        let scheduler = SchedulerHelper()
+        scheduler.start(
+            withInterval: samplingRate,
+            onEvent: {
+                if condition() {
+                    expectation.fulfill()
+                }
+            }
+        )
+        
+        wait(for: [expectation], timeout: timeout)
+        scheduler.stop()
+        print("@jgu: after expectation fulfilled or timeouted")
+    }
+    
     func assertEverythingStaysTheSame() {
         XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
         XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
