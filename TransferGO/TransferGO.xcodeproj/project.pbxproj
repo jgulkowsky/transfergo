@@ -44,7 +44,7 @@
 		E36B98BB2A8E47AD00EEDBC8 /* BellItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */; };
 		E36B98BE2A8E48F700EEDBC8 /* ToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */; };
 		E36B98C22A8E57F200EEDBC8 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */; };
-		E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
+		E36B98C42A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift */; };
 		E36B98CE2A8F914A00EEDBC8 /* CountriesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */; };
 		E36B98D02A8F916E00EEDBC8 /* CountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */; };
 		E36B98D52A8FB7B700EEDBC8 /* RateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */; };
@@ -72,7 +72,7 @@
 		E37DC16C2A94F96E007E0404 /* RateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */; };
 		E37DC16D2A94F973007E0404 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B988E2A8A466100EEDBC8 /* Country.swift */; };
 		E37DC16E2A94F979007E0404 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98D62A8FB84400EEDBC8 /* Rate.swift */; };
-		E37DC16F2A94F991007E0404 /* Double+to2DecPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */; };
+		E37DC16F2A94F991007E0404 /* Double+limitDecimalPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98C32A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift */; };
 		E37DC1712A95010A007E0404 /* MockDataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1702A95010A007E0404 /* MockDataDecoder.swift */; };
 		E37DC1722A95012A007E0404 /* DataDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1552A93766E007E0404 /* DataDecoding.swift */; };
 		E37DC1752A9502AC007E0404 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1472A937597007E0404 /* ResponseHandler.swift */; };
@@ -112,6 +112,7 @@
 		E37DC1BC2A962882007E0404 /* SchedulerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1BB2A962882007E0404 /* SchedulerHelper.swift */; };
 		E37DC1BE2A9697B4007E0404 /* CountriesProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1BD2A9697B4007E0404 /* CountriesProviderTests.swift */; };
 		E37DC1BF2A9697DE007E0404 /* CountriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */; };
+		E37DC1C52A969B99007E0404 /* Double+limitDecimalPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DC1C42A969B99007E0404 /* Double+limitDecimalPlacesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,7 +173,7 @@
 		E36B98BA2A8E47AD00EEDBC8 /* BellItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellItemView.swift; sourceTree = "<group>"; };
 		E36B98BD2A8E48F700EEDBC8 /* ToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemView.swift; sourceTree = "<group>"; };
 		E36B98C12A8E57F200EEDBC8 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
-		E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+to2DecPlaces.swift"; sourceTree = "<group>"; };
+		E36B98C32A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+limitDecimalPlaces.swift"; sourceTree = "<group>"; };
 		E36B98CD2A8F914A00EEDBC8 /* CountriesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProviding.swift; sourceTree = "<group>"; };
 		E36B98CF2A8F916E00EEDBC8 /* CountriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProvider.swift; sourceTree = "<group>"; };
 		E36B98D42A8FB7B700EEDBC8 /* RateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateProviding.swift; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		E37DC1B82A9580D0007E0404 /* MockScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduler.swift; sourceTree = "<group>"; };
 		E37DC1BB2A962882007E0404 /* SchedulerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerHelper.swift; sourceTree = "<group>"; };
 		E37DC1BD2A9697B4007E0404 /* CountriesProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesProviderTests.swift; sourceTree = "<group>"; };
+		E37DC1C42A969B99007E0404 /* Double+limitDecimalPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+limitDecimalPlacesTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				E36B989B2A8A834B00EEDBC8 /* View+cornerRadius.swift */,
-				E36B98C32A8E62A400EEDBC8 /* Double+to2DecPlaces.swift */,
+				E36B98C32A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -543,6 +545,7 @@
 			children = (
 				E37DC1A62A95483C007E0404 /* ViewModels */,
 				E37DC1A52A9547DB007E0404 /* ServicesTests */,
+				E37DC1C32A969B71007E0404 /* Extensions */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -565,6 +568,14 @@
 				E37DC1B22A957F43007E0404 /* CurrencyConverterViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E37DC1C32A969B71007E0404 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E37DC1C42A969B99007E0404 /* Double+limitDecimalPlacesTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,7 +720,7 @@
 				E36B98912A8A4B3600EEDBC8 /* PredefinedCountry.swift in Sources */,
 				E36B98862A8A41B000EEDBC8 /* SelectCountryInfo.swift in Sources */,
 				E36B989F2A8D01EC00EEDBC8 /* EditableCurrencyView.swift in Sources */,
-				E36B98C42A8E62A400EEDBC8 /* Double+to2DecPlaces.swift in Sources */,
+				E36B98C42A8E62A400EEDBC8 /* Double+limitDecimalPlaces.swift in Sources */,
 				E37DC1BA2A961F1A007E0404 /* MockError.swift in Sources */,
 				E36B98B22A8E3E5400EEDBC8 /* SendButton.swift in Sources */,
 				E36B98972A8A7AA700EEDBC8 /* NoneditableCurrencyView.swift in Sources */,
@@ -788,10 +799,11 @@
 				E37DC1762A9502C1007E0404 /* ResponseHandling.swift in Sources */,
 				E37DC1772A9502D3007E0404 /* ResponseHandlerError.swift in Sources */,
 				E37DC1942A951255007E0404 /* MockURLProvider.swift in Sources */,
-				E37DC16F2A94F991007E0404 /* Double+to2DecPlaces.swift in Sources */,
+				E37DC16F2A94F991007E0404 /* Double+limitDecimalPlaces.swift in Sources */,
 				E37DC1B12A9549A2007E0404 /* MockCountriesProvider.swift in Sources */,
 				E37DC16E2A94F979007E0404 /* Rate.swift in Sources */,
 				E37DC1BC2A962882007E0404 /* SchedulerHelper.swift in Sources */,
+				E37DC1C52A969B99007E0404 /* Double+limitDecimalPlacesTests.swift in Sources */,
 				E37DC1692A94F4CB007E0404 /* MockNetworkStatusProvider.swift in Sources */,
 				E37DC1A22A951E58007E0404 /* DoubleExtensions.swift in Sources */,
 				E37DC1B32A957F43007E0404 /* CurrencyConverterViewModelTests.swift in Sources */,

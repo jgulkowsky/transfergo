@@ -448,7 +448,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         // then
         XCTAssertNil(viewModel.limitExceededError)
         XCTAssertFalse(viewModel.limitExceeded)
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // todo: there's some race as this sometimes is not true
     }
     
     func test_when_toCountryIsSet_then_rateProviderGetRateIsTriggered() {
@@ -465,7 +465,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         viewModel.toCountry = PredefinedCountry.greatBritain
         
         // then
-        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // todo: there's some race as this sometimes is not true (here too probably)
     }
     
     func test_when_fromAmountIsSet_andLimitIsNotReached_then_rateProviderGetRateIsTriggered() {

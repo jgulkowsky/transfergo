@@ -1,5 +1,5 @@
 //
-//  Double+to2DecPlaces.swift
+//  Double+limitDecimalPlaces.swift
 //  TransferGO
 //
 //  Created by Jan Gulkowski on 17/08/2023.
