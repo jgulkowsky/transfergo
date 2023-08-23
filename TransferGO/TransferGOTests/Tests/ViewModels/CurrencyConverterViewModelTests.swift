@@ -26,64 +26,46 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         scheduler = MockScheduler()
         networkStatusProvider = MockNetworkStatusProvider()
         
-        viewModel = CurrencyConverterViewModel(
-            info: info,
-            coordinator: coordinator,
-            rateProvider: rateProvider,
-            scheduler: scheduler,
-            networkStatusProvider: networkStatusProvider
-        )
+        initViewModel()
     }
-    
-    // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
     
     func test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused() {
         // then
-        assertEverythingStaysTheSame()
+        assert_everythingStaysTheSame()
     }
     
     func test_onViewModelInit_whenRateIsGottenWithoutErrors_allStaysTheSame_exceptRateAndToAmountAreSet() {
         // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
         
-        // then
+        // when
         waitForConditionToBeMet {
             self.viewModel.toAmount != nil
         }
         
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNotNil(viewModel.toAmount)
-        if let toAmount = viewModel.toAmount {
-            XCTAssertTrue(Double.equal(toAmount, 370.370367, precise: 10))
-        }
+        // then
+        assert_fromCountry_toCountry_tromAmount_areSet()
+        assert_toAmount_currentRate_areSet(
+            expectedToAmount: 370.370367,
+            expectedCurrentRateText: "1 PLN ~ 1.23457 UAH"
+        )
+        assert_errorsAreNil()
         XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "1 PLN ~ 1.23457 UAH")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
     }
     
     func test_onViewModelInit_whenUserTypesStrangeValueThatIsNotConvertibleIntoDouble_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
         // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
         
         // when
-        viewModel.fromAmount = "..12.."
+        let fromAmount = "..12.."
+        viewModel.fromAmount = fromAmount
         
         // then
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "..12..")
-        XCTAssertNil(viewModel.toAmount)
+        assert_fromCountry_toCountry_tromAmount_areSet(
+            expectedFromAmount: fromAmount
+        )
+        assert_toAmount_currentRate_areNotSetYet()
+        assert_errorsAreNil()
         XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
     }
 
     func test_onViewModelInit_whenUserTapsOnFromAmountTextField_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
@@ -93,37 +75,28 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         viewModel.fromAmountFocused = true
         
         // then
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00") // it will be zeroed in a short time but not now
-        XCTAssertNil(viewModel.toAmount)
+        assert_fromCountry_toCountry_tromAmount_areSet(
+            expectedFromAmount: "300.00" // fromAmount will be zeroed soon but because of how textField works it's not yet
+        )
+        assert_toAmount_currentRate_areNotSetYet()
+        assert_errorsAreNil()
         XCTAssertTrue(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
     }
     
     func test_onViewModelInit_whenUserTypesFromAmountValueOverTheLimit_everythingStaysTheSame_exceptRateAndToAmountAreNotSet_andLimitExceededErrorIsShown() {
         // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
         
         // when
-        viewModel.fromAmount = "1000000.00" // this should be over any currency limit
+        let fromAmount = "1000000.00" // this should be over any currency limit
+        viewModel.fromAmount = fromAmount
         
         // then
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "1000000.00")
-        XCTAssertNil(viewModel.toAmount)
+        assert_fromCountry_toCountry_tromAmount_areSet(
+            expectedFromAmount: fromAmount
+        )
+        assert_toAmount_currentRate_areNotSetYet()
+        assert_errorsAreNil(exceptLimitExceededError: true)
         XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNotNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertTrue(viewModel.limitExceeded)
     }
     
     func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsNotURLErrorCancelledNorCancellationError_everythingStaysTheSame_exceptGetCurrentRateErrorIsSet() {
@@ -133,30 +106,16 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         rateProvider = MockRateProvider()
         rateProvider.shouldThrow = true
         
-        viewModel = CurrencyConverterViewModel(
-            info: info,
-            coordinator: coordinator,
-            rateProvider: rateProvider,
-            scheduler: scheduler,
-            networkStatusProvider: networkStatusProvider
-        )
-        
         // then
+        initViewModel()
         waitForConditionToBeMet {
             self.viewModel.getCurrentRateError != nil
         }
         
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.toAmount)
+        assert_fromCountry_toCountry_tromAmount_areSet()
+        assert_toAmount_currentRate_areNotSetYet()
+        assert_errorsAreNil(exceptGetCurrentRateError: true)
         XCTAssertFalse(viewModel.fromAmountFocused)
-        XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNotNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
     }
     
     func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsURLErrorCancelled_everythingStaysTheSame() {
@@ -167,20 +126,13 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         rateProvider.shouldThrow = true
         rateProvider.errorToThrow = URLError(.cancelled)
         
-        viewModel = CurrencyConverterViewModel(
-            info: info,
-            coordinator: coordinator,
-            rateProvider: rateProvider,
-            scheduler: scheduler,
-            networkStatusProvider: networkStatusProvider
-        )
-        
         // then
+        initViewModel()
         waitForConditionToBeMet {
             self.rateProvider.errorWasThrown
         }
         
-        assertEverythingStaysTheSame()
+        assert_everythingStaysTheSame()
     }
     
     func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_andThisErrorIsCancellationError_everythingStaysTheSame() {
@@ -191,28 +143,20 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         rateProvider.shouldThrow = true
         rateProvider.errorToThrow = CancellationError()
         
-        // todo: this also could be put into separate function
-        viewModel = CurrencyConverterViewModel(
-            info: info,
-            coordinator: coordinator,
-            rateProvider: rateProvider,
-            scheduler: scheduler,
-            networkStatusProvider: networkStatusProvider
-        )
-        
         // then
+        initViewModel()
         waitForConditionToBeMet {
             self.rateProvider.errorWasThrown
         }
         
-        assertEverythingStaysTheSame()
+        assert_everythingStaysTheSame()
     }
     
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
     //  todo: also when requirements are satisfied - done
-    //  todo: also when requirements are satisfied but error is thrown (URLError.cancelled, CancellationError, other)
-    //  todo: also when requirements are satisfied and there's no error but we get the rate
+    //  todo: also when requirements are satisfied but error is thrown (URLError.cancelled, CancellationError, other) - done
+    //  todo: also when requirements are satisfied and there's no error but we get the rate - done
     //  todo: also when you tryToUpdateCurrentRate multiple times
     
     // todo: test about onSceneActive
@@ -250,6 +194,16 @@ final class CurrencyConverterViewModelTests: XCTestCase {
 }
 
 private extension CurrencyConverterViewModelTests {
+    func initViewModel() {
+        viewModel = CurrencyConverterViewModel(
+            info: info,
+            coordinator: coordinator,
+            rateProvider: rateProvider,
+            scheduler: scheduler,
+            networkStatusProvider: networkStatusProvider
+        )
+    }
+    
     func waitForConditionToBeMet(samplingRate: Double = 0.1, timeout: Double = 5.0, condition: @escaping () -> Bool) {
         let expectation = XCTestExpectation(description: #function) // is it important? because we can pass it also from the upper function
         
@@ -268,17 +222,65 @@ private extension CurrencyConverterViewModelTests {
         print("@jgu: after expectation fulfilled or timeouted")
     }
     
-    func assertEverythingStaysTheSame() {
-        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
-        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
-        XCTAssertEqual(viewModel.fromAmount, "300.00")
-        XCTAssertNil(viewModel.toAmount)
+    
+    // public values are: fromCountry, toCountry, fromAmount, toAmount, fromAmountFocused, currentRateText, connectionError, limitExceededError, getCurrentRateError, shouldEnableFields, limitExceeded
+    
+    func assert_everythingStaysTheSame() {
+        assert_fromCountry_toCountry_tromAmount_areSet()
+        assert_toAmount_currentRate_areNotSetYet()
+        assert_errorsAreNil()
         XCTAssertFalse(viewModel.fromAmountFocused)
+    }
+    
+    func assert_fromCountry_toCountry_tromAmount_areSet(
+        expectedFromCountry: Country = PredefinedCountry.poland,
+        expectedToCountry: Country = PredefinedCountry.ukraine,
+        expectedFromAmount: String = "300.00"
+    ) {
+        
+        XCTAssertEqual(viewModel.fromCountry, expectedFromCountry)
+        XCTAssertEqual(viewModel.toCountry, expectedToCountry)
+        XCTAssertEqual(viewModel.fromAmount, expectedFromAmount)
+    }
+    
+    func assert_toAmount_currentRate_areNotSetYet() {
+        XCTAssertNil(viewModel.toAmount)
         XCTAssertEqual(viewModel.currentRateText, "---")
-        XCTAssertNil(viewModel.connectionError)
-        XCTAssertNil(viewModel.limitExceededError)
-        XCTAssertNil(viewModel.getCurrentRateError)
-        XCTAssertTrue(viewModel.shouldEnableFields)
-        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+    func assert_toAmount_currentRate_areSet(expectedToAmount: Double, expectedCurrentRateText: String) {
+        XCTAssertNotNil(viewModel.toAmount)
+        if let toAmount = viewModel.toAmount {
+            XCTAssertTrue(Double.equal(toAmount, expectedToAmount, precise: 10))
+        }
+        XCTAssertEqual(viewModel.currentRateText, expectedCurrentRateText)
+    }
+    
+    func assert_errorsAreNil(
+        exceptConnectionError: Bool = false,
+        exceptLimitExceededError: Bool = false,
+        exceptGetCurrentRateError: Bool = false
+    ) {
+        if exceptConnectionError {
+            XCTAssertNotNil(viewModel.connectionError)
+            XCTAssertFalse(viewModel.shouldEnableFields)
+        } else {
+            XCTAssertNil(viewModel.connectionError)
+            XCTAssertTrue(viewModel.shouldEnableFields)
+        }
+        
+        if exceptLimitExceededError {
+            XCTAssertNotNil(viewModel.limitExceededError)
+            XCTAssertTrue(viewModel.limitExceeded)
+        } else {
+            XCTAssertNil(viewModel.limitExceededError)
+            XCTAssertFalse(viewModel.limitExceeded)
+        }
+        
+        if exceptGetCurrentRateError {
+            XCTAssertNotNil(viewModel.getCurrentRateError)
+        } else {
+            XCTAssertNil(viewModel.getCurrentRateError)
+        }
     }
 }
