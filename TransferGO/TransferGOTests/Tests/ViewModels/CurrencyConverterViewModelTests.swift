@@ -485,6 +485,41 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0)
     }
     
+// MARK: - connection error
+    
+    func test_given_networkStatusProviderReturnsFalseOnGetRate_when_viewModelTriggersItWithOnSceneActive_then_connectionErrorIsShown() {
+        // given
+        viewModel.connectionError = nil
+        networkStatusProvider.valueToReturn = false
+        networkStatusProvider.hasUpdatedStatusAtLeastOnce = false
+        
+        // when
+        viewModel.onSceneActive()
+        waitForConditionToBeMet {
+            self.networkStatusProvider.hasUpdatedStatusAtLeastOnce == true
+        }
+        
+        // then
+        XCTAssertNotNil(viewModel.connectionError)
+    }
+    
+    func test_given_networkStatusProviderReturnsTrueOnGetRate_when_viewModelTriggersItWithOnSceneActive_then_connectionErrorIsHidden() {
+        // given
+        viewModel.connectionError = "Connection error!"
+        networkStatusProvider.valueToReturn = true
+        networkStatusProvider.hasUpdatedStatusAtLeastOnce = false
+        
+        // when
+        viewModel.onSceneActive()
+        waitForConditionToBeMet { // todo: this rather should be [weak self] no? - and all these places that uses this waitFor... no?
+            // todo: on the other hand we have scheduler stop - and these are only tests so until tests are running fine I don't think we need to make things complcated because of this
+            self.networkStatusProvider.hasUpdatedStatusAtLeastOnce == true
+        }
+        
+        // then
+        XCTAssertNil(viewModel.connectionError)
+    }
+    
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
     //  todo: also when requirements are satisfied - done
@@ -515,7 +550,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     // todo: test about setting up fromAmountFocused (maybe covered in above tests...)
     // todo: test about setting up currentRate (maybe covered in above tests...)
     
-    // todo: test about connectionError (maybe covered in above tests...)
+    // todo: test about connectionError (maybe covered in above tests...) - done
     // todo: test about limitExceededError (maybe covered in above tests...)
     // todo: test about getCurrentRateError (maybe covered in above tests...)
     
@@ -576,7 +611,6 @@ private extension CurrencyConverterViewModelTests {
         expectedToCountry: Country = PredefinedCountry.ukraine,
         expectedFromAmount: String = "300.00"
     ) {
-        
         XCTAssertEqual(viewModel.fromCountry, expectedFromCountry)
         XCTAssertEqual(viewModel.toCountry, expectedToCountry)
         XCTAssertEqual(viewModel.fromAmount, expectedFromAmount)
