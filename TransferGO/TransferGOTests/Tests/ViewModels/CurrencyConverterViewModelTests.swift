@@ -244,6 +244,70 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertEqual(coordinator.infoPassedToSelectCountry!.type, .to)
     }
     
+    func test_when_viewModelSwitchTapped_then_fromCountrySwitchesWithToCountry() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.germany
+        viewModel.toCountry = PredefinedCountry.poland
+        
+        // when
+        viewModel.switchTapped()
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.germany)
+    }
+    
+    func test_when_viewModelSwitchTapped_then_fromAmountFocusedIsFalse() {
+        // given
+        viewModel.fromAmountFocused = true
+        
+        // when
+        viewModel.switchTapped()
+        
+        // then
+        XCTAssertFalse(viewModel.fromAmountFocused)
+    }
+    
+    func test_given_fromAmountIsOverLimitForToCountry_when_viewModelSwitchTapped_then_limitExceededErrorIsShown() {
+        // given
+        viewModel.limitExceededError = nil
+        viewModel.fromCountry = PredefinedCountry.ukraine // 50000 is okay here
+        viewModel.toCountry = PredefinedCountry.poland // here not
+        viewModel.fromAmount = "50000.00"
+        
+        // when
+        viewModel.switchTapped()
+        
+        // then
+        XCTAssertNotNil(viewModel.limitExceededError)
+        XCTAssertTrue(viewModel.limitExceeded)
+    }
+    
+    func test_given_fromAmountIsNotOverLimitForToCountry_when_viewModelSwitchTapped_then_limitExceededErrorIsNotShown() {
+        // given
+        viewModel.limitExceededError = nil
+        viewModel.fromCountry = PredefinedCountry.ukraine // 20000 is okay here
+        viewModel.toCountry = PredefinedCountry.poland // and here too
+        viewModel.fromAmount = "20000.00"
+        
+        // when
+        viewModel.switchTapped()
+        
+        // then
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertFalse(viewModel.limitExceeded)
+    }
+    
+    func test_when_viewModelSwitchTapped_then_rateProviderGetRateIsCalled() {
+        // given
+        rateProvider.numberOfTimesGetRateWasCalled = 0
+        
+        // when
+        viewModel.switchTapped()
+        
+        // then
+        XCTAssertTrue(rateProvider.numberOfTimesGetRateWasCalled > 0) // can be more than 1 as didSets from fromCountry and toCountry tries to get rate too
+    }
     
 // MARK: - setting up fromCountry can change value in toCountry and vice vers tests
     
