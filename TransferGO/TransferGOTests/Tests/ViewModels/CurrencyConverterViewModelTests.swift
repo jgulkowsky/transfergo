@@ -53,6 +53,8 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
     
     func test_onViewModelInit_whenRateIsGottenWithoutErrors_allStaysTheSame_exceptRateAndToAmountAreSet() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
         // then
         let expectation = XCTestExpectation(description: #function)
         
@@ -87,6 +89,8 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
     
     func test_onViewModelInit_whenUserTypesStrangeValueThatIsNotConvertibleIntoDouble_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
         // when
         viewModel.fromAmount = "..12.."
         
@@ -105,6 +109,8 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
 
     func test_onViewModelInit_whenUserTapsOnFromAmountTextField_everythingStaysTheSame_exceptRateAndToAmountAreNotSet() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
         // when
         viewModel.fromAmountFocused = true
         
@@ -123,6 +129,8 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     }
     
     func test_onViewModelInit_whenUserTypesFromAmountValueOverTheLimit_everythingStaysTheSame_exceptRateAndToAmountAreNotSet_andLimitExceededErrorIsShown() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
         // when
         viewModel.fromAmount = "1000000.00" // this should be over any currency limit
         
@@ -138,6 +146,53 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.getCurrentRateError)
         XCTAssertTrue(viewModel.shouldEnableFields)
         XCTAssertTrue(viewModel.limitExceeded)
+    }
+    
+    func test_onViewModelInit_whenErrorIsThrownDuringGettingRate_everythingStaysTheSame_exceptGetCurrentRateErrorIsSet() {
+        // by everythingStaysTheSame I mean the same result as in test_onViewModelInit_fromCountryToCountryAndFromAmountArePredefined_rateToAmountAndErrorsAreNotSet_fieldsAreEnabled_fromAmountIsNotFocused()
+        
+        // given
+        rateProvider = MockRateProvider()
+        rateProvider.shouldThrow = true
+        
+        viewModel = CurrencyConverterViewModel(
+            info: info,
+            coordinator: coordinator,
+            rateProvider: rateProvider,
+            scheduler: scheduler,
+            networkStatusProvider: networkStatusProvider
+        )
+        
+        // then
+        
+        // todo: maybe we should put this expectation to some separate method where we would inject just the condition that's triggeres fulfill()
+        let expectation = XCTestExpectation(description: #function)
+        
+        let scheduler = SchedulerHelper()
+        scheduler.start(
+            withInterval: 0.1,
+            onEvent: {
+                if self.viewModel.getCurrentRateError != nil {
+                    expectation.fulfill()
+                }
+            }
+        )
+        
+        wait(for: [expectation], timeout: 5.0)
+        scheduler.stop()
+        print("@jgu: after timeout")
+        
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.fromAmount, "300.00")
+        XCTAssertNil(viewModel.toAmount)
+        XCTAssertFalse(viewModel.fromAmountFocused)
+        XCTAssertEqual(viewModel.currentRateText, "---")
+        XCTAssertNil(viewModel.connectionError)
+        XCTAssertNil(viewModel.limitExceededError)
+        XCTAssertNotNil(viewModel.getCurrentRateError)
+        XCTAssertTrue(viewModel.shouldEnableFields)
+        XCTAssertFalse(viewModel.limitExceeded)
     }
     
     // todo: test about tryToUpdateCurrentRate on init - done
