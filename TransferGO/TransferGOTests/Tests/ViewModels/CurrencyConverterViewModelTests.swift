@@ -320,7 +320,59 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.fromAmountFocused)
     }
     
-// MARK: - setting up fromCountry can change value in toCountry and vice vers tests
+// MARK: - setting up fromCountry can change value in toCountry and vice versa tests
+    
+    func test_givenThat_fromCountryPoland_toCountryUkraine_when_fromCountryChangesIntoUkraine_then_toCountryChangesIntoPoland_soItLooksLikeSwitchButtonWasTapped() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.toCountry = PredefinedCountry.ukraine
+        
+        // when
+        viewModel.fromCountry = PredefinedCountry.ukraine
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.poland)
+    }
+    
+    func test_givenThat_fromCountryPoland_toCountryUkraine_when_toCountryChangesIntoPoland_then_fromCountryChangesIntoUkraine_soItLooksLikeSwitchButtonWasTapped() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.toCountry = PredefinedCountry.ukraine
+        
+        // when
+        viewModel.toCountry = PredefinedCountry.poland
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.ukraine)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.poland)
+    }
+    
+    func test_givenThat_fromCountryPoland_toCountryUkraine_when_fromCountryChangesIntoGermany_then_toCountryDoesntChange_asThereIsNoSuchNeed() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.toCountry = PredefinedCountry.ukraine
+        
+        // when
+        viewModel.fromCountry = PredefinedCountry.germany
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.germany)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.ukraine)
+    }
+    
+    func test_givenThat_fromCountryPoland_toCountryUkraine_when_toCountryChangesIntoGermany_then_fromCountryDoesntChange_asThereIsNoSuchNeed() {
+        // given
+        viewModel.fromCountry = PredefinedCountry.poland
+        viewModel.toCountry = PredefinedCountry.ukraine
+        
+        // when
+        viewModel.toCountry = PredefinedCountry.germany
+        
+        // then
+        XCTAssertEqual(viewModel.fromCountry, PredefinedCountry.poland)
+        XCTAssertEqual(viewModel.toCountry, PredefinedCountry.germany)
+    }
     
     // todo: test about tryToUpdateCurrentRate on init - done
     //  todo: also when requirements are not satisfied - done
@@ -336,10 +388,10 @@ final class CurrencyConverterViewModelTests: XCTestCase {
     // todo: test about sendFromTapped - done
     // todo: test about sendToTapped - done
     // todo: test about switchTapped - done
-    // todo: test about backgroundTapped
+    // todo: test about backgroundTapped - done
     
-    // todo: test about setting up fromCountry can change value in toCountry
-    // todo: test about setting up toCountry can change value in fromCountry
+    // todo: test about setting up fromCountry can change value in toCountry - done
+    // todo: test about setting up toCountry can change value in fromCountry - done
     
     // todo: test about setting up fromCountry checksLimits
     // todo: test about setting up fromAmount checksLimits
