@@ -35,6 +35,8 @@ class CoordinatorObject: ObservableObject, Coordinator {
     }
     
     func goToCurrencyConverter(_ info: CurrencyConverterInfo) {
+        self.selectCountryViewModel = nil
+        
         if let fromCountry = info.fromCountry {
             self.currencyConverterViewModel.fromCountry = fromCountry
         } else if let toCountry = info.toCountry {
