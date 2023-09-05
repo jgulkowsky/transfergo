@@ -71,11 +71,23 @@ struct SelectCountryView: View {
 }
 
 struct SelectCountrySheetView_Previews: PreviewProvider {
+    // todo: this is repeated multiple times - maybe we should have this just in one place?
+    static private var coordinatorObject = CoordinatorObject(
+        countriesProvider: CountriesProvider(),
+        rateProvider: RateProvider(
+            urlProvider: URLProvider(),
+            requestHandler: RequestHandler(),
+            responseHandler: ResponseHandler(
+                decoder: DataDecoder()
+            )
+        )
+    )
+    
     static var previews: some View {
         SelectCountryView(
             viewModel: SelectCountryViewModel(
                 info: SelectCountryInfo(type: .from),
-                coordinator: CoordinatorObject(),
+                coordinator: coordinatorObject,
                 countriesProvider: CountriesProvider()
             )
         )

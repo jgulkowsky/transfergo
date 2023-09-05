@@ -131,6 +131,17 @@ struct CurrencyConverterView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static private var coordinatorObject = CoordinatorObject(
+        countriesProvider: CountriesProvider(),
+        rateProvider: RateProvider(
+            urlProvider: URLProvider(),
+            requestHandler: RequestHandler(),
+            responseHandler: ResponseHandler(
+                decoder: DataDecoder()
+            )
+        )
+    )
+    
     static var previews: some View {
         CurrencyConverterView(
             viewModel: CurrencyConverterViewModel(
@@ -139,7 +150,7 @@ struct ContentView_Previews: PreviewProvider {
                     toCountry: PredefinedCountry.ukraine,
                     fromAmount: 300.0
                 ),
-                coordinator: CoordinatorObject(),
+                coordinator: coordinatorObject,
                 rateProvider: MockRateProvider(),
                 scheduler: Scheduler(interval: 10.0),
                 networkStatusProvider: MockNetworkStatusProvider()

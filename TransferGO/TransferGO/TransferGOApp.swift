@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct TransferGOApp: App {
-    @StateObject var coordinatorObject = CoordinatorObject()
+    @StateObject private var coordinatorObject = CoordinatorObject(
+        countriesProvider: CountriesProvider(),
+        rateProvider: RateProvider(
+            urlProvider: URLProvider(),
+            requestHandler: RequestHandler(),
+            responseHandler: ResponseHandler(
+                decoder: DataDecoder()
+            )
+        )
+    )
     
     var body: some Scene {
         WindowGroup {
