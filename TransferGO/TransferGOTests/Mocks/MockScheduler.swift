@@ -7,8 +7,6 @@
 
 import Foundation
 
-// todo: seems to do the same as normal scheduler but if we can have mock then why not - maybe it will be useful
-
 class MockScheduler: Scheduling {
     var hasStarted: Bool = false
     var hasStopped: Bool = false

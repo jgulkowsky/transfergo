@@ -7,10 +7,6 @@
 
 import Foundation
 
-// todo: on iPad you don't see this on main screen but on this left one
-// todo: on the background there should be these 2 tabs too... inactive
-// todo: maybe we also should one place with overlays? (eventually parametrize opacity)
-
 class CurrencyConverterViewModel: ObservableObject {
     @Published var fromCountry: Country! {
         willSet {

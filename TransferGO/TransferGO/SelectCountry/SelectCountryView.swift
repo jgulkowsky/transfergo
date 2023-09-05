@@ -71,7 +71,6 @@ struct SelectCountryView: View {
 }
 
 struct SelectCountrySheetView_Previews: PreviewProvider {
-    // todo: this is repeated multiple times - maybe we should have this just in one place?
     static private var coordinatorObject = CoordinatorObject(
         countriesProvider: CountriesProvider(),
         rateProvider: RateProvider(

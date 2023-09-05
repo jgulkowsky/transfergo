@@ -7,8 +7,6 @@
 
 import Foundation
 
-// todo: seems to do the same as normal scheduler and MockScheduler but it's to help in tests not to mock in them - so later if we need any changes to this one all the others won't be touched
-
 class SchedulerHelper: Scheduling {
     var interval: Double
     

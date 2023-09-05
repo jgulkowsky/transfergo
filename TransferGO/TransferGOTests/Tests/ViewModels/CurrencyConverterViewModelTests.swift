@@ -525,8 +525,7 @@ final class CurrencyConverterViewModelTests: XCTestCase {
         
         // when
         viewModel.onSceneActive()
-        waitForConditionToBeMet { // todo: this rather should be [weak self] no? - and all these places that uses this waitFor... no?
-            // todo: on the other hand we have scheduler stop - and these are only tests so until tests are running fine I don't think we need to make things complcated because of this
+        waitForConditionToBeMet { 
             self.networkStatusProvider.hasUpdatedStatusAtLeastOnce == true
         }
         

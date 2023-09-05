@@ -22,7 +22,7 @@ struct TransferGOApp: App {
     var body: some Scene {
         WindowGroup {
             CoordinatorView(object: coordinatorObject)
-                .preferredColorScheme(.light) // todo: it would be better to adapt to darkmode but maybe later
+                .preferredColorScheme(.light)
         }
     }
 }
