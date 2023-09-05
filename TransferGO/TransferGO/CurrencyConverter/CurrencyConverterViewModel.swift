@@ -72,7 +72,7 @@ class CurrencyConverterViewModel: ObservableObject {
         return limitExceededError != nil
     }
     
-    private let coordinator: Coordinator
+    unowned private let coordinator: Coordinator
     private let rateProvider: RateProviding
     private let scheduler: Scheduling
     private let networkStatusProvider: NetworkStatusProviding
