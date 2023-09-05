@@ -9,11 +9,16 @@ import Foundation
 
 class URLProvider: URLProviding {
     func getRateURL(_ from: Country, _ to: Country, _ amount: Double) throws -> URL {
-        let base = "https://my.transfergo.com/api/fx-rates"
-        let fromParam = "from=\(from.currencyCode)"
-        let toParam = "to=\(to.currencyCode)"
-        let amountParam = "amount=\(amount)"
-        guard let url = URL(string: "\(base)?\(fromParam)&\(toParam)&\(amountParam)") else {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "my.transfergo.com"
+        components.path = "/api/fx-rates"
+        components.queryItems = [
+            URLQueryItem(name: "from", value: from.currencyCode),
+            URLQueryItem(name: "to", value: to.currencyCode),
+            URLQueryItem(name: "amount", value: "\(amount)")
+        ]
+        guard let url = components.url else {
             throw URLProviderError.cannotCreateURL
         }
         return url

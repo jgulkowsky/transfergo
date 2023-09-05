@@ -27,8 +27,4 @@ final class CountriesProviderTests: XCTestCase {
         ]
         XCTAssertEqual(countries, expectedCountries)
     }
-    
-    // todo: in normal situation CountriesProvider would contain RequestHandler etc so there were be some classes that could throw and we needed to check this - but now we don't have to
-    
-    // todo: we should add some test about prefetching and cache
 }

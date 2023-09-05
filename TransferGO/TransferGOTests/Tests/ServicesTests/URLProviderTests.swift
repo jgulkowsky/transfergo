@@ -21,7 +21,6 @@ final class URLProviderTests: XCTestCase {
             XCTAssertEqual(url, expectedURL)
         } catch {
             XCTFail("It should never throw") // at least when currencyCode is not nullable
-            // todo: when we get Countries from some backend and this field could be nil - we should check for such scenario
         }
     }
 }

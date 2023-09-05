@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     func goToSelectCountry(_ info: SelectCountryInfo)
     func goToCurrencyConverter(_ info: CurrencyConverterInfo)
 }

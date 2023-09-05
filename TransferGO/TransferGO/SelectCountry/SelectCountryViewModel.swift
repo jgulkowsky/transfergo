@@ -24,7 +24,7 @@ class SelectCountryViewModel: ObservableObject, Identifiable {
     
     private var allCountries: [Country] = []
     
-    private let coordinator: Coordinator
+    unowned private let coordinator: Coordinator
     private let countriesProvider: CountriesProviding
     
     init(info: SelectCountryInfo,

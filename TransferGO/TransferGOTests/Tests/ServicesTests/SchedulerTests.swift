@@ -72,7 +72,6 @@ final class SchedulerTests: XCTestCase {
 }
 
 private extension SchedulerTests {
-    // todo: this is the same as in CurrencyConverterViewModelTests - maybe it would be better to keep it into one place?
     func wait(
         numberOfSeconds: Double,
         thenCheck assertions: () -> Void

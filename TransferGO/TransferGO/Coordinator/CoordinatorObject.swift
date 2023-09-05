@@ -11,17 +11,11 @@ class CoordinatorObject: ObservableObject, Coordinator {
     @Published var currencyConverterViewModel: CurrencyConverterViewModel!
     @Published var selectCountryViewModel: SelectCountryViewModel?
     
-    private let countriesProvider = CountriesProvider()
+    private var countriesProvider: CountriesProviding
     
-    private let rateProvider: RateProviding = RateProvider(
-        urlProvider: URLProvider(),
-        requestHandler: RequestHandler(),
-        responseHandler: ResponseHandler(
-            decoder: DataDecoder()
-        )
-    )
-    
-    init() {
+    init(countriesProvider: CountriesProviding,
+         rateProvider: RateProviding) {
+        self.countriesProvider = countriesProvider
         self.currencyConverterViewModel = CurrencyConverterViewModel(
             info: CurrencyConverterInfo(
                 fromCountry: PredefinedCountry.poland,
@@ -41,6 +35,8 @@ class CoordinatorObject: ObservableObject, Coordinator {
     }
     
     func goToCurrencyConverter(_ info: CurrencyConverterInfo) {
+        self.selectCountryViewModel = nil
+        
         if let fromCountry = info.fromCountry {
             self.currencyConverterViewModel.fromCountry = fromCountry
         } else if let toCountry = info.toCountry {

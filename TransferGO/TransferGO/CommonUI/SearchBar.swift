@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// todo: we still miss this little Search text on top - on the border
-
 struct SearchBar: View {
    @Binding var text: String
 

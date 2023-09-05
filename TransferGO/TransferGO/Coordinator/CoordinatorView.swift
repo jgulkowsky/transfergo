@@ -19,7 +19,18 @@ struct CoordinatorView: View {
 }
 
 struct CoordinatorView_Previews: PreviewProvider {
+    @StateObject static private var coordinatorObject = CoordinatorObject(
+        countriesProvider: CountriesProvider(),
+        rateProvider: RateProvider(
+            urlProvider: URLProvider(),
+            requestHandler: RequestHandler(),
+            responseHandler: ResponseHandler(
+                decoder: DataDecoder()
+            )
+        )
+    )
+    
     static var previews: some View {
-        CoordinatorView(object: CoordinatorObject())
+        CoordinatorView(object: coordinatorObject)
     }
 }
